@@ -26,5 +26,5 @@ public class GameVars {
 	public static final float harcerzSlow = 0.90f;
 	public static final float splashTime = 4f;
 	public static final float box2dScale = 100;
-	
+	public static final float bugRadius = 50f;
 }
