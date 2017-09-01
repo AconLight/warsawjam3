@@ -16,13 +16,18 @@ public class BugAlive extends SpriteObject {
 
 	public BugAlive (float x, float y, int id){
 		super(x,y,null,id);
-
+		setHitbox(new Hitbox(new BigDecimal(""+x), new BigDecimal(""+y), GameVars.bugRadius, BehaviorMode.kinematic));
+		
+		setFrameTime(0.8f);
 		addTexture("bug.png");
 		addTexture("bug2.png");
-		setFrameTime(0.8f);
-		setHitbox(new Hitbox(new BigDecimal(""+x), new BigDecimal(""+y), GameVars.bugRadius, BehaviorMode.kinematic));
+		setStoped(false);
+		
 	}
-	
-	
+	/*@Override
+	public void updateLast(float delta, float vx, float vy) {
+		super.updateLast(delta, vx, vy);
+		
+	}*/
 	
 }

@@ -4,7 +4,8 @@ import com.redartedgames.ball.objects.SpriteObject;
 
 public class BugDead extends SpriteObject {
 
-	public BugDead (){
+	public BugDead (float x, float y, int id){
+		super(x,y,null,id);
 		
 	}
 }

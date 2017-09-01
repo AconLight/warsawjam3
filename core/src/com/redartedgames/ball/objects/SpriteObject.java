@@ -19,7 +19,13 @@ public class SpriteObject extends GameObject {
 	private boolean isLeft;
 	private float alfa;
 	private boolean isVisible;
+	private boolean isStoped;
+	private int animatoinCounter;
 	
+	public void setStoped(boolean isStoped) {
+		this.isStoped = isStoped;
+	}
+
 	public GameObject parent;
 	
 	public SpriteObject(float x, float y, GameObject parent, int id){
@@ -30,6 +36,8 @@ public class SpriteObject extends GameObject {
 		frameNum=0;
 		frameTime=1f;
 		isPingPong=false;
+		isStoped=false;
+		animatoinCounter=0;
 		this.parent = parent;
 	}	
 	
@@ -53,7 +61,7 @@ public class SpriteObject extends GameObject {
 	
 	public void updateFrames(float delta) { 
 		frameDt+=delta;
-		if(frameDt>frameTime){
+		if(!isStoped && frameDt>frameTime){
 			if(isPingPong==true)
 			{
 				if(isLeft == false )
@@ -73,6 +81,7 @@ public class SpriteObject extends GameObject {
 			}
 			else
 			{
+				animatoinCounter++;
 				if(frameNum<regionList.size()-1)
 					frameNum++;
 				else
