@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
 import com.redartedgames.ball.objects.GameObject;
+import com.redartedgames.ball.objects.PhysicSpriteObject;
 import com.redartedgames.ball.settings.GameVars;
 
 public class MyWorld {
@@ -27,6 +28,7 @@ public class MyWorld {
 		for (int i = 0; i < gameObjects.size(); i++) {
 			gameObjects.get(i).updateBefore(delta, 0, 0);
 		}
+		physicWorld.step(delta, 1, 1);
 		for (int i = 0; i < gameObjects.size(); i++) {
 			gameObjects.get(i).applyPhysicsToAcceleration();
 		}
@@ -55,8 +57,11 @@ public class MyWorld {
 	
 	protected void addGameObject(GameObject obj) {
 		gameObjects.add(obj);
-		
+
 	}
+	
+	
+	
 	
 	protected void addPhysicGameObject(GameObject obj) {
 		gameObjects.add(obj);

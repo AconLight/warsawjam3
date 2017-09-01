@@ -27,24 +27,24 @@ public class InputHandler implements InputProcessor{
 		switch(keycode) {
 		
 		case Keys.A: {
-			world.player.addXAxis(-PlayerConsts.MOVE_X);
+			//world.player.addXAxis(-PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			world.player.addXAxis(PlayerConsts.MOVE_X);
+			//world.player.addXAxis(PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.W: {
-			world.player.setIsJumping(true);
+			//world.player.setIsJumping(true);
 			break;
 		}
 		case Keys.SPACE: {
-			world.setIsForward(false);
-			world.impsCollection.spawnNextImpPressDown(world.player.getMovement());
+			//world.setIsForward(false);
+			//world.impsCollection.spawnNextImpPressDown(world.player.getMovement());
 			break;
 		}
 		case Keys.F: {
-			world.rect.move();
+			//world.rect.move();
 			break;
 		}
 		}
@@ -56,20 +56,20 @@ public class InputHandler implements InputProcessor{
 
 		switch(keycode) {
 		case Keys.A: {
-			world.player.addXAxis(PlayerConsts.MOVE_X);
+			//world.player.addXAxis(PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			world.player.addXAxis(-PlayerConsts.MOVE_X);
+			//world.player.addXAxis(-PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.W: {
-			world.player.setIsJumping(false);
+			//world.player.setIsJumping(false);
 			break;
 		}
 		case Keys.SPACE: {
-			world.setIsForward(true);
-			world.impsCollection.activate();
+			//world.setIsForward(true);
+			//world.impsCollection.activate();
 			break;
 		}
 		} 
