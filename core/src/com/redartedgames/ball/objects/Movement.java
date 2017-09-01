@@ -32,8 +32,12 @@ public class Movement {
 	}
 	public void updateAfter(float delta) {
 		if (!isStopped) {
-			velocity.add(acceleration.scl(delta));
-			position.add(velocity.scl(delta));
+			//velocity.add(acceleration.scl(delta));
+			//position.add(velocity.scl(delta));
+			velocity.x += acceleration.x*delta;
+			velocity.y += acceleration.y*delta;
+			position.x += velocity.x*delta;
+			position.y += velocity.y*delta;
 		}
 	}
 	
