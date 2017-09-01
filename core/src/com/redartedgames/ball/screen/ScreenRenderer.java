@@ -1,6 +1,5 @@
 package com.redartedgames.ball.screen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -32,8 +31,8 @@ public class ScreenRenderer {
 		sr.begin(ShapeType.Filled);
 		for (int i = 0; i < GameObject.priorities; i++) {
 			for (int j = 0; j < world.getGameObjects().size(); j++) {
-				world.getGameObjects().get(j).renderNormal(batch, i);
-				world.getGameObjects().get(j).render(sr, i);
+				world.getGameObjects().get(j).render(batch, i, 0, 0);
+				world.getGameObjects().get(j).render(sr, i, 0, 0);
 			}
 		}
 		batch.end();
