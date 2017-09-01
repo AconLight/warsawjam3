@@ -14,6 +14,11 @@ import com.redartedgames.ball.editor.EditorOptionInterface;
 import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 
 public class GameObject {
+		private boolean renderIsNormal;
+		public void setRenderIsNormal(boolean renderIsNormal) {
+			this.renderIsNormal = renderIsNormal;
+		}
+
 		public static int priorities = 1;
 		private int id;
 		protected Movement movement;
@@ -42,6 +47,7 @@ public class GameObject {
 		
 		
 		public GameObject(float x, float y, int id, GameObject parent) {
+			renderIsNormal = true;
 			reversingI = 0;
 			movement = new Movement(new Vector2(x, y));			
 			isReversed = false;
@@ -169,8 +175,18 @@ public class GameObject {
 		}
 		
 		public void render(SpriteBatch batch, int priority) {
+			if (renderIsNormal) renderNormal(batch, priority);
+			else renderTrans(batch, priority, 0, 0);
+		}
+		
+		public void renderNormal(SpriteBatch batch, int priority) {
 			for(int i=0; i<gameObjects.size();i++)
-				gameObjects.get(i).render(batch, priority);
+				gameObjects.get(i).renderNormal(batch, priority);
+		}
+		
+		public void renderTrans(SpriteBatch batch, int priority, float dx, float dy) {
+			for(int i=0; i<gameObjects.size();i++)
+				gameObjects.get(i).renderTrans(batch, priority, dx + position.x, dy + position.y);
 		}
 		
 		public void render(ShapeRenderer batch, int priority) {

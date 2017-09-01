@@ -95,7 +95,7 @@ public class SpriteObject extends GameObject {
 		return this;
 	}
 	
-	public void render(SpriteBatch batch, int priority) {
+	public void renderNormal(SpriteBatch batch, int priority) {
 		//batch.draw(regionList.get(frameNum), position.x - regionList.get(frameNum).getRegionWidth()/2,
 				//position.y - regionList.get(frameNum).getRegionHeight()/2);
 		if (isVisible && regionList.size() != 0) {
