@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-public class SpriteObject extends GameObject {
+public class SpriteObject extends TimeObject {
 	
 	public ArrayList<TextureRegion> regionList;
 	private int frameNum;
