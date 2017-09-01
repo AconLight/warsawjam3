@@ -102,6 +102,9 @@ public class GameObject {
 			movement.updateBefore(delta);
 			hitbox.update(new BigDecimal("" + position.x), new BigDecimal("" + position.y));
 			movement.setColToZero();
+			for (GameObject obj : gameObjects) {
+				obj.updateBefore(delta, vx, vy);
+			}
 		}
 		
 
@@ -110,10 +113,15 @@ public class GameObject {
 			movement.addColToAcc();			
 			movement.updateAfter(delta);
 			position.set(movement.position);
+			for (GameObject obj : gameObjects) {
+				obj.updateAfter(delta, vx, vy);
+			}
 		}
 		
 		public void updateLast(float delta, float vx, float vy) {
-
+			for (GameObject obj : gameObjects) {
+				obj.updateLast(delta, vx, vy);
+			}
 		}
 		
 		public GameObject getSuperParent() {
@@ -137,6 +145,9 @@ public class GameObject {
 					collide(collidableObjects.get(i));
 				}
 
+			}
+			for (GameObject obj : gameObjects) {
+				obj.applyPhysicsToAcceleration();
 			}
 		}
 		
