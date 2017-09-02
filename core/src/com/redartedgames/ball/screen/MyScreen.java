@@ -1,6 +1,7 @@
 package com.redartedgames.ball.screen;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -25,8 +26,10 @@ public class MyScreen {
 		viewport.setWorldSize(width, height);
 		viewport.setCamera(camera);
 		viewport.setScreenSize(width, height);
-		world = new MyWorld();
-		screenRenderer = new ScreenRenderer(world, camera);
+		
+		world = new MyWorld(camera);
+		screenRenderer = new ScreenRenderer(world, null);
+
 	}
 	
 	public void render() {
@@ -35,6 +38,8 @@ public class MyScreen {
 	
 	public void update(float delta) {
 		world.update(delta);
+		camera.translate(new Vector2(0, 200));
+		camera.update();
 	}
 
 	public OrthographicCamera getCamera() {

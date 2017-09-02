@@ -10,7 +10,9 @@ import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.myobjects.TimeBar;
 import com.redartedgames.ball.objects.GameObject;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter.Particle;
+import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.objects.ParticleObject;
 import com.redartedgames.ball.objects.TimeObject;
@@ -25,8 +27,13 @@ public class GameWorld extends MyWorld{
 	ArrayList<Bubble> bubbles;
 	ParticleObject pa = new ParticleObject(600, 600, 1, null);
 	TimeBar tb = new TimeBar(40, 660, null, 1);
-	public GameWorld() {
-		super();
+	
+	//private OrthographicCamera cam;
+	public GameWorld(OrthographicCamera cam) {
+		super(cam);
+		
+		//cam123.translate(new Vector2(0, 300));
+		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
 		platform = new Platform(200, 100, 6, null, 0);
@@ -64,6 +71,10 @@ public class GameWorld extends MyWorld{
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
 		
+		cam123.translate(new Vector2(player.playerSprite.getMovement().getPosition().x - cam123.position.x + 200, 
+			(player.playerSprite.getMovement().getPosition().y/3 - cam123.position.y+50)));
+		//cam123.translate(new Vector2(0, 200));
+		cam123.update();
 		
 		
 		Gdx.app.log("gameWorld", "" + bubbles.size());

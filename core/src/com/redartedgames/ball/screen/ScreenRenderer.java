@@ -17,9 +17,9 @@ public class ScreenRenderer {
 	private ShapeRenderer sr;
 	private OrthographicCamera camera;
 	
-	public ScreenRenderer(MyWorld world, OrthographicCamera camera) {
+	public ScreenRenderer(MyWorld world, OrthographicCamera camera423432423) {
 		this.world = world;
-		this.camera = camera;
+		this.camera = world.cam123;
 		batch = new SpriteBatch();
 		batch.setProjectionMatrix(camera.combined);
 		sr = new ShapeRenderer();
@@ -27,6 +27,7 @@ public class ScreenRenderer {
 	}
 	
 	public void render() {
+		batch.setProjectionMatrix(world.cam123.combined);
 		batch.begin();
 		sr.begin(ShapeType.Filled);
 		for (int i = 0; i < GameObject.priorities; i++) {

@@ -7,7 +7,7 @@ public class GameScreen extends MyScreen{
 
 	public GameScreen(int width, int height) {
 		super(width, height);
-		world = new GameWorld();
+		world = new GameWorld(camera);
 		screenRenderer = new ScreenRenderer(world, camera);
 	}
 
