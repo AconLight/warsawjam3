@@ -30,6 +30,7 @@ public class ObjectRandomizer {
 	public void randomize() {
 			randomGround(rand.nextInt(3));
 			randomPlatforms(rand.nextInt(2));
+			randomClock(rand.nextInt(2));
 	}
 	
 	private void randomGround(int type) {
@@ -40,7 +41,6 @@ public class ObjectRandomizer {
 				gameObjects.add(g0);
 				player.playerSprite.collidableObjects.addAll(g0.plist);
 				player.bulletObstacles.addAll(g0.plist);
-				if(rand.nextInt(4)==0)randomClock(x + 20 + rand.nextFloat()*(g0.changeX-x), g0.getMovement().getPosition().y+270+rand.nextFloat()*30);
 				x = g0.changeX;
 				break;
 			case 1:
@@ -135,9 +135,93 @@ public class ObjectRandomizer {
 		gameObjects.add(k);
 	}
 	
-	private void randomClock(float x, float y) {
-		Clock c;
-		c = new Clock(x, y, null, 1, rand.nextInt(3), player, bar);
-		gameObjects.add(c);
+	private float lastBigClockX=0;
+	private float lastBigClockY=0;
+	private float lastMediumClockX=0;
+	private float lastMediumClockY=0;
+	private float lastSmallClockX=0;
+	private float lastSmallClockY=0;
+	
+	private float lastClockX=0;
+	private float lastClockY=0;
+	
+	private double nowBigDistance=1500;
+	private double nowMediumDistance=1500;
+	private double nowSmallDistance=1500;
+	private double nowClockDistance=1500;
+	
+	private float nowX=0;
+	private float nowY=0;
+	
+	private float renderMini=1400;
+	private float renderBigDistance=10000;
+	private float renderMediumDistance=5000;
+	private float renderSmallDistance=2000;
+	
+	private float dst1;
+	private float dst2;
+	
+	private void randomClock(int type) {
+
+		switch (type) {
+		case 0:
+			//duzy
+			nowX=x+rand.nextFloat()*50;
+			nowY=y+200+(rand.nextFloat()*700);
+			dst1=(((lastBigClockX-nowX)*(lastBigClockX-nowX))+((lastBigClockY-nowY)*(lastBigClockY-nowY)));
+			nowBigDistance=(Math.sqrt((double)dst1));
+			dst2=(((lastClockX-nowX)*(lastClockX-nowX))+((lastClockY-nowY)*(lastClockY-nowY)));
+			nowClockDistance=(Math.sqrt((double)dst2));
+			if (nowBigDistance >= renderBigDistance && nowClockDistance >= renderMini){
+				
+				Clock BC;
+				BC = new Clock(nowX,nowY,null,0,0,player,bar);
+				gameObjects.add(BC);
+				lastBigClockX=nowX;
+				lastBigClockY=nowY;
+				lastClockX=nowX;
+				lastClockY=nowY;
+			}
+			break;
+		case 1:
+			//sredni
+			nowX=x+rand.nextFloat()*50;
+			nowY=y+100+rand.nextFloat()*700;
+			dst1=(((lastMediumClockX-nowX)*(lastMediumClockX-nowX))+((lastMediumClockY-nowY)*(lastMediumClockY-nowY)));
+			nowMediumDistance=(Math.sqrt((double)dst1));
+			dst2=(((lastClockX-nowX)*(lastClockX-nowX))+((lastClockY-nowY)*(lastClockY-nowY)));
+			nowClockDistance=(Math.sqrt((double)dst2));
+			if (nowMediumDistance >= renderMediumDistance && nowClockDistance >= renderMini){
+				Clock MC;
+				MC = new Clock(nowX,nowY,null,0,1,player,bar);
+				gameObjects.add(MC);
+				lastMediumClockX=nowX;
+				lastMediumClockY=nowY;
+				lastClockX=nowX;
+				lastClockY=nowY;
+			}
+			break;
+		case 2:
+			//maly
+			nowX=x+rand.nextFloat()*50;
+			nowY=y+100+rand.nextFloat()*700;
+			dst1=(((lastSmallClockX-nowX)*(lastSmallClockX-nowX))+((lastSmallClockY-nowY)*(lastSmallClockY-nowY)));
+			nowSmallDistance=(Math.sqrt((double)dst1));
+			dst2=(((lastClockX-nowX)*(lastClockX-nowX))+((lastClockY-nowY)*(lastClockY-nowY)));
+			nowClockDistance=(Math.sqrt((double)dst2));
+			if (nowSmallDistance >= renderSmallDistance && nowClockDistance >= renderMini){
+				Clock SC;
+				SC = new Clock(nowX,nowY,null,0,2,player,bar);
+				gameObjects.add(SC);
+				lastSmallClockX=nowX;
+				lastSmallClockY=nowY;
+				lastClockX=nowX;
+				lastClockY=nowY;
+			}
+			break;
+			
+		default:
+			break;
+		}
 	}
 }
