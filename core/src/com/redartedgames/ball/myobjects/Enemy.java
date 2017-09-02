@@ -37,6 +37,11 @@ public class Enemy extends TimeObject{
 			addSprite(enemySprite);
 			((EnemyMeduzaSprite) enemySprite).mov(-100,0);
 			break;
+		case 2:
+			enemySprite = new EnemyCebulaSprite(x, y, parent, id);
+			addSprite(enemySprite);
+			break;
+			
 		default:
 			break;
 		}
@@ -61,6 +66,14 @@ public class Enemy extends TimeObject{
 			}
 			shootTimer++;
 			break;
+		case 2:
+			shootTimer += delta;
+			if (shootTimer > shootTimeMax+70) {
+				shoot();
+				shootTimer=0;
+			}
+			shootTimer++;
+			break;
 		default:
 			break;
 		}
@@ -76,6 +89,9 @@ public class Enemy extends TimeObject{
 			break;
 		case 1:
 			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)+40), -300, 0);
+			break;
+		case 2:
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)), ((enemySprite.getPosition().y)+20), 0, 300);
 			break;
 		default:
 			break;

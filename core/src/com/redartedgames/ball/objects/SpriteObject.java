@@ -105,6 +105,8 @@ public class SpriteObject extends TimeObject {
 	}
 	
 	public void render(SpriteBatch batch, int priority, float dx, float dy) {
+		
+		
 		//batch.draw(regionList.get(frameNum), position.x - regionList.get(frameNum).getRegionWidth()/2,
 				//position.y - regionList.get(frameNum).getRegionHeight()/2);
 		if (isVisible && regionList.size() != 0) {
@@ -119,6 +121,9 @@ public class SpriteObject extends TimeObject {
 				regionList.get(frameNum).getRegionWidth(), regionList.get(frameNum).getRegionHeight(),
 				1, 1, alfa);
 			//Gdx.app.log("rendered", "spriteobject");
+		}
+		for (GameObject obj : getGameObjects()) {
+			obj.render(batch, priority, dx, dy);
 		}
 	}
 	
