@@ -2,6 +2,7 @@ package com.redartedgames.ball.screen;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -18,10 +19,12 @@ public class MyWorld {
 
 	protected ArrayList<GameObject> gameObjects;
 	private World physicWorld;
+	protected OrthographicCamera cam123;
 	
-	public MyWorld() {
+	public MyWorld(OrthographicCamera cam) {
 		gameObjects = new ArrayList<GameObject>();
 		physicWorld = new World(new Vector2(0, 0), true); 
+		this.cam123 = cam;
 	}
 	
 	public void update(float delta) {
