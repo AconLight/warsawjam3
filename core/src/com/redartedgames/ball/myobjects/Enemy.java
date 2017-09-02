@@ -11,15 +11,15 @@ public class Enemy extends TimeObject{
 	public ArrayList<Bullet> bullets;
 	private int type;
 	public ColSpriteObject enemySprite;
-	private float timer=0;
-	private float shootTime=80;
+	private float shootTimer=0;
+	private float shootTimeMax=100;
+	
+	
 	
 	public Enemy(float x, float y, int id, GameObject parent, int type) {
 		super(x, y, id, parent);
 		this.type = type;
 		setEnemyType(type, x, y, id, parent);
-		//enemySprite = new EnemyRobakSprite(x, y, parent, id);
-		//addSprite(enemySprite);
 		bullets = new ArrayList<Bullet>();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,6 +33,8 @@ public class Enemy extends TimeObject{
 		case 1:
 			enemySprite = new EnemyMeduzaSprite(x, y, parent, id);
 			addSprite(enemySprite);
+			((EnemyMeduzaSprite) enemySprite).mov(-100,0);
+			break;
 		default:
 			break;
 		}
@@ -42,20 +44,20 @@ public class Enemy extends TimeObject{
 		super.updateLast(delta, vx, vy);
 		switch (type) {
 		case 0:
-			timer += delta;
-			if (timer > shootTime) {
+			shootTimer += delta;
+			if (shootTimer > shootTimeMax) {
 				shoot();
-				timer=0;
+				shootTimer=0;
 			}
-			timer++;
+			shootTimer++;
 			break;
 		case 1:
-			timer += delta;
-			if (timer > (shootTime+25)) {
+			shootTimer += delta;
+			if (shootTimer > (shootTimeMax+30)) {
 				shoot();
-				timer=0;
+				shootTimer=0;
 			}
-			timer++;
+			shootTimer++;
 			break;
 		default:
 			break;
@@ -80,4 +82,6 @@ public class Enemy extends TimeObject{
 		getGameObjects().addAll(bullets);
 		
 	}
+	
+	
 }
