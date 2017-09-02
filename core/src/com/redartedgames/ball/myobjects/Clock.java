@@ -8,9 +8,9 @@ public class Clock extends TimeObject{
 
 	public ClockSprite clock;
 	
-	public Clock(float x, float y, GameObject parent, int id, int type, Player player) {
+	public Clock(float x, float y, GameObject parent, int id, int type, Player player, TimeBar bar) {
 		super(x, y, id, parent);
-		clock = new ClockSprite(x, y, parent, id, type, player);
+		clock = new ClockSprite(x, y, parent, id, type, player, bar);
 		addSprite(clock);
 		
 	}
