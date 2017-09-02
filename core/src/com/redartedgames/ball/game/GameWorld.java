@@ -38,7 +38,7 @@ public class GameWorld extends MyWorld{
 		platforms = new ArrayList<GameObject>();
 		player = new Player(50, 300, 0, null, platforms, bubbles, tb);		
 		
-		or = new ObjectRandomizer(gameObjects, player);
+		or = new ObjectRandomizer(gameObjects, player,tb);
 		//tb = new TimeBar(500, 1000, null, 0);
 		addGameObject(player);	
 		addGameObject(tb);	
