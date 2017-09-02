@@ -10,7 +10,7 @@ import com.redartedgames.ball.sprites.BublleBulletSprite;
 public class Bullet extends TimeObject{
 	
 	public ColSpriteObject sprite;
-	
+	public boolean isExploded;
 	public Bullet(float x, float y, int id, GameObject parent) {
 		super(x, y, id, parent);
 		setAsBubbleBullet();
@@ -22,12 +22,12 @@ public class Bullet extends TimeObject{
 	}
 	
 	public void setAsEnemyBullet() {
-		type =  ObjectType.BUBBLE_BULLET;
+		type =  ObjectType.ENEMY_BULLET;
 		sprite = new BublleBulletSprite(-1000, 0, this, 0);
 	}
 	
 	public void explode() {
-		//TODO
+		isExploded = true;
 	}
 	
 	public void shoot(float x, float y, float vx, float vy) {

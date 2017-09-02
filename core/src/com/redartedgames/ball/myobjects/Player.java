@@ -12,10 +12,12 @@ public class Player extends TimeObject{
 	private ArrayList<GameObject> bulletObstacles;
 	public PlayerSprite playerSprite;
 	public ArrayList<Bullet> bullets;
+	ArrayList<Bubble> bubbles;
 	
 	
-	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles) {
+	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles, ArrayList<Bubble> bubbles) {
 		super(x, y, id, parent);
+		this.bubbles = bubbles;
 		playerSprite = new PlayerSprite(x, y, parent, id);
 		addSprite(playerSprite);
 		this.bulletObstacles = bulletObstacles;
@@ -36,9 +38,12 @@ public class Player extends TimeObject{
 		super.updateLast(delta, vx, vy);
 		updateBulletCollidable();
 		for(Bullet bullet : bullets) {
-			//if (((BublleBulletSprite)bullet.sprite).konfetti.isDone) {
-				//getGameObjects().remove(bullet);
-			//}
+			if (((BublleBulletSprite)bullet.sprite).konfetti.isDone) {
+				getGameObjects().remove(bullet);
+			}
+			if (bullet.isExploded) {
+				bubbles.add(new Bubble(bullet.getMovement().getPosition().x, bullet.getMovement().getPosition().y, 0, this));
+			}
 		}
 	}
 	

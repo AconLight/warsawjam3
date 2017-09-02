@@ -2,6 +2,7 @@ package com.redartedgames.ball.game;
 
 import java.util.ArrayList;
 
+import com.redartedgames.ball.myobjects.Bubble;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.GameObject;
@@ -16,22 +17,32 @@ public class GameWorld extends MyWorld{
 	
 	Player player;
 	ArrayList<GameObject> platforms;
-	BubbleSprite b = new BubbleSprite(500, 200, null, 1);
-	Platform p1 = new Platform(400, 400, 3, null, 1);
-	Platform p2 = new Platform(400, 600, 10, null, 1);
+	ArrayList<Bubble> bubbles;
 	
 	public GameWorld() {
 		super();
-		addGameObject(p1);
+		bubbles = new ArrayList<Bubble>();
+		platform = new Platform(200, 100, 6, null, 0);
+		addGameObject(platform);
+		p2 = new Platform(600, 300, 3, null, 0);
 		addGameObject(p2);
-		addGameObject(b);
-		b.setRadius(100);
+		platforms = new ArrayList<GameObject>();
+		platforms.addAll(platform.plist);
+		platforms.addAll(p2.plist);
+		player = new Player(200, 200, 0, null, platforms, bubbles);
+		addGameObject(player);
+		
+		player.playerSprite.collidableObjects.addAll(platform.plist);
+		player.playerSprite.collidableObjects.addAll(p2.plist);
+
 	}
 	
 	
 	@Override
 	public void update(float delta) {
-		super.update(delta);
+		super.update(delta);		
+		gameObjects.removeAll(bubbles);
+		gameObjects.addAll(bubbles);
 		
 	}	
 }
