@@ -22,7 +22,7 @@ public class Bullet extends TimeObject{
 	}
 	
 	public void setAsEnemyBullet() {
-		type =  ObjectType.BUBBLE_BULLET;
+		type =  ObjectType.ENEMY_BULLET;
 		sprite = new BublleBulletSprite(-1000, 0, this, 0);
 	}
 	
