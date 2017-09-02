@@ -40,8 +40,7 @@ public class GameWorld extends MyWorld{
 		
 		or = new ObjectRandomizer(gameObjects, player);
 		
-		addGameObject(player);
-		
+		addGameObject(player);		
 	}
 	
 	@Override
@@ -55,8 +54,7 @@ public class GameWorld extends MyWorld{
 		//cam123.translate(new Vector2(0, 200));
 		cam123.update();
 		goItr(gameObjects);
-		Gdx.app.log("gameWorld", "" + bubbles.size());
-		
+		Gdx.app.log("gameWorld", "" + bubbles.size());		
 	}	
 	
 	public void calcTime(TimeObject obj) {
