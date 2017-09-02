@@ -3,6 +3,8 @@ package com.redartedgames.ball.myobjects;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
+import com.redartedgames.ball.objects.Hitbox;
+import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 import com.redartedgames.ball.settings.GameVars;
 
 public class PlayerSprite extends ColSpriteObject{
@@ -16,7 +18,8 @@ public class PlayerSprite extends ColSpriteObject{
 		canJump = false;
 		canJumpTimer = 0;
 		xAxis = 0;
-		
+		setHitbox(new Hitbox(positionX, positionY, 50, BehaviorMode.dynamic));
+		getMovement().setG(new Vector2(0, GameVars.g));
 		addTexture("badlogic.jpg");
 	}
 	
@@ -32,6 +35,7 @@ public class PlayerSprite extends ColSpriteObject{
 	
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);
+		getMovement().setVelocity(new Vector2(getMovement().getVelocity().x*GameVars.playerDrag, getMovement().getVelocity().y*GameVars.playerDrag));
 		canJumpTimer -= delta;
 	}
 	
