@@ -1,6 +1,7 @@
 package com.redartedgames.ball.sprites;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.myobjects.Bullet;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.ColSpriteObject;
@@ -8,6 +9,7 @@ import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.Hitbox;
 import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 import com.redartedgames.ball.objects.ParticleObject;
+import com.redartedgames.ball.settings.GameVars;
 
 public class BublleBulletSprite extends ColSpriteObject{
 
@@ -19,6 +21,7 @@ public class BublleBulletSprite extends ColSpriteObject{
 		setHitbox(new Hitbox(positionX, positionY, 10, BehaviorMode.dynamic));
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 		getGameObjects().add(konfetti);
+		getMovement().setG(new Vector2(0, GameVars.g/5));
 		isUsed = false;
 	}
 	
