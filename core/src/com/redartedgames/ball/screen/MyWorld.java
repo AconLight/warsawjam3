@@ -29,6 +29,12 @@ public class MyWorld {
 	
 	public void update(float delta) {
 		for (int i = 0; i < gameObjects.size(); i++) {
+			if (gameObjects.get(i).isDone) {
+				gameObjects.remove(i);
+			}
+		}
+		for (int i = 0; i < gameObjects.size(); i++) {
+			
 			gameObjects.get(i).updateBefore(delta, 0, 0);
 		}
 		physicWorld.step(delta, 1, 1);
