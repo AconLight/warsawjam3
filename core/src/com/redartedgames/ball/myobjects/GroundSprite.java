@@ -13,7 +13,7 @@ public class GroundSprite extends ColSpriteObject{
 	public GroundSprite(float x, float y, int type, GameObject parent, int id) {
 		super(x, y, parent, id);
 		setGround(type);
-		if(type==8)setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.none));
+		if(type==8);//setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.none));
 		else setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.kinematic));
 	}	
 	

@@ -3,10 +3,14 @@ package com.redartedgames.ball.game;
 import java.util.ArrayList;
 
 import com.redartedgames.ball.myobjects.Bubble;
+import com.redartedgames.ball.myobjects.Ground;
+import com.redartedgames.ball.myobjects.GroundSprite;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
+import com.redartedgames.ball.myobjects.TimeBar;
 import com.redartedgames.ball.objects.GameObject;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter.Particle;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.objects.ParticleObject;
 import com.redartedgames.ball.objects.TimeObject;
@@ -17,28 +21,39 @@ public class GameWorld extends MyWorld{
 	
 	Player player;
 	ArrayList<GameObject> platforms;
-	ArrayList<Bubble> bubbles;
 	Platform platform, p2;
-	ParticleObject p;
+	ArrayList<Bubble> bubbles;
+	ParticleObject pa = new ParticleObject(600, 600, 1, null);
+	TimeBar tb = new TimeBar(40, 660, null, 1);
 	public GameWorld() {
 		super();
 		bubbles = new ArrayList<Bubble>();
-		platform = new Platform(200, 100, 6, null, 0);
-		addGameObject(platform);
-		p2 = new Platform(600, 300, 3, null, 0);
-		addGameObject(p2);
 		platforms = new ArrayList<GameObject>();
-		platforms.addAll(platform.plist);
-		platforms.addAll(p2.plist);
-		player = new Player(200, 200, 0, null, platforms, bubbles);
+		platform = new Platform(200, 100, 6, null, 0);
+		p2 = new Platform(600, 300, 3, null, 0);
+		addGameObject(platform);		
+		addGameObject(p2);
+		
+		
+		
+		player = new Player(50, 300, 0, null, platforms, bubbles);		
+		Ground g1 = new Ground(0, 0, 3, false, null, 1);
+		Ground g2 = new Ground(g1.changeX, 0, 2, true, null, 1);
+		Ground g3 = new Ground(g2.changeX, 0, 3, false, null, 1);
+		Ground g4 = new Ground(g3.changeX, 0, 2, true, null, 1);
+		addGameObject(g1);
+		addGameObject(g2);
+		addGameObject(g3);
+		addGameObject(g4);
+		
 		addGameObject(player);
 		
 		player.playerSprite.collidableObjects.addAll(platform.plist);
 		player.playerSprite.collidableObjects.addAll(p2.plist);
-
-		p = new ParticleObject(200, 600, 0, null);
-		addGameObject(p);
-		p.explode(1, -1);
+		player.playerSprite.collidableObjects.addAll(g1.plist);
+		player.playerSprite.collidableObjects.addAll(g2.plist);
+		player.playerSprite.collidableObjects.addAll(g3.plist);
+		player.playerSprite.collidableObjects.addAll(g4.plist);
 	}
 	
 	
@@ -47,7 +62,9 @@ public class GameWorld extends MyWorld{
 		super.update(delta);		
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
-		goItr(getGameObjects());
+		pa.explode(0, -10);
+		addGameObject(tb);
+		
 		Gdx.app.log("gameWorld", "" + bubbles.size());
 		
 	}	
