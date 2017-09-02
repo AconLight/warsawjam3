@@ -153,10 +153,10 @@ public class ObjectRandomizer {
 	private float nowX=0;
 	private float nowY=0;
 	
-	private float renderMini=1400;
-	private float renderBigDistance=10000;
-	private float renderMediumDistance=5000;
-	private float renderSmallDistance=2000;
+	private float renderMini=500;
+	private float renderBigDistance=6000;
+	private float renderMediumDistance=3000;
+	private float renderSmallDistance=800;
 	
 	private float dst1;
 	private float dst2;
