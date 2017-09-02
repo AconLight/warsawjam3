@@ -11,6 +11,8 @@ public class Bullet extends TimeObject{
 	
 	public ColSpriteObject sprite;
 	public boolean isExploded;
+	public boolean isUsed;
+	
 	public Bullet(float x, float y, int id, GameObject parent) {
 		super(x, y, id, parent);
 		setAsBubbleBullet();

@@ -7,8 +7,8 @@ import com.redartedgames.ball.objects.SpriteObject;
 
 public class BubbleSprite extends SpriteObject{
 
-	private float scaleX = 1;
-	private float scaleY = 1;
+	private float scaleX = 0;
+	private float scaleY = 0;
 	
 	public BubbleSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
