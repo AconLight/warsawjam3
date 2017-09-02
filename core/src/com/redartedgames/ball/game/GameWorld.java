@@ -39,8 +39,9 @@ public class GameWorld extends MyWorld{
 		player = new Player(50, 300, 0, null, platforms, bubbles);		
 		
 		or = new ObjectRandomizer(gameObjects, player);
-		
-		addGameObject(player);		
+		//tb = new TimeBar(500, 1000, null, 0);
+		addGameObject(player);	
+		addGameObject(tb);	
 	}
 	
 	@Override
@@ -54,7 +55,12 @@ public class GameWorld extends MyWorld{
 		//cam123.translate(new Vector2(0, 200));
 		cam123.update();
 		goItr(gameObjects);
-		Gdx.app.log("gameWorld", "" + bubbles.size());		
+		
+		Gdx.app.log("gameWorld", "" + player.playerSprite.isVoulnerable);	
+		if (player.playerSprite.isVoulnerable) {
+			tb.timeLeft -= delta*30;
+			player.playerSprite.isVoulnerable = false;
+		}
 	}	
 	
 	public void calcTime(TimeObject obj) {

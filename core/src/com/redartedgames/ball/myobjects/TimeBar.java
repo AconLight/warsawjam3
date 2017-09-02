@@ -10,7 +10,7 @@ import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.SpriteObject;
 
 public class TimeBar extends SpriteObject{
-	private float timeLeft = 600;
+	public float timeLeft = 600;
 	private float x;
 	private float y;
 	

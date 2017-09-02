@@ -13,7 +13,7 @@ public class Player extends TimeObject{
 	public PlayerSprite playerSprite;
 	public ArrayList<Bullet> bullets;
 	ArrayList<Bubble> bubbles;
-	
+
 	
 	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles, ArrayList<Bubble> bubbles) {
 		super(x, y, id, parent);
