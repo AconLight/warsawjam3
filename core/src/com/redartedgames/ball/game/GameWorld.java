@@ -7,15 +7,15 @@ import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.GameObject;
 import com.badlogic.gdx.Gdx;
+import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.objects.ParticleObject;
 import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.screen.MyWorld;
+import com.redartedgames.ball.sprites.BubbleSprite;
 
 public class GameWorld extends MyWorld{
 	
-
 	Player player;
-	Platform platform, p2;
 	ArrayList<GameObject> platforms;
 	ArrayList<Bubble> bubbles;
 	
