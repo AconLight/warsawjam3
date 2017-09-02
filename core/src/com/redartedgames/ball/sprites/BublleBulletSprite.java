@@ -1,5 +1,6 @@
 package com.redartedgames.ball.sprites;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.redartedgames.ball.myobjects.Bullet;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.ColSpriteObject;
@@ -27,11 +28,16 @@ public class BublleBulletSprite extends ColSpriteObject{
 			getGameObjects().remove(konfetti);
 			konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 			getGameObjects().add(konfetti);
-			konfetti.explode(getMovement().getVelocity().x/100, getMovement().getVelocity().y/100);
+			konfetti.explode(getMovement().getVelocity().x/150, getMovement().getVelocity().y/150);
 			isUsed = true;
 			isVisible = false;
 			((Bullet) parent).explode();
 		}
+	}
+	
+	public void render(SpriteBatch batch, int priority, float dx, float dy) {
+		super.render(batch, priority, dx, dy);
+		konfetti.render(batch, priority, dx, dy);
 	}
 
 }

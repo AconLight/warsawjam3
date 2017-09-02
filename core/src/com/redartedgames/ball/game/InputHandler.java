@@ -49,7 +49,7 @@ public class InputHandler implements InputProcessor{
 			break;
 		}
 		case Keys.Q: {
-			world.enemy.shoot();
+			//world.enemy.shoot();
 			break;
 		}
 		}

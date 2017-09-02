@@ -2,6 +2,7 @@ package com.redartedgames.ball.myobjects;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
@@ -23,7 +24,7 @@ public class PlayerSprite extends ColSpriteObject{
 		canJump = false;
 		canJumpTimer = 0;
 		xAxis = 0;
-		setHitbox(new Hitbox(positionX, positionY, 50, BehaviorMode.dynamic));
+		setHitbox(new Hitbox(positionX, positionY, 70, BehaviorMode.dynamic));
 		getMovement().setG(new Vector2(0, GameVars.g));
 		addTexture("badlogic.jpg");
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
@@ -152,9 +153,11 @@ public class PlayerSprite extends ColSpriteObject{
 		if (getMovement().getVelocity().y < 60 && getMovement().getVelocity().y > -60) {
 			if (getMovement().getVelocity().x > 10) {
 				if (animType != 0 ) setAnimation(0);
+				setFrameTime(Math.abs(0.05f*200/getMovement().getVelocity().x));
 			}
 			else if (getMovement().getVelocity().x < -10) {
 				if (animType != 1 ) setAnimation(1);
+				setFrameTime(Math.abs(0.05f*200/getMovement().getVelocity().x));
 			}
 			else if (getMovement().getVelocity().x < -1) {
 				if (animType != -2 ) setAnimation(-2);
@@ -197,15 +200,15 @@ public class PlayerSprite extends ColSpriteObject{
 	public void collide(GameObject obj) {
 		super.collide(obj);
 		if (c.disY.floatValue() > 0) {
-			if(getMovement().getVelocity().y < -400) {
+			if(getMovement().getVelocity().y < -250) {
 				getGameObjects().remove(konfetti);
 				konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y - 50, 0, this);
 				getGameObjects().add(konfetti);
-				konfetti.explode(getMovement().getVelocity().x/120, getMovement().getVelocity().y/120);
+				konfetti.explode(getMovement().getVelocity().x/220, getMovement().getVelocity().y/880);
 			}
 			canJump = true;
 			
-			
+			getMovement().setVelocity(new Vector2(getMovement().getVelocity().x, getMovement().getVelocity().y* 0.9f));
 			
 			
 			
@@ -225,5 +228,9 @@ public class PlayerSprite extends ColSpriteObject{
 
 	private void jump() {
 		getMovement().setVelocity(new Vector2(getMovement().getVelocity().x, getMovement().getVelocity().y + GameVars.jumpVel));
+	}
+	public void render(SpriteBatch batch, int priority, float dx, float dy) {
+		super.render(batch, priority, dx, dy);
+		konfetti.render(batch, priority, dx, dy);
 	}
 }
