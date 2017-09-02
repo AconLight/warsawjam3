@@ -26,7 +26,7 @@ public class ParticleSprite extends SpriteObject{
 		this.x = x;
 		this.y = y;
 		getMovement().setG(GameVars.particleGravity);
-		fadeTimer = rand.nextFloat();
+		fadeTimer = rand.nextFloat(); 
 		// TODO Auto-generated constructor stub
 	}
 	
