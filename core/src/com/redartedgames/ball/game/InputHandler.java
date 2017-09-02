@@ -40,7 +40,7 @@ public class InputHandler implements InputProcessor{
 			break;
 		}
 		case Keys.SPACE: {
-			world.player.tryShoot();
+			world.player.tryShoot();//asd
 			//world.impsCollection.spawnNextImpPressDown(world.player.getMovement());
 			break;
 		}
