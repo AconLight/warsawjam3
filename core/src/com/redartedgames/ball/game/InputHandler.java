@@ -27,11 +27,11 @@ public class InputHandler implements InputProcessor{
 		switch(keycode) {
 		
 		case Keys.A: {
-			//world.player.addXAxis(-PlayerConsts.MOVE_X);
+			world.player.addXAxis(-PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			//world.player.addXAxis(PlayerConsts.MOVE_X);
+			world.player.addXAxis(PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.W: {
@@ -56,11 +56,11 @@ public class InputHandler implements InputProcessor{
 
 		switch(keycode) {
 		case Keys.A: {
-			//world.player.addXAxis(PlayerConsts.MOVE_X);
+			world.player.addXAxis(PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			//world.player.addXAxis(-PlayerConsts.MOVE_X);
+			world.player.addXAxis(-PlayerConsts.MOVE_X);
 			break;
 		}
 		case Keys.W: {
