@@ -71,6 +71,8 @@ public class Player extends TimeObject{
 		//updateBulletCollidable();
 	}
 	
-
+	public void setAnimation(int type) {
+		playerSprite.setAnimatoin(type);
+	}
 
 }
