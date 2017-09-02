@@ -16,8 +16,8 @@ public class GroundSprite extends ColSpriteObject{
 		setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.kinematic));
 	}	
 	
-	public void setGround(int platformType) {
-		switch (platformType){
+	public void setGround(int groundType) {
+		switch (groundType){
 			default:
 			case 1:
 				addTexture("data/ground/ziemia_bok_przod.png");
