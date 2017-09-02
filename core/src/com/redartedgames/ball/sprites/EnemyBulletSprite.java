@@ -45,7 +45,7 @@ public class EnemyBulletSprite extends ColSpriteObject{
 			konfetti.explode(getMovement().getVelocity().x/150, getMovement().getVelocity().y/150);
 			if (obj == player.playerSprite) {
 				player.tb.timeLeft -= 100;
-				player.playerSprite.getMovement().setVelocity(new Vector2(player.playerSprite.getMovement().getVelocity().x - 700, player.playerSprite.getMovement().getVelocity().y));
+				player.playerSprite.getMovement().setVelocity(new Vector2(player.playerSprite.getMovement().getVelocity().x + getMovement().getVelocity().x, player.playerSprite.getMovement().getVelocity().y + getMovement().getVelocity().y));
 			}
 		}
 	}
