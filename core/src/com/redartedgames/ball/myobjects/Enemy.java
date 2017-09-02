@@ -16,5 +16,7 @@ public class Enemy extends TimeObject{
 	}
 	public void shoot(){
 		bullets.add(new Bullet(enemySprite.getPosition().x, enemySprite.getPosition().y, 0, this));
+		bullets.get(bullets.size()-1).setAsEnemyBullet();
+		//bullets.get(bullets.size()-1).shoot(enemySprite.getPosition().x, enemySprite.getPosition().y, 300, 0);
 	}
 }
