@@ -7,6 +7,10 @@ import com.redartedgames.ball.settings.GameVars;
 
 public class ParticleObject extends TimeObject {
 	public ArrayList<ParticleSprite> plist;
+	public ArrayList<GameObject> obstacles;
+	public boolean isDone = false;
+	private int arraySize = 0;
+	private int arrayCounter = 0;
 	private float x;
 	private float y;
 	private float hitX = 1;
@@ -20,10 +24,18 @@ public class ParticleObject extends TimeObject {
 		this.y = y;
 	}
 	
+	public void explode(float colissionVelocityX, float colissionVelocityY, float positionX, float positionY) {
+		x = positionX;
+		y = positionY;
+		hitX = colissionVelocityX;
+		hitY = colissionVelocityY;
+		addParticles((int)(Math.sqrt(Math.abs(colissionVelocityX)+Math.abs(colissionVelocityY))*GameVars.particleScale));
+	}
+	
 	public void explode(float colissionVelocityX, float colissionVelocityY) {
 		hitX = colissionVelocityX;
 		hitY = colissionVelocityY;
-		addParticles((int)((Math.abs(colissionVelocityX)+Math.abs(colissionVelocityY))*GameVars.particleScale));
+		addParticles((int)(Math.sqrt(Math.abs(colissionVelocityX)+Math.abs(colissionVelocityY))*GameVars.particleScale));
 	}
 	
 	private void addParticles(int quantity) {
@@ -31,17 +43,23 @@ public class ParticleObject extends TimeObject {
 			plist.add(random());
 			addSprite(plist.get(i));
 		}
+		arraySize = plist.size();
 	}
 	
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);		
 		for (ParticleSprite o : plist) {
-			if (o.fadeTimer < 0) getGameObjects().remove(o);
+			if (o.fadeTimer <= 0) {
+				getGameObjects().remove(o);
+				if (++arrayCounter == arraySize) isDone = true;
+			}
 		}
 	}
 	
 	private ParticleSprite random() {
 		ParticleSprite p = new ParticleSprite(x,y,this,1);
+		float f1 = rand.nextFloat();
+		float f2 = rand.nextFloat();
 		float velocityx = -hitX + rand.nextFloat()*hitX-1/2*hitX + (-hitY/2 + rand.nextFloat()*hitY)/2;
 		float velocityy = -hitY + rand.nextFloat()*hitY-1/2*hitY + (-hitX/2 + rand.nextFloat()*hitX)/2;
 		p.getMovement().setPosition(new Vector2(x,y));

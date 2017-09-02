@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.GameObject;
+import com.badlogic.gdx.Gdx;
+import com.redartedgames.ball.objects.ParticleObject;
+
 import com.redartedgames.ball.screen.MyWorld;
 
 public class GameWorld extends MyWorld{
 	
+
 	Player player;
 	Platform platform, p2;
 	ArrayList<GameObject> platforms;
@@ -26,11 +30,12 @@ public class GameWorld extends MyWorld{
 		addGameObject(player);
 		
 		player.playerSprite.collidableObjects.add(platform.platformSprite);
+
 	}
+	
 	
 	@Override
 	public void update(float delta) {
 		super.update(delta);		
-	}
-	
+	}	
 }
