@@ -13,6 +13,7 @@ public class Ground extends TimeObject {
 	private float x;
 	private float y;
 	private int blockSize;
+	public float changeX;
 	
 	public Ground(float x, float y, int blockSize, boolean isWater, GameObject parent, int id) {
 		super(x, y, id, parent);
@@ -26,6 +27,8 @@ public class Ground extends TimeObject {
 	
 	private void generate() {
 		if(isWater) {
+			x+=60;
+			y-=100;
 			for(int i = 0; i < blockSize; i++) {
 				plist.add(new GroundSprite(x, y, 7, null, 1));
 				addSprite(plist.get(arrCounter));
@@ -35,8 +38,10 @@ public class Ground extends TimeObject {
 				addSprite(plist.get(arrCounter));
 				arrCounter++;
 			}
+			x -= (plist.get(arrCounter-1).regionList.get(plist.get(arrCounter-1).regionList.size()-1).getRegionWidth())/2;
 		}
 		else {
+			x+=20;
 			plist.add(new GroundSprite(x, y, 1, null, 1));
 			addSprite(plist.get(arrCounter));
 			x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
@@ -53,5 +58,6 @@ public class Ground extends TimeObject {
 			x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
 			arrCounter++;
 		}
+		changeX = x;
 	}
 }
