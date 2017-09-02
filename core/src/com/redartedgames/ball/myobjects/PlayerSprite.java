@@ -16,6 +16,7 @@ public class PlayerSprite extends ColSpriteObject{
 	private float canJumpTimer;
 	private float xAxis;
 	private ParticleObject konfetti;
+	private int animType;
 	
 	public PlayerSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
@@ -27,32 +28,38 @@ public class PlayerSprite extends ColSpriteObject{
 		addTexture("badlogic.jpg");
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 		getGameObjects().add(konfetti);
+		setFrameTime(0.05f);
+		
 	}
 	
-	public void setAnimatoin (int type) {
+	public void setAnimation (int type) {
+		animType = type;
 		switch (type) {
 		case 0:
+			
 			regionList.clear();
-			addTexture("data/player/bieg/bieg1p");
-			addTexture("data/player/bieg/bieg2p");
-			addTexture("data/player/bieg/bieg3p");
-			addTexture("data/player/bieg/bieg4p");
-			addTexture("data/player/bieg/bieg5p");
-			addTexture("data/player/bieg/bieg6p");
-			addTexture("data/player/bieg/bieg7p");
-			addTexture("data/player/bieg/bieg8p");
+			
+			addTexture("data/player/bieg/bieg3p.png");
+			addTexture("data/player/bieg/bieg4p.png");
+			addTexture("data/player/bieg/bieg5p.png");
+			addTexture("data/player/bieg/bieg6p.png");
+			addTexture("data/player/bieg/bieg7p.png");
+			addTexture("data/player/bieg/bieg8p.png");
+			addTexture("data/player/bieg/bieg1p.png");
+			addTexture("data/player/bieg/bieg2p.png");
 			//w prawo
 			break;
 		case 1:
 			regionList.clear();
-			addTexture("data/player/bieg/bieg1l");
-			addTexture("data/player/bieg/bieg2l");
-			addTexture("data/player/bieg/bieg3l");
-			addTexture("data/player/bieg/bieg4l");
-			addTexture("data/player/bieg/bieg5l");
-			addTexture("data/player/bieg/bieg6l");
-			addTexture("data/player/bieg/bieg7l");
-			addTexture("data/player/bieg/bieg8l");
+			
+			addTexture("data/player/bieg/bieg3l.png");
+			addTexture("data/player/bieg/bieg4l.png");
+			addTexture("data/player/bieg/bieg5l.png");
+			addTexture("data/player/bieg/bieg6l.png");
+			addTexture("data/player/bieg/bieg7l.png");
+			addTexture("data/player/bieg/bieg8l.png");
+			addTexture("data/player/bieg/bieg1l.png");
+			addTexture("data/player/bieg/bieg2l.png");
 			//w lewo
 			break;
 		case 2:
@@ -129,6 +136,18 @@ public class PlayerSprite extends ColSpriteObject{
 				konfetti.explode(getMovement().getVelocity().x/120, getMovement().getVelocity().y/120);
 			}
 			canJump = true;
+			if (getMovement().getVelocity().x > 13) {
+				if (animType != 0 ) setAnimation(0);
+				setStoped(false);
+			}
+			else if (getMovement().getVelocity().x < -13){
+				if (animType != 1 ) setAnimation(1);
+				setStoped(false);
+			} 
+			else {
+				setStoped(true);
+				frameNum = 0;
+			}
 		}
 	}
 	
