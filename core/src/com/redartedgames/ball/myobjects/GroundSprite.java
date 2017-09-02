@@ -1,5 +1,6 @@
 package com.redartedgames.ball.myobjects;
 
+import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.Hitbox;
@@ -9,11 +10,13 @@ public class GroundSprite extends ColSpriteObject{
 
 	private float width = 0;
 	private float height = 0;
+	public int type;
 	
 	public GroundSprite(float x, float y, int type, GameObject parent, int id) {
 		super(x, y, parent, id);
+		this.type = type;
 		setGround(type);
-		if(type==8);//setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.none));
+		if(type==8) setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.kinematic));
 		else setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.kinematic));
 	}	
 	

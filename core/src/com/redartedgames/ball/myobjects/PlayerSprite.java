@@ -18,6 +18,7 @@ public class PlayerSprite extends ColSpriteObject{
 	private float xAxis;
 	private ParticleObject konfetti;
 	private int animType;
+	public boolean isVoulnerable;
 	
 	public PlayerSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
@@ -30,6 +31,7 @@ public class PlayerSprite extends ColSpriteObject{
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 		getGameObjects().add(konfetti);
 		setFrameTime(0.05f);
+		isVoulnerable = false;
 		
 	}
 	
@@ -198,7 +200,15 @@ public class PlayerSprite extends ColSpriteObject{
 	}
 	
 	public void collide(GameObject obj) {
-		super.collide(obj);
+		c = hitbox.checkCol(obj.getHitbox());
+		collisionAccX = collisionAccX.add(c.disX);
+		collisionAccY = collisionAccY.add(c.disY);
+		//Gdx.app.log("ColSpriteObject", "collide - col: " + collisionAccY );
+		if (getHitbox().bMode == BehaviorMode.dynamic && ((GroundSprite) obj).type != 8)
+			movement.addCollisionAcc(new Vector2(c.disX.floatValue(), c.disY.floatValue()));
+		if (c.isTrue && ((GroundSprite) obj).type == 8) {
+			isVoulnerable = true;
+		}
 		if (c.disY.floatValue() > 0) {
 			if(getMovement().getVelocity().y < -250) {
 				getGameObjects().remove(konfetti);
