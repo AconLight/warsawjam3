@@ -59,7 +59,8 @@ public class GameWorld extends MyWorld{
 			dr = (float) Math.sqrt(dx*dx + dy*dy);
 			d =  bub.radius - dr;
 			if (d < 0) d = 0;
-			scl = 1 - (d)/(bub.maxRadius + 50);
+			scl = 1 - (d)/(bub.maxRadius + 30);
+			scl*=scl;
 			scl2 *= scl;
 		}
 		obj.timeScale = scl2;
