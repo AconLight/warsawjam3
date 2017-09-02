@@ -12,6 +12,8 @@ public class ObjectRandomizer {
 	private float y = 0;
 	private Random rand = new Random();
 	private Player player;
+	private float distanceX;
+	private float distanceY;
 	
 	public ObjectRandomizer(ArrayList<GameObject> gameObjects, Player player){
 		this.gameObjects = gameObjects;
@@ -71,32 +73,52 @@ public class ObjectRandomizer {
 		switch(type) {
 			default:
 			case 0:
-				if(rand.nextInt(16) == 0) {					
-					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, rand.nextInt(2)+6, null, 0);
-					gameObjects.add(p0);
-					randomEnemy(p0.getMovement().getPosition().x, p0.getMovement().getPosition().y,0);
-					player.playerSprite.collidableObjects.addAll(p0.plist);
-					player.bulletObstacles.addAll(p0.plist);
+				if(rand.nextInt(16) == 0) {
+					int pom = rand.nextInt(2)+6;
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
+					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
+						distanceX = p0.getMovement().getPosition().x;
+						distanceY = p0.getMovement().getPosition().y;
+						gameObjects.add(p0);
+						randomEnemy(p0.getMovement().getPosition().x, p0.getMovement().getPosition().y,0);
+						player.playerSprite.collidableObjects.addAll(p0.plist);
+						player.bulletObstacles.addAll(p0.plist);
+					}
 				}
-				else if(rand.nextInt(16) == 0) {					
-					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, rand.nextInt(1)+2, null, 0);
-					gameObjects.add(p0);
-					randomEnemy(p0.getMovement().getPosition().x, p0.getMovement().getPosition().y,1);
-					player.playerSprite.collidableObjects.addAll(p0.plist);
-					player.bulletObstacles.addAll(p0.plist);
+				else if(rand.nextInt(16) == 0) {
+					int pom = rand.nextInt(1)+2;
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
+					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
+						distanceX = p0.getMovement().getPosition().x;
+						distanceY = p0.getMovement().getPosition().y;
+						gameObjects.add(p0);
+						randomEnemy(p0.getMovement().getPosition().x, p0.getMovement().getPosition().y,1);
+						player.playerSprite.collidableObjects.addAll(p0.plist);
+						player.bulletObstacles.addAll(p0.plist);
+					}
 				}
 				else {
-					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, rand.nextInt(4)+2, null, 0);
-					gameObjects.add(p0);
-					player.playerSprite.collidableObjects.addAll(p0.plist);
-					player.bulletObstacles.addAll(p0.plist);
+					int pom = rand.nextInt(4)+2;
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
+					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
+						distanceX = p0.getMovement().getPosition().x;
+						distanceY = p0.getMovement().getPosition().y;
+						gameObjects.add(p0);
+						player.playerSprite.collidableObjects.addAll(p0.plist);
+						player.bulletObstacles.addAll(p0.plist);
+						}
 				}
 				break;
 			case 1:
-				Platform p1 = new Platform(x + rand.nextFloat()*50, 500 + rand.nextFloat()*100, rand.nextInt(2)+2, null, 0);
-				gameObjects.add(p1);
-				player.playerSprite.collidableObjects.addAll(p1.plist);
-				player.bulletObstacles.addAll(p1.plist);
+				int pom = rand.nextInt(2)+2;
+				Platform p1 = new Platform(x + rand.nextFloat()*50, 500 + rand.nextFloat()*100, pom, null, 0);
+				if((p1.getMovement().getPosition().x < distanceX-50 || p1.getMovement().getPosition().x > distanceX+50*pom+50) || (p1.getMovement().getPosition().y < distanceY-50 || p1.getMovement().getPosition().y > distanceY+100)) {
+					distanceX = p1.getMovement().getPosition().x;
+					distanceY = p1.getMovement().getPosition().y;
+					gameObjects.add(p1);
+					player.playerSprite.collidableObjects.addAll(p1.plist);
+					player.bulletObstacles.addAll(p1.plist);
+					}
 				break;
 			case 2:
 				break;
