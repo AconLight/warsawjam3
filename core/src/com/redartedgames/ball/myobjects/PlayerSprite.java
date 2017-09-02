@@ -86,10 +86,26 @@ public class PlayerSprite extends ColSpriteObject{
 			break;
 		case 2:
 			regionList.clear();
+			addTexture("data/player/skok/skok1p.png");
+			addTexture("data/player/skok/skok2p.png");
+			addTexture("data/player/skok/skok3p.png");
+			addTexture("data/player/skok/skok4p.png");
+			addTexture("data/player/skok/skok5p.png");
+			addTexture("data/player/skok/skok6p.png");
+			addTexture("data/player/skok/skok7p.png");
+			addTexture("data/player/skok/skok8p.png");
 			//skok do góry prawy
 			break;
 		case 3:
 			regionList.clear();
+			addTexture("data/player/skok/skok1l.png");
+			addTexture("data/player/skok/skok2l.png");
+			addTexture("data/player/skok/skok3l.png");
+			addTexture("data/player/skok/skok4l.png");
+			addTexture("data/player/skok/skok5l.png");
+			addTexture("data/player/skok/skok6l.png");
+			addTexture("data/player/skok/skok7l.png");
+			addTexture("data/player/skok/skok8l.png");
 			//skok do góry lewy
 			break;
 		case 4:
