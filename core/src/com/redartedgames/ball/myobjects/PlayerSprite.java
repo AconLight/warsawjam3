@@ -206,6 +206,7 @@ public class PlayerSprite extends ColSpriteObject{
 				getGameObjects().add(konfetti);
 				konfetti.explode(getMovement().getVelocity().x/220, getMovement().getVelocity().y/880);
 			}
+			if (canJumpTimer <= 0)
 			canJump = true;
 			
 			getMovement().setVelocity(new Vector2(getMovement().getVelocity().x, getMovement().getVelocity().y* 0.9f));
