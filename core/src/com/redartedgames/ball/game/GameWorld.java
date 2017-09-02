@@ -36,7 +36,7 @@ public class GameWorld extends MyWorld{
 		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
-		player = new Player(50, 300, 0, null, platforms, bubbles);		
+		player = new Player(50, 300, 0, null, platforms, bubbles, tb);		
 		
 		or = new ObjectRandomizer(gameObjects, player);
 		//tb = new TimeBar(500, 1000, null, 0);
@@ -56,12 +56,12 @@ public class GameWorld extends MyWorld{
 		cam123.update();
 		goItr(gameObjects);
 		
-		if (player.playerSprite.getMovement().getPosition().x > or.x - 720) {
+		if (player.playerSprite.getMovement().getPosition().x > or.x - 1220) {
 			i++;
 			or.randomize();
 		}
 		
-		Gdx.app.log("gameWorld", "" + player.playerSprite.isVoulnerable);	
+		//Gdx.app.log("gameWorld", "" + player.playerSprite.isVoulnerable);	
 		if (player.playerSprite.isVoulnerable) {
 			tb.timeLeft -= delta*30;
 			player.playerSprite.isVoulnerable = false;

@@ -113,8 +113,8 @@ public class ObjectRandomizer {
 	
 	private void randomEnemy(float x, float y, int type) {
 		Enemy e;
-		if(type == 0) e = new Enemy(x+120, y+130, 1, null, type);
-		else e = new Enemy(x, y, 1, null, type);
+		if(type == 0) e = new Enemy(x+120, y+130, 1, null, type, player);
+		else e = new Enemy(x, y, 1, null, type, player);
 		gameObjects.add(e);
 	}
 	

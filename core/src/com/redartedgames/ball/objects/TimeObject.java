@@ -33,6 +33,9 @@ public class TimeObject extends GameObject{
 	public void setTimeIsNormal(boolean q) {
 		timeIsNormal = q;
 	}
+	public void collide(GameObject obj) {
+		super.collide(obj);
+	}
 	
 
 }
