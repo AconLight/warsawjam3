@@ -9,7 +9,7 @@ import com.redartedgames.ball.sprites.BublleBulletSprite;
 
 public class Player extends TimeObject{
 
-	private ArrayList<GameObject> bulletObstacles;
+	public ArrayList<GameObject> bulletObstacles;
 	public PlayerSprite playerSprite;
 	public ArrayList<Bullet> bullets;
 	ArrayList<Bubble> bubbles;

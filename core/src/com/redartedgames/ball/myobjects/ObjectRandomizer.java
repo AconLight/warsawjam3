@@ -20,7 +20,7 @@ public class ObjectRandomizer {
 	}
 	
 	private void randomize() {
-		for(int i = 0; i<4; i++)
+		for(int i = 0; i<20; i++)
 			randomGround(rand.nextInt(3));
 	}
 	
@@ -31,24 +31,28 @@ public class ObjectRandomizer {
 				Ground g0 = new Ground(x, y+rand.nextFloat()*80, 3, false, null, 0);
 				gameObjects.add(g0);
 				player.playerSprite.collidableObjects.addAll(g0.plist);
+				player.bulletObstacles.addAll(g0.plist);
 				x = g0.changeX;
 				break;
 			case 1:
 				Ground g1 = new Ground(x, y, 2, true, null, 0);
 				gameObjects.add(g1);
 				player.playerSprite.collidableObjects.addAll(g1.plist);
+				player.bulletObstacles.addAll(g1.plist);
 				x = g1.changeX;
 				break;
 			case 2:
 				Ground g2 = new Ground(x, y+rand.nextFloat()*80, 5, false, null, 0);
 				gameObjects.add(g2);
 				player.playerSprite.collidableObjects.addAll(g2.plist);
+				player.bulletObstacles.addAll(g2.plist);
 				x = g2.changeX;
 				break;
 			case 3:
 				Ground g3 = new Ground(x, y, 5, false, null, 0);
 				gameObjects.add(g3);
 				player.playerSprite.collidableObjects.addAll(g3.plist);
+				player.bulletObstacles.addAll(g3.plist);
 				break;
 			case 4:
 				break;

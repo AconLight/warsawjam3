@@ -1,10 +1,10 @@
 package com.redartedgames.ball.game;
 
 import java.util.ArrayList;
-
 import com.redartedgames.ball.myobjects.Bubble;
 import com.redartedgames.ball.myobjects.Ground;
 import com.redartedgames.ball.myobjects.GroundSprite;
+import com.redartedgames.ball.myobjects.ObjectRandomizer;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.myobjects.TimeBar;
@@ -27,7 +27,7 @@ public class GameWorld extends MyWorld{
 	ArrayList<Bubble> bubbles;
 	ParticleObject pa = new ParticleObject(600, 600, 1, null);
 	TimeBar tb = new TimeBar(40, 660, null, 1);
-	
+	ObjectRandomizer or;
 	//private OrthographicCamera cam;
 	public GameWorld(OrthographicCamera cam) {
 		super(cam);
@@ -36,34 +36,13 @@ public class GameWorld extends MyWorld{
 		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
-		platform = new Platform(200, 100, 6, null, 0);
-		p2 = new Platform(600, 300, 3, null, 0);
-		addGameObject(platform);		
-		addGameObject(p2);
-		
-		
-		
 		player = new Player(50, 300, 0, null, platforms, bubbles);		
-		Ground g1 = new Ground(0, 0, 3, false, null, 1);
-		Ground g2 = new Ground(g1.changeX, 0, 2, true, null, 1);
-		Ground g3 = new Ground(g2.changeX, 0, 3, false, null, 1);
-		Ground g4 = new Ground(g3.changeX, 0, 2, true, null, 1);
-		addGameObject(g1);
-		addGameObject(g2);
-		addGameObject(g3);
-		addGameObject(g4);
+		
+		or = new ObjectRandomizer(gameObjects, player);
 		
 		addGameObject(player);
 		
-		player.playerSprite.collidableObjects.addAll(platform.plist);
-		player.playerSprite.collidableObjects.addAll(p2.plist);
-		player.playerSprite.collidableObjects.addAll(g1.plist);
-		player.playerSprite.collidableObjects.addAll(g2.plist);
-		player.playerSprite.collidableObjects.addAll(g3.plist);
-		player.playerSprite.collidableObjects.addAll(g4.plist);
-		addGameObject(tb);
 	}
-	
 	
 	@Override
 	public void update(float delta) {
@@ -75,8 +54,7 @@ public class GameWorld extends MyWorld{
 			(player.playerSprite.getMovement().getPosition().y/3 - cam123.position.y+50)));
 		//cam123.translate(new Vector2(0, 200));
 		cam123.update();
-		
-		
+		goItr(gameObjects);
 		Gdx.app.log("gameWorld", "" + bubbles.size());
 		
 	}	
