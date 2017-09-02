@@ -21,6 +21,11 @@ public class Bullet extends TimeObject{
 		sprite = new BublleBulletSprite(-1000, 0, this, 0);
 	}
 	
+	public void setAsEnemyBullet() {
+		type =  ObjectType.BUBBLE_BULLET;
+		sprite = new BublleBulletSprite(-1000, 0, this, 0);
+	}
+	
 	public void explode() {
 		//TODO
 	}

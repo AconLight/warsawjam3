@@ -1,5 +1,7 @@
 package com.redartedgames.ball.myobjects;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
@@ -25,6 +27,38 @@ public class PlayerSprite extends ColSpriteObject{
 		addTexture("badlogic.jpg");
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 		getGameObjects().add(konfetti);
+	}
+	
+	public void setAnimatoin (int type) {
+		switch (type) {
+		case 0:
+			regionList.clear();
+			//w prawo
+			break;
+		case 1:
+			regionList.clear();
+			//w lewo
+			break;
+		case 2:
+			regionList.clear();
+			//skok do góry prawy
+			break;
+		case 3:
+			regionList.clear();
+			//skok do góry lewy
+			break;
+		case 4:
+			regionList.clear();
+			//opadanie prawe
+			break;
+		case 5:
+			regionList.clear();
+			//opadanie lewe
+			break;
+			
+		default:
+			break;
+		}
 	}
 	
 	public void addXAxis(float x) {
