@@ -19,7 +19,7 @@ public class GameWorld extends MyWorld{
 	ArrayList<GameObject> platforms;
 	ArrayList<Bubble> bubbles;
 	Platform platform, p2;
-	
+	ParticleObject p;
 	public GameWorld() {
 		super();
 		bubbles = new ArrayList<Bubble>();
@@ -36,6 +36,9 @@ public class GameWorld extends MyWorld{
 		player.playerSprite.collidableObjects.addAll(platform.plist);
 		player.playerSprite.collidableObjects.addAll(p2.plist);
 
+		p = new ParticleObject(200, 600, 0, null);
+		addGameObject(p);
+		p.explode(1, -1);
 	}
 	
 	
