@@ -11,7 +11,7 @@ public class TimeObject extends GameObject{
 	public TimeObject(float x, float y, int id, GameObject parent) {
 		super(x, y, id, parent);
 		timeScale = 1;
-		timeIsNormal = true;
+		timeIsNormal = false;
 	}
 	
 	public void updateBefore(float delta, float vx, float vy) {

@@ -18,6 +18,7 @@ public class GameWorld extends MyWorld{
 	Player player;
 	ArrayList<GameObject> platforms;
 	ArrayList<Bubble> bubbles;
+	Platform platform, p2;
 	
 	public GameWorld() {
 		super();
@@ -43,18 +44,32 @@ public class GameWorld extends MyWorld{
 		super.update(delta);		
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
-		
+		goItr(getGameObjects());
 		Gdx.app.log("gameWorld", "" + bubbles.size());
 		
 	}	
 	
 	public void calcTime(TimeObject obj) {
-		float scl = 1;
-		float dx, dy, dr;
+		obj.timeScale = 1;
+		float scl = 1, scl2 = 1;
+		float dx, dy, dr, d;
 		for(Bubble bub : bubbles) {
 			dx = bub.bubbleSprite.getMovement().getPosition().x - obj.getMovement().getPosition().x;
 			dy = bub.bubbleSprite.getMovement().getPosition().y - obj.getMovement().getPosition().y;
 			dr = (float) Math.sqrt(dx*dx + dy*dy);
+			d =  bub.radius - dr;
+			if (d < 0) d = 0;
+			scl = 1 - (d)/(bub.maxRadius + 30);
+			scl*=scl;
+			scl2 *= scl;
+		}
+		obj.timeScale = scl2;
+	}
+	
+	public void goItr(ArrayList<GameObject> objs) {
+		for(GameObject obj : objs) {
+			calcTime((TimeObject) obj);
+			goItr(obj.getGameObjects());
 		}
 	}
 }

@@ -12,7 +12,7 @@ public class BubbleSprite extends SpriteObject{
 	
 	public BubbleSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
-		addTexture("data/bubbles/bubble1.png");
+		addTexture("data/bubbles/bubble_player.png");
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -14,7 +14,7 @@ public class BublleBulletSprite extends ColSpriteObject{
 	private boolean isUsed;
 	public BublleBulletSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
-		addTexture("bug.png");
+		addTexture("data/bubbles/bubble_player.png");
 		setHitbox(new Hitbox(positionX, positionY, 10, BehaviorMode.dynamic));
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 		getGameObjects().add(konfetti);

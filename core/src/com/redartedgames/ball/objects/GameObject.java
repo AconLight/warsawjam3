@@ -43,7 +43,7 @@ public class GameObject {
 			return hitbox;
 		}
 
-		private GameObject parent;
+		protected GameObject parent;
 		
 		
 		public GameObject(float x, float y, int id, GameObject parent) {

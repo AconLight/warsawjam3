@@ -22,6 +22,7 @@ public class Player extends TimeObject{
 		addSprite(playerSprite);
 		this.bulletObstacles = bulletObstacles;
 		bullets = new ArrayList<Bullet>();
+		setAnimation(0);
 	}
 	
 	public void addXAxis(float x) {
@@ -72,7 +73,7 @@ public class Player extends TimeObject{
 	}
 	
 	public void setAnimation(int type) {
-		playerSprite.setAnimatoin(type);
+		playerSprite.setAnimation(type);
 	}
 
 }
