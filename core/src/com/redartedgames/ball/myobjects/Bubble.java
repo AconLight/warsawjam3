@@ -6,8 +6,8 @@ import com.redartedgames.ball.sprites.BubbleSprite;
 
 public class Bubble extends TimeObject{
 
-	float maxRadius;
-	float radius;
+	public float maxRadius;
+	public float radius;
 	boolean isGrowing;
 	float growVel;
 	public BubbleSprite bubbleSprite;

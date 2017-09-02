@@ -28,15 +28,15 @@ public class InputHandler implements InputProcessor{
 		switch(keycode) {
 		
 		case Keys.A: {
-			//world.player.addXAxis(-GameVars.MOVE_X);
+			world.player.addXAxis(-GameVars.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			//world.player.addXAxis(-PlayerConsts.MOVE_X);
+			world.player.addXAxis(GameVars.MOVE_X);
 			break;
 		}
 		case Keys.W: {
-			//world.player.tryJump();
+			world.player.tryJump();
 			break;
 		}
 		case Keys.SPACE: {
@@ -57,11 +57,11 @@ public class InputHandler implements InputProcessor{
 
 		switch(keycode) {
 		case Keys.A: {
-			//world.player.addXAxis(GameVars.MOVE_X);
+			world.player.addXAxis(GameVars.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			//world.player.addXAxis(-PlayerConsts.MOVE_X);
+			world.player.addXAxis(-GameVars.MOVE_X);
 			break;
 		}
 		case Keys.W: {
