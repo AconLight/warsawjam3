@@ -1,5 +1,6 @@
 package com.redartedgames.ball.myobjects;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -32,6 +33,7 @@ public class Ground extends TimeObject {
 			for(int i = 0; i < blockSize; i++) {
 				plist.add(new GroundSprite(x, y, 7, null, 1));
 				addSprite(plist.get(arrCounter));
+				//plist.get(arrCounter).getHitbox().update(new BigDecimal("" + x), new BigDecimal("" + y));
 				arrCounter++;
 				plist.add(new GroundSprite(x, y+207, 8, null, 1));
 				x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
