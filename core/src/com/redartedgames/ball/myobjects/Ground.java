@@ -28,12 +28,11 @@ public class Ground extends TimeObject {
 	
 	private void generate() {
 		if(isWater) {
-			x+=60;
+			x+=82;
 			y-=100;
 			for(int i = 0; i < blockSize; i++) {
 				plist.add(new GroundSprite(x, y, 7, null, 1));
 				addSprite(plist.get(arrCounter));
-				//plist.get(arrCounter).getHitbox().update(new BigDecimal("" + x), new BigDecimal("" + y));
 				arrCounter++;
 				plist.add(new GroundSprite(x, y+207, 8, null, 1));
 				x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
@@ -41,6 +40,7 @@ public class Ground extends TimeObject {
 				arrCounter++;
 			}
 			x -= (plist.get(arrCounter-1).regionList.get(plist.get(arrCounter-1).regionList.size()-1).getRegionWidth())/2;
+			x+=22;
 		}
 		else {
 			x+=20;
@@ -60,6 +60,6 @@ public class Ground extends TimeObject {
 			x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
 			arrCounter++;
 		}
-		changeX = x;
+		changeX = x-22;
 	}
 }
