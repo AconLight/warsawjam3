@@ -18,7 +18,7 @@ public class GameObject {
 		public void setRenderIsNormal(boolean renderIsNormal) {
 			this.renderIsNormal = renderIsNormal;
 		}
-
+		public boolean isDone;
 		public static int priorities = 1;
 		private int id;
 		protected Movement movement;
@@ -48,6 +48,7 @@ public class GameObject {
 		
 		public GameObject(float x, float y, int id, GameObject parent) {
 			renderIsNormal = true;
+			isDone = false;
 			reversingI = 0;
 			movement = new Movement(new Vector2(x, y));			
 			isReversed = false;
