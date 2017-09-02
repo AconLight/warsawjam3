@@ -8,7 +8,7 @@ import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.GameObject;
 import com.badlogic.gdx.Gdx;
 import com.redartedgames.ball.objects.ParticleObject;
-
+import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.screen.MyWorld;
 
 public class GameWorld extends MyWorld{
@@ -44,5 +44,17 @@ public class GameWorld extends MyWorld{
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
 		
+		Gdx.app.log("gameWorld", "" + bubbles.size());
+		
 	}	
+	
+	public void calcTime(TimeObject obj) {
+		float scl = 1;
+		float dx, dy, dr;
+		for(Bubble bub : bubbles) {
+			dx = bub.bubbleSprite.getMovement().getPosition().x - obj.getMovement().getPosition().x;
+			dy = bub.bubbleSprite.getMovement().getPosition().y - obj.getMovement().getPosition().y;
+			dr = (float) Math.sqrt(dx*dx + dy*dy);
+		}
+	}
 }
