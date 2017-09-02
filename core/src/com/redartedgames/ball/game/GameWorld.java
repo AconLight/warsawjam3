@@ -38,13 +38,10 @@ public class GameWorld extends MyWorld{
 	private int bckgX3 = 0;
 	private int bckgY = 580;
 	public GameWorld(OrthographicCamera cam) {
-<<<<<<< HEAD
 		super(cam);
 		celownik = new SpriteObject(0, 0, null, 0);
 		celownik.addTexture("data/bubbles/bubble_player.png");
-		gameObjects.add(celownik);
-=======
-		super(cam);		
+		gameObjects.add(celownik);	
 		bckg1 = new SpriteObject(bckgX1, bckgY, null, 0);
 		bckg1.addTexture("data/background/background1.png");
 		//addGameObject(bckg1);
@@ -61,16 +58,12 @@ public class GameWorld extends MyWorld{
 		bckg3.addTexture("data/background/background3.png");
 		gameObjects.add(0, bckg3);
 		bckgX3+=2921;
->>>>>>> c3c7cf65ae25fcaadc8a8fe2ff058f0707c07d83
+
 		//cam123.translate(new Vector2(0, 300));
 		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
-<<<<<<< HEAD
-		player = new Player(50, 300, 0, null, platforms, bubbles, tb, celownik);		
-=======
-		player = new Player(500, 400, 0, null, platforms, bubbles, tb);		
->>>>>>> c3c7cf65ae25fcaadc8a8fe2ff058f0707c07d83
+		player = new Player(500, 300, 0, null, platforms, bubbles, tb, celownik);		
 		
 		or = new ObjectRandomizer(gameObjects, player,tb);
 		//tb = new TimeBar(500, 1000, null, 0);
@@ -80,9 +73,7 @@ public class GameWorld extends MyWorld{
 	
 	@Override
 	public void update(float delta) {
-<<<<<<< HEAD
 		celownik.getMovement().setVelocity(player.playerSprite.getMovement().getVelocity());
-=======
 		if (player.playerSprite.getMovement().getPosition().x > bckgX1) {
 			bckg1.getMovement().getPosition().x +=8921;
 			bckgX1+=8921;
@@ -95,12 +86,9 @@ public class GameWorld extends MyWorld{
 			bckg3.getMovement().getPosition().x +=8921;
 			bckgX3+=8921;
 		}
->>>>>>> c3c7cf65ae25fcaadc8a8fe2ff058f0707c07d83
 		super.update(delta);		
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
-		float cx = cam123.position.x;
-		float cy = cam123.position.y;
 		cam123.translate(new Vector2(player.playerSprite.getMovement().getPosition().x - cam123.position.x + 200, 
 			(player.playerSprite.getMovement().getPosition().y/3 - cam123.position.y+50)));
 		//cam123.translate(new Vector2(0, 200));
