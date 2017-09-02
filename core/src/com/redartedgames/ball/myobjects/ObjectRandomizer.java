@@ -12,22 +12,22 @@ public class ObjectRandomizer {
 	private float y = 0;
 	private Random rand = new Random();
 	private Player player;
+	private TimeBar bar;
 	private float distanceX;
 	private float distanceY;
 	
-	public ObjectRandomizer(ArrayList<GameObject> gameObjects, Player player){
+	public ObjectRandomizer(ArrayList<GameObject> gameObjects, Player player, TimeBar bar){
 		this.gameObjects = gameObjects;
 		this.player = player;
+		this.bar = bar;
 		randomize();
 		randomize();
 		randomize();
 	}
 	
 	public void randomize() {
-		//for(int i = 0; i<50; i++) {
 			randomGround(rand.nextInt(3));
 			randomPlatforms(rand.nextInt(2));
-		//}
 	}
 	
 	private void randomGround(int type) {
@@ -60,20 +60,15 @@ public class ObjectRandomizer {
 				player.playerSprite.collidableObjects.addAll(g3.plist);
 				player.bulletObstacles.addAll(g3.plist);
 				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				break;
 		}
 	}
 	
 	private void randomPlatforms(int type) {
 		switch(type) {
 			default:
+				break;
 			case 0:
-				if(rand.nextInt(16) == 0) {
+				if(rand.nextInt(8) == 0) {
 					int pom = rand.nextInt(2)+6;
 					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
 					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
@@ -85,7 +80,7 @@ public class ObjectRandomizer {
 						player.bulletObstacles.addAll(p0.plist);
 					}
 				}
-				else if(rand.nextInt(16) == 0) {
+				else if(rand.nextInt(8) == 0) {
 					int pom = rand.nextInt(1)+2;
 					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
 					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
@@ -118,19 +113,8 @@ public class ObjectRandomizer {
 					gameObjects.add(p1);
 					player.playerSprite.collidableObjects.addAll(p1.plist);
 					player.bulletObstacles.addAll(p1.plist);
-					}
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				break;
-	}
+				}
+		}
 	}
 	
 	private void randomEnemy(float x, float y, int type) {
@@ -138,6 +122,7 @@ public class ObjectRandomizer {
 		if(type == 0) e = new Enemy(x+120, y+130, 1, null, type);
 		else e = new Enemy(x, y, 1, null, type);
 		gameObjects.add(e);
+		//todo dodaæ kolizje
 	}
 	
 	private void randomObstacle(float x, float y) {
@@ -145,6 +130,8 @@ public class ObjectRandomizer {
 	}
 	
 	private void randomClock(float x, float y) {
-		
+		Clock c;
+		c = new Clock(x, y, null, 1, rand.nextInt(3), player, bar);
+		gameObjects.add(c);
 	}
 }
