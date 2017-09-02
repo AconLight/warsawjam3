@@ -3,6 +3,7 @@ package com.redartedgames.ball.myobjects;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
+import com.redartedgames.ball.objects.Hitbox;
 import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.sprites.BublleBulletSprite;
 

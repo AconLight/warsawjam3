@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.Hitbox;
+import com.redartedgames.ball.objects.ParticleObject;
 import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 import com.redartedgames.ball.settings.GameVars;
 
@@ -12,6 +13,7 @@ public class PlayerSprite extends ColSpriteObject{
 	public boolean canJump;
 	private float canJumpTimer;
 	private float xAxis;
+	private ParticleObject konfetti;
 	
 	public PlayerSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
@@ -21,6 +23,8 @@ public class PlayerSprite extends ColSpriteObject{
 		setHitbox(new Hitbox(positionX, positionY, 50, BehaviorMode.dynamic));
 		getMovement().setG(new Vector2(0, GameVars.g));
 		addTexture("badlogic.jpg");
+		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
+		getGameObjects().add(konfetti);
 	}
 	
 	public void addXAxis(float x) {
@@ -42,6 +46,12 @@ public class PlayerSprite extends ColSpriteObject{
 	public void collide(GameObject obj) {
 		super.collide(obj);
 		if (c.disY.floatValue() > 0) {
+			if(getMovement().getVelocity().y < -400) {
+				getGameObjects().remove(konfetti);
+				konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y - 50, 0, this);
+				getGameObjects().add(konfetti);
+				konfetti.explode(getMovement().getVelocity().x/120, getMovement().getVelocity().y/120);
+			}
 			canJump = true;
 		}
 	}
