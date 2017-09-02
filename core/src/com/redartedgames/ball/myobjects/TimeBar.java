@@ -22,6 +22,8 @@ public class TimeBar extends SpriteObject{
 	}
 	
 	public void render(ShapeRenderer batch, int priority, float dx, float dy) {
+		batch.rect(x-4, y-4, 608, 28, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE);
+		batch.rect(x-2, y-2, 604, 24, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK);
 		batch.rect(x, y, timeLeft, 20, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE);
 	}
 	
