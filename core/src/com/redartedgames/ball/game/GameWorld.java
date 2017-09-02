@@ -20,7 +20,7 @@ import com.redartedgames.ball.screen.MyWorld;
 import com.redartedgames.ball.sprites.BubbleSprite;
 
 public class GameWorld extends MyWorld{
-	
+	int i = 0;
 	Player player;
 	ArrayList<GameObject> platforms;
 	Platform platform, p2;
@@ -55,6 +55,11 @@ public class GameWorld extends MyWorld{
 		//cam123.translate(new Vector2(0, 200));
 		cam123.update();
 		goItr(gameObjects);
+		
+		if (player.playerSprite.getMovement().getPosition().x > or.x - 720) {
+			i++;
+			or.randomize();
+		}
 		
 		Gdx.app.log("gameWorld", "" + player.playerSprite.isVoulnerable);	
 		if (player.playerSprite.isVoulnerable) {

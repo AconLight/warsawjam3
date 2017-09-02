@@ -200,15 +200,9 @@ public class PlayerSprite extends ColSpriteObject{
 	}
 	
 	public void collide(GameObject obj) {
-		c = hitbox.checkCol(obj.getHitbox());
-		collisionAccX = collisionAccX.add(c.disX);
-		collisionAccY = collisionAccY.add(c.disY);
+		super.collide(obj);
 		//Gdx.app.log("ColSpriteObject", "collide - col: " + collisionAccY );
-		if (getHitbox().bMode == BehaviorMode.dynamic && ((GroundSprite) obj).type != 8)
-			movement.addCollisionAcc(new Vector2(c.disX.floatValue(), c.disY.floatValue()));
-		if (c.isTrue && ((GroundSprite) obj).type == 8) {
-			isVoulnerable = true;
-		}
+		
 		if (c.disY.floatValue() > 0) {
 			if(getMovement().getVelocity().y < -250) {
 				getGameObjects().remove(konfetti);

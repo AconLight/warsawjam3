@@ -8,7 +8,7 @@ import com.redartedgames.ball.objects.GameObject;
 public class ObjectRandomizer {
 
 	private ArrayList<GameObject> gameObjects; 
-	private float x = 0;
+	public  float x = 0;
 	private float y = 0;
 	private Random rand = new Random();
 	private Player player;
@@ -17,13 +17,15 @@ public class ObjectRandomizer {
 		this.gameObjects = gameObjects;
 		this.player = player;
 		randomize();
+		randomize();
+		randomize();
 	}
 	
-	private void randomize() {
-		for(int i = 0; i<50; i++) {
+	public void randomize() {
+		//for(int i = 0; i<50; i++) {
 			randomGround(rand.nextInt(3));
 			randomPlatforms(rand.nextInt(2));
-		}
+		//}
 	}
 	
 	private void randomGround(int type) {
