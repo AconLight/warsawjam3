@@ -32,6 +32,7 @@ public class PlayerSprite extends ColSpriteObject{
 	
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);
+		getMovement().setVelocity(new Vector2(getMovement().getVelocity().x*GameVars.playerDrag, getMovement().getVelocity().y*GameVars.playerDrag));
 		canJumpTimer -= delta;
 	}
 	
