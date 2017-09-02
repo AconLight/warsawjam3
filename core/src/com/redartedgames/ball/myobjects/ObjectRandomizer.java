@@ -32,7 +32,7 @@ public class ObjectRandomizer {
 		switch(type) {
 			default:
 			case 0:
-				Ground g0 = new Ground(x, y+rand.nextFloat()*80, rand.nextInt(2)+2, false, null, 0);
+				Ground g0 = new Ground(x, y+rand.nextFloat()*40, rand.nextInt(2)+2, false, null, 0);
 				gameObjects.add(g0);
 				player.playerSprite.collidableObjects.addAll(g0.plist);
 				player.bulletObstacles.addAll(g0.plist);
@@ -46,7 +46,7 @@ public class ObjectRandomizer {
 				x = g1.changeX;
 				break;
 			case 2:
-				Ground g2 = new Ground(x, y+rand.nextFloat()*80, rand.nextInt(5)+3, false, null, 0);
+				Ground g2 = new Ground(x, y+rand.nextFloat()*40, rand.nextInt(5)+3, false, null, 0);
 				gameObjects.add(g2);
 				player.playerSprite.collidableObjects.addAll(g2.plist);
 				player.bulletObstacles.addAll(g2.plist);

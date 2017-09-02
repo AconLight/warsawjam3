@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEmitter.Particle;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.objects.ParticleObject;
+import com.redartedgames.ball.objects.SpriteObject;
 import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.screen.MyWorld;
 import com.redartedgames.ball.sprites.BubbleSprite;
@@ -28,18 +29,25 @@ public class GameWorld extends MyWorld{
 	ParticleObject pa = new ParticleObject(600, 600, 1, null);
 	TimeBar tb = new TimeBar(40, 660, null, 1);
 	ObjectRandomizer or;
+	SpriteObject bg1, bg2;
 	//private OrthographicCamera cam;
 	public GameWorld(OrthographicCamera cam) {
 		super(cam);
+		bg1 = new SpriteObject(1500, 426, null, 0);
+		bg2 = new SpriteObject(4500, 426, null, 0);
+		bg1.addTexture("data/background/background1.png");
+		bg2.addTexture("data/background/background2.png");
 		
 		//cam123.translate(new Vector2(0, 300));
 		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
 		player = new Player(50, 300, 0, null, platforms, bubbles);		
-		
+		addGameObject(bg1);
+		addGameObject(bg2);
 		or = new ObjectRandomizer(gameObjects, player);
 		//tb = new TimeBar(500, 1000, null, 0);
+		
 		addGameObject(player);	
 		addGameObject(tb);	
 	}
