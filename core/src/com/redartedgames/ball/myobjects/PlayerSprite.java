@@ -46,11 +46,11 @@ public class PlayerSprite extends ColSpriteObject{
 	public void collide(GameObject obj) {
 		super.collide(obj);
 		if (c.disY.floatValue() > 0) {
-			if(getMovement().getVelocity().y < -200) {
+			if(getMovement().getVelocity().y < -400) {
 				getGameObjects().remove(konfetti);
 				konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y - 50, 0, this);
 				getGameObjects().add(konfetti);
-				konfetti.explode(getMovement().getVelocity().x/80, getMovement().getVelocity().y/80);
+				konfetti.explode(getMovement().getVelocity().x/120, getMovement().getVelocity().y/120);
 			}
 			canJump = true;
 		}
