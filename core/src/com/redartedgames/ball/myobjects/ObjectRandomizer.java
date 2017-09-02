@@ -72,28 +72,28 @@ public class ObjectRandomizer {
 			default:
 			case 0:
 				if(rand.nextInt(16) == 0) {					
-					Platform p0 = new Platform(x + rand.nextFloat()*150 + 100, 300 + rand.nextFloat()*100, rand.nextInt(2)+6, null, 0);
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, rand.nextInt(2)+6, null, 0);
 					gameObjects.add(p0);
 					randomEnemy(p0.getMovement().getPosition().x, p0.getMovement().getPosition().y,0);
 					player.playerSprite.collidableObjects.addAll(p0.plist);
 					player.bulletObstacles.addAll(p0.plist);
 				}
 				else if(rand.nextInt(16) == 0) {					
-					Platform p0 = new Platform(x + rand.nextFloat()*200-50 + 100, 300 + rand.nextFloat()*100, rand.nextInt(1)+2, null, 0);
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, rand.nextInt(1)+2, null, 0);
 					gameObjects.add(p0);
 					randomEnemy(p0.getMovement().getPosition().x, p0.getMovement().getPosition().y,1);
 					player.playerSprite.collidableObjects.addAll(p0.plist);
 					player.bulletObstacles.addAll(p0.plist);
 				}
 				else {
-					Platform p0 = new Platform(x + rand.nextFloat()*100 + 100, 300 + rand.nextFloat()*100, rand.nextInt(4)+2, null, 0);
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, rand.nextInt(4)+2, null, 0);
 					gameObjects.add(p0);
 					player.playerSprite.collidableObjects.addAll(p0.plist);
 					player.bulletObstacles.addAll(p0.plist);
 				}
 				break;
 			case 1:
-				Platform p1 = new Platform(x + rand.nextFloat()*100 + 100, 500 + rand.nextFloat()*100, rand.nextInt(2)+2, null, 0);
+				Platform p1 = new Platform(x + rand.nextFloat()*50, 500 + rand.nextFloat()*100, rand.nextInt(2)+2, null, 0);
 				gameObjects.add(p1);
 				player.playerSprite.collidableObjects.addAll(p1.plist);
 				player.bulletObstacles.addAll(p1.plist);
