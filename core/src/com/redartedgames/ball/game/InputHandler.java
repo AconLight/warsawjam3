@@ -13,6 +13,7 @@ import com.redartedgames.ball.objects.ReversableMovement;
 import com.redartedgames.ball.objects.ReversableObject;
 import com.redartedgames.ball.screen.Consts;
 import com.redartedgames.ball.screen.MyWorld;
+import com.redartedgames.ball.settings.GameVars;
 
 public class InputHandler implements InputProcessor{
 
@@ -27,19 +28,19 @@ public class InputHandler implements InputProcessor{
 		switch(keycode) {
 		
 		case Keys.A: {
-			world.player.addXAxis(-PlayerConsts.MOVE_X);
+			world.player.addXAxis(-GameVars.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			world.player.addXAxis(PlayerConsts.MOVE_X);
+			world.player.addXAxis(GameVars.MOVE_X);
 			break;
 		}
 		case Keys.W: {
-			//world.player.setIsJumping(true);
+			world.player.tryJump();
 			break;
 		}
 		case Keys.SPACE: {
-			//world.setIsForward(false);
+			world.player.tryShoot();
 			//world.impsCollection.spawnNextImpPressDown(world.player.getMovement());
 			break;
 		}
@@ -56,11 +57,11 @@ public class InputHandler implements InputProcessor{
 
 		switch(keycode) {
 		case Keys.A: {
-			world.player.addXAxis(PlayerConsts.MOVE_X);
+			world.player.addXAxis(GameVars.MOVE_X);
 			break;
 		}
 		case Keys.D: {
-			world.player.addXAxis(-PlayerConsts.MOVE_X);
+			world.player.addXAxis(-GameVars.MOVE_X);
 			break;
 		}
 		case Keys.W: {

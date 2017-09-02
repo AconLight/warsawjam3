@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class TimeObject extends GameObject{
 	
+	public int type;
 	private boolean timeIsNormal;
 	public float timeScale;
 	
