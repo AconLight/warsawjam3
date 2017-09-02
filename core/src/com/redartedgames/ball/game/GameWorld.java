@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEmitter.Particle;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.objects.ParticleObject;
+import com.redartedgames.ball.objects.SpriteObject;
 import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.screen.MyWorld;
 import com.redartedgames.ball.sprites.BubbleSprite;
@@ -28,15 +29,36 @@ public class GameWorld extends MyWorld{
 	ParticleObject pa = new ParticleObject(600, 600, 1, null);
 	TimeBar tb = new TimeBar(40, 660, null, 1);
 	ObjectRandomizer or;
-	//private OrthographicCamera cam;
+	private SpriteObject bckg1;
+	private SpriteObject bckg2;
+	private SpriteObject bckg3;
+	private int bckgX1 = 0;
+	private int bckgX2 = 0;
+	private int bckgX3 = 0;
+	private int bckgY = 580;
 	public GameWorld(OrthographicCamera cam) {
-		super(cam);
-		
+		super(cam);		
+		bckg1 = new SpriteObject(bckgX1, bckgY, null, 0);
+		bckg1.addTexture("data/background/background1.png");
+		//addGameObject(bckg1);
+		gameObjects.add(0, bckg1);
+		bckgX1+=3000;
+		bckgX2+=3000;
+		bckgX3+=3000;
+		bckg2 = new SpriteObject(bckgX2, bckgY, null, 0);
+		bckg2.addTexture("data/background/background2.png");
+		gameObjects.add(0, bckg2);
+		bckgX2+=2960;
+		bckgX3+=2960;
+		bckg3 = new SpriteObject(bckgX3, bckgY, null, 0);
+		bckg3.addTexture("data/background/background3.png");
+		gameObjects.add(0, bckg3);
+		bckgX3+=2921;
 		//cam123.translate(new Vector2(0, 300));
 		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
-		player = new Player(50, 300, 0, null, platforms, bubbles, tb);		
+		player = new Player(500, 400, 0, null, platforms, bubbles, tb);		
 		
 		or = new ObjectRandomizer(gameObjects, player,tb);
 		//tb = new TimeBar(500, 1000, null, 0);
@@ -46,6 +68,18 @@ public class GameWorld extends MyWorld{
 	
 	@Override
 	public void update(float delta) {
+		if (player.playerSprite.getMovement().getPosition().x > bckgX1) {
+			bckg1.getMovement().getPosition().x +=8921;
+			bckgX1+=8921;
+		}
+		if (player.playerSprite.getMovement().getPosition().x > bckgX2) {
+			bckg2.getMovement().getPosition().x +=8921;
+			bckgX2+=8921;
+		}
+		if (player.playerSprite.getMovement().getPosition().x > bckgX3) {
+			bckg3.getMovement().getPosition().x +=8921;
+			bckgX3+=8921;
+		}
 		super.update(delta);		
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
@@ -60,6 +94,8 @@ public class GameWorld extends MyWorld{
 			i++;
 			or.randomize();
 		}
+		
+		
 		
 		//Gdx.app.log("gameWorld", "" + player.playerSprite.isVoulnerable);	
 		if (player.playerSprite.isVoulnerable) {
