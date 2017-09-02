@@ -33,10 +33,26 @@ public class PlayerSprite extends ColSpriteObject{
 		switch (type) {
 		case 0:
 			regionList.clear();
+			addTexture("data/player/bieg/bieg1p");
+			addTexture("data/player/bieg/bieg2p");
+			addTexture("data/player/bieg/bieg3p");
+			addTexture("data/player/bieg/bieg4p");
+			addTexture("data/player/bieg/bieg5p");
+			addTexture("data/player/bieg/bieg6p");
+			addTexture("data/player/bieg/bieg7p");
+			addTexture("data/player/bieg/bieg8p");
 			//w prawo
 			break;
 		case 1:
 			regionList.clear();
+			addTexture("data/player/bieg/bieg1l");
+			addTexture("data/player/bieg/bieg2l");
+			addTexture("data/player/bieg/bieg3l");
+			addTexture("data/player/bieg/bieg4l");
+			addTexture("data/player/bieg/bieg5l");
+			addTexture("data/player/bieg/bieg6l");
+			addTexture("data/player/bieg/bieg7l");
+			addTexture("data/player/bieg/bieg8l");
 			//w lewo
 			break;
 		case 2:
@@ -49,11 +65,37 @@ public class PlayerSprite extends ColSpriteObject{
 			break;
 		case 4:
 			regionList.clear();
+			addTexture("data/player/opadanie/opadanie1p");
+			addTexture("data/player/opadanie/opadanie2p");
+			addTexture("data/player/opadanie/opadanie3p");
+			addTexture("data/player/opadanie/opadanie4p");
+			addTexture("data/player/opadanie/opadanie5p");
 			//opadanie prawe
 			break;
 		case 5:
 			regionList.clear();
+			addTexture("data/player/opadanie/opadanie1l");
+			addTexture("data/player/opadanie/opadanie2l");
+			addTexture("data/player/opadanie/opadanie3l");
+			addTexture("data/player/opadanie/opadanie4l");
+			addTexture("data/player/opadanie/opadanie5l");
 			//opadanie lewe
+			break;
+		case 6:
+			regionList.clear();
+			addTexture("data/player/idle/idle1p");
+			addTexture("data/player/idle/idle2p");
+			addTexture("data/player/idle/idle3p");
+			addTexture("data/player/idle/idle4p");
+			//idle w prawo
+			break;
+		case 7:
+			regionList.clear();
+			addTexture("data/player/idle/idle12");
+			addTexture("data/player/idle/idle2l");
+			addTexture("data/player/idle/idle3l");
+			addTexture("data/player/idle/idle4l");
+			//idle w lewo
 			break;
 			
 		default:
