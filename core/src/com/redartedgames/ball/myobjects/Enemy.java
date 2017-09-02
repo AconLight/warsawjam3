@@ -40,18 +40,42 @@ public class Enemy extends TimeObject{
 	
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);
-		timer += delta;
-		if (timer > shootTime) {
-			shoot();
-			timer=0;
+		switch (type) {
+		case 0:
+			timer += delta;
+			if (timer > shootTime) {
+				shoot();
+				timer=0;
+			}
+			timer++;
+			break;
+		case 1:
+			timer += delta;
+			if (timer > (shootTime+25)) {
+				shoot();
+				timer=0;
+			}
+			timer++;
+			break;
+		default:
+			break;
 		}
-		timer++;
+		
 	}
 	
 	public void shoot(){
 		bullets.add(new Bullet(enemySprite.getPosition().x, enemySprite.getPosition().y, 0, this));
 		bullets.get(bullets.size()-1).setAsEnemyBullet();
-		bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)-50), -300, 0);
+		switch (type) {
+		case 0:
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)-50), -300, 0);
+			break;
+		case 1:
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)+40), -300, 0);
+			break;
+		default:
+			break;
+		}		
 		getGameObjects().removeAll(bullets);
 		getGameObjects().addAll(bullets);
 		
