@@ -42,7 +42,7 @@ public class Player extends TimeObject{
 				getGameObjects().remove(bullet);
 			}
 			if (bullet.isExploded) {
-				
+				bubbles.add(new Bubble(bullet.getMovement().getPosition().x, bullet.getMovement().getPosition().y, 0, this));
 			}
 		}
 	}
