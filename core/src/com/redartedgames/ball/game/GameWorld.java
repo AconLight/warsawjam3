@@ -54,6 +54,7 @@ public class GameWorld extends MyWorld{
 		player.playerSprite.collidableObjects.addAll(g2.plist);
 		player.playerSprite.collidableObjects.addAll(g3.plist);
 		player.playerSprite.collidableObjects.addAll(g4.plist);
+		addGameObject(tb);
 	}
 	
 	
@@ -62,8 +63,8 @@ public class GameWorld extends MyWorld{
 		super.update(delta);		
 		gameObjects.removeAll(bubbles);
 		gameObjects.addAll(bubbles);
-		pa.explode(0, -10);
-		addGameObject(tb);
+		
+		
 		
 		Gdx.app.log("gameWorld", "" + bubbles.size());
 		
