@@ -13,7 +13,7 @@ public class Enemy extends TimeObject{
 	private int type;
 	public ColSpriteObject enemySprite;
 	private float shootTimer=0;
-	private float shootTimeMax=100;
+	private float shootTimeMax=30;
 	private Player player;
 	
 	
