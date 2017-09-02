@@ -1,5 +1,6 @@
 package com.redartedgames.ball.sprites;
 
+import com.redartedgames.ball.myobjects.Bullet;
 import com.redartedgames.ball.myobjects.Player;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
@@ -29,6 +30,7 @@ public class BublleBulletSprite extends ColSpriteObject{
 			konfetti.explode(getMovement().getVelocity().x/100, getMovement().getVelocity().y/100);
 			isUsed = true;
 			isVisible = false;
+			((Bullet) parent).explode();
 		}
 	}
 
