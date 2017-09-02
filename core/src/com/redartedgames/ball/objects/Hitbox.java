@@ -30,7 +30,7 @@ public class Hitbox {
 	
 	public Hitbox() {
 		sMode = ShapeMode.none;
-		bMode = BehaviorMode.kinematic;
+		bMode = BehaviorMode.none;
 	}
 	public Hitbox(BigDecimal positionX, BigDecimal positionY, float radius, BehaviorMode mode){
 		sMode = ShapeMode.Circle;
