@@ -1,33 +1,42 @@
 package com.redartedgames.ball.myobjects;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import java.util.ArrayList;
+import java.util.Random;
+
 import com.redartedgames.ball.objects.GameObject;
-import com.redartedgames.ball.objects.Hitbox;
-import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 import com.redartedgames.ball.objects.TimeObject;
 
 public class Platform extends TimeObject{
 	
-	public PlatformSprite platformSprite;
-
-	protected float width;
-	protected float height;
+	public ArrayList<PlatformSprite> plist;
+	private int arrCounter = 0;
+	private float x;
+	private float y;
+	private int blockSize;
 	
-	public Platform(float x, float y, float width, float height, GameObject parent, int id) {
+	public Platform(float x, float y, int blockSize, GameObject parent, int id) {
 		super(x, y, id, parent);
-		this.width = width;
-		this.height = height;
-		platformSprite = new PlatformSprite(x, y, width, height, id, this);
-		addSprite(platformSprite);
+		this.x = x;
+		this.y = y;
+		this.blockSize = blockSize;
+		plist = new ArrayList<PlatformSprite>();
+		generate();
 	}
 	
-	
-	public void render(ShapeRenderer sr, int priority, float dx, float dy) {
-		sr.setColor(100/256f, 100/256f, 100/256f, 1f);
-		sr.rect((position.x - width/2+0.5f), position.y - height/2+0.5f, width+0.5f, height+0.5f);
-		
+	private void generate() {
+		plist.add(new PlatformSprite(x, y, 1, 1, null));
+		addSprite(plist.get(arrCounter));
+		x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
+		arrCounter++;
+		for(int i = 2; i<blockSize; i++) {
+			plist.add(new PlatformSprite(x, y, new Random().nextInt(4)+2, 1, null));
+			addSprite(plist.get(arrCounter));
+			x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
+			arrCounter++;
+		}
+		plist.add(new PlatformSprite(x, y, 6, 1, null));
+		addSprite(plist.get(arrCounter));
+		x += plist.get(arrCounter).regionList.get(plist.get(arrCounter).regionList.size()-1).getRegionWidth();
+		arrCounter++;
 	}
-	
-
-	
 }
