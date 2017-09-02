@@ -64,7 +64,7 @@ public class ParticleObject extends TimeObject {
 		float velocityy = -hitY + rand.nextFloat()*hitY-1/2*hitY + (-hitX/2 + rand.nextFloat()*hitX)/2;
 		p.getMovement().setPosition(new Vector2(x,y));
 		p.getMovement().setVelocity(new Vector2(velocityx*GameVars.particleSpeed,velocityy*GameVars.particleSpeed));
-		p.addParticleTexture("data/particles/zielony3x3.png");
+		p.addParticleTexture("data/particles/bubble.png");
 		return p;		
 	}
 }
