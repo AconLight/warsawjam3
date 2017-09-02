@@ -1,5 +1,6 @@
 package com.redartedgames.ball.myobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
@@ -13,10 +14,12 @@ public class Bullet extends TimeObject{
 	public ColSpriteObject sprite;
 	public boolean isExploded;
 	public boolean isUsed;
+	Player player;
 	
-	public Bullet(float x, float y, int id, GameObject parent) {
+	public Bullet(float x, float y, int id, GameObject parent, Player player) {
 		super(x, y, id, parent);
 		setAsBubbleBullet();
+		this.player = player;
 	}
 	
 	public void setAsBubbleBullet() {
@@ -26,8 +29,9 @@ public class Bullet extends TimeObject{
 	
 	public void setAsEnemyBullet() {
 		type =  ObjectType.ENEMY_BULLET;
-		sprite = new EnemyBulletSprite(-1000, 0, this, 0);
+		sprite = new EnemyBulletSprite(-1000, 0, this, 0, player);
 	}
+	
 	
 	public void explode() {
 		isExploded = true;
@@ -37,6 +41,12 @@ public class Bullet extends TimeObject{
 		sprite.getMovement().setPosition(new Vector2(x, y));
 		sprite.getMovement().setVelocity(new Vector2(vx, vy));
 		addSprite(sprite);
+	}
+	
+	public void collide(GameObject obj) {
+		super.collide(obj);
+		sprite.collide(obj);
+		Gdx.app.log("bullet", "asd");
 	}
 
 }

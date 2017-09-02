@@ -13,10 +13,11 @@ public class Player extends TimeObject{
 	public PlayerSprite playerSprite;
 	public ArrayList<Bullet> bullets;
 	ArrayList<Bubble> bubbles;
-
+	public TimeBar tb;
 	
-	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles, ArrayList<Bubble> bubbles) {
+	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles, ArrayList<Bubble> bubbles, TimeBar tb) {
 		super(x, y, id, parent);
+		this.tb = tb;
 		this.bubbles = bubbles;
 		playerSprite = new PlayerSprite(x, y, parent, id);
 		addSprite(playerSprite);
@@ -66,7 +67,7 @@ public class Player extends TimeObject{
 	}
 	
 	public void shoot() {
-		bullets.add(new Bullet(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y , 0, this));
+		bullets.add(new Bullet(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y , 0, this, this));
 		float x = 0;
 		if (playerSprite.getMovement().getVelocity().x >= -1) x = 300;
 		else x = -300;
