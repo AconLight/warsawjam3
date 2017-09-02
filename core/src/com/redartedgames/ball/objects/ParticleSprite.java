@@ -31,8 +31,9 @@ public class ParticleSprite extends SpriteObject{
 	}
 	
 	public void updateLast(float delta, float vx, float vy) {
-		fadeTimer -= delta;
+		fadeTimer -= delta*100;
 		getMovement().setVelocity(new Vector2(getMovement().getVelocity().x*.97f,getMovement().getVelocity().y*.97f));
+		if((Math.pow(getMovement().getPosition().x-x, 2) + Math.abs(getMovement().getPosition().y-y)*(getMovement().getPosition().y-y)) < 10000) fadeTimer = 0;
 	}
 	
 	
@@ -45,7 +46,7 @@ public class ParticleSprite extends SpriteObject{
 	
 	public void render(ShapeRenderer batch, int priority, float dx, float dy) {
 		batch.setColor(rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), 0);
-		batch.rect(getMovement().getPosition().x, getMovement().getPosition().y, rand.nextInt(3)+1, rand.nextInt(3)+1);
+		batch.rect(getMovement().getPosition().x, getMovement().getPosition().y, rand.nextInt(10)+5, rand.nextInt(10)+5);
 	}
 
 }
