@@ -23,6 +23,7 @@ public class Player extends TimeObject{
 		this.bulletObstacles = bulletObstacles;
 		bullets = new ArrayList<Bullet>();
 		setAnimation(-1);
+		setTimeIsNormal(true);
 	}
 	
 	public void addXAxis(float x) {
@@ -66,7 +67,12 @@ public class Player extends TimeObject{
 	
 	public void shoot() {
 		bullets.add(new Bullet(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y , 0, this));
-		bullets.get(bullets.size()-1).shoot(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y, 300, 0);
+		float x = 0;
+		if (playerSprite.getMovement().getVelocity().x >= -1) x = 300;
+		else x = -300;
+			
+		bullets.get(bullets.size()-1).shoot(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y+70,
+				playerSprite.getMovement().getVelocity().x/4 + x, playerSprite.getMovement().getVelocity().y/2+70 + Math.abs(playerSprite.getMovement().getVelocity().x/2));
 		getGameObjects().removeAll(bullets);
 		getGameObjects().addAll(bullets);
 		//updateBulletCollidable();
