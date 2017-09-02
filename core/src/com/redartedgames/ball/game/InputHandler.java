@@ -40,7 +40,7 @@ public class InputHandler implements InputProcessor{
 			break;
 		}
 		case Keys.SPACE: {
-			world.player.tryShoot();//asd
+			
 			//world.impsCollection.spawnNextImpPressDown(world.player.getMovement());
 			break;
 		}
@@ -93,13 +93,15 @@ public class InputHandler implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		
+		world.player.tryShoot();
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
+		
+		world.player.bullets.get(world.player.bullets.size()-1).explode();
+		world.player.bullets.get(world.player.bullets.size()-1).sprite.isVisible = false;
 		return false;
 	}
 
@@ -111,7 +113,7 @@ public class InputHandler implements InputProcessor{
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
+		world.celownik.getMovement().setPosition(new Vector2(world.cam123.position.x + screenX-360 - 280, world.cam123.position.y - 280 - screenY+640));
 		return false;
 	}
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.ParticleObject;
+import com.redartedgames.ball.objects.SpriteObject;
 import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.sprites.BublleBulletSprite;
 
@@ -14,9 +15,10 @@ public class Player extends TimeObject{
 	public ArrayList<Bullet> bullets;
 	ArrayList<Bubble> bubbles;
 	public TimeBar tb;
-	
-	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles, ArrayList<Bubble> bubbles, TimeBar tb) {
+	public SpriteObject cel;
+	public Player(float x, float y, int id, GameObject parent, ArrayList<GameObject> bulletObstacles, ArrayList<Bubble> bubbles, TimeBar tb, SpriteObject cel) {
 		super(x, y, id, parent);
+		this.cel = cel;
 		this.tb = tb;
 		this.bubbles = bubbles;
 		playerSprite = new PlayerSprite(x, y, parent, id);
@@ -67,13 +69,18 @@ public class Player extends TimeObject{
 	}
 	
 	public void shoot() {
+		float dx, dy, dr;
+		dx = playerSprite.getMovement().getPosition().x - cel.getPosition().x;
+		dy = playerSprite.getMovement().getPosition().y - cel.getPosition().y;
+		
+		dr = (float) Math.sqrt(dx*dx + dy*dy);
 		bullets.add(new Bullet(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y , 0, this, this));
 		float x = 0;
 		if (playerSprite.getMovement().getVelocity().x >= -1) x = 300;
 		else x = -300;
 			
 		bullets.get(bullets.size()-1).shoot(playerSprite.getMovement().getPosition().x, playerSprite.getMovement().getPosition().y+70,
-				playerSprite.getMovement().getVelocity().x/4 + x, playerSprite.getMovement().getVelocity().y/2+70 + Math.abs(playerSprite.getMovement().getVelocity().x/2));
+				-900*dx/dr, -900*dy/dr);
 		getGameObjects().removeAll(bullets);
 		getGameObjects().addAll(bullets);
 		//updateBulletCollidable();

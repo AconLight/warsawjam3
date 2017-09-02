@@ -81,17 +81,24 @@ public class Enemy extends TimeObject{
 	}
 	
 	public void shoot(){
+		float dx, dy, dr;
+		dx = player.playerSprite.getMovement().getPosition().x - enemySprite.getPosition().x;
+		dy = player.playerSprite.getMovement().getPosition().y - enemySprite.getPosition().y;
+		
+		dr = (float) Math.sqrt(dx*dx + dy*dy);
+		
+		
 		bullets.add(new Bullet(enemySprite.getPosition().x, enemySprite.getPosition().y, 0, this, player));
 		bullets.get(bullets.size()-1).setAsEnemyBullet();
 		switch (type) {
 		case 0:
-			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)-50), -300, 0);
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)-50), 600*dx/dr, 600*dy/dr);
 			break;
 		case 1:
-			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)+40), -300, 0);
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)+40), 600*dx/dr, 600*dy/dr);
 			break;
 		case 2:
-			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)), ((enemySprite.getPosition().y)+20), 0, 300);
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)), ((enemySprite.getPosition().y)+20), 600*dx/dr, 600*dy/dr);
 			break;
 		default:
 			break;

@@ -21,7 +21,7 @@ public class BublleBulletSprite extends ColSpriteObject{
 		setHitbox(new Hitbox(positionX, positionY, 10, BehaviorMode.dynamic));
 		konfetti = new ParticleObject(getMovement().getPosition().x, getMovement().getPosition().y, 0, this);
 		getGameObjects().add(konfetti);
-		getMovement().setG(new Vector2(0, GameVars.g/5));
+		//getMovement().setG(new Vector2(0, GameVars.g/5));
 		isUsed = false;
 	}
 	

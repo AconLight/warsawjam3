@@ -18,7 +18,7 @@ public class SpriteObject extends TimeObject {
 	private boolean isPingPong;
 	private boolean isLeft;
 	protected float alfa;
-	protected boolean isVisible;
+	public boolean isVisible;
 	private boolean isStoped;
 	private int animatoinCounter;
 	

@@ -19,7 +19,7 @@ public class MyWorld {
 
 	protected ArrayList<GameObject> gameObjects;
 	private World physicWorld;
-	protected OrthographicCamera cam123;
+	public OrthographicCamera cam123;
 	
 	public MyWorld(OrthographicCamera cam) {
 		gameObjects = new ArrayList<GameObject>();
