@@ -15,6 +15,7 @@ public class ParticleSprite extends SpriteObject{
 	private float R;
 	private float G;
 	private float B;
+	private Random rand = new Random();
 
 	public void addParticleTexture(String path) {
 		addTexture(path);
@@ -25,7 +26,7 @@ public class ParticleSprite extends SpriteObject{
 		this.x = x;
 		this.y = y;
 		getMovement().setG(GameVars.particleGravity);
-		fadeTimer = new Random().nextFloat();
+		fadeTimer = rand.nextFloat();
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -43,8 +44,8 @@ public class ParticleSprite extends SpriteObject{
 	}
 	
 	public void render(ShapeRenderer batch, int priority, float dx, float dy) {
-		batch.setColor(r, g, b, a);
-		batch.rect(x, y, width, height);
+		batch.setColor(rand.nextFloat(), rand.nextFloat(), rand.nextFloat(), 0);
+		batch.rect(x, y, rand.nextInt(3)+1, rand.nextInt(3)+1);
 	}
 
 }
