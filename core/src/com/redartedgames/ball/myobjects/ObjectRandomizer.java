@@ -15,6 +15,8 @@ public class ObjectRandomizer {
 	private TimeBar bar;
 	private float distanceX;
 	private float distanceY;
+	private float marginX = 200f;
+	private float marginY = 200f;
 	
 	public ObjectRandomizer(ArrayList<GameObject> gameObjects, Player player, TimeBar bar){
 		this.gameObjects = gameObjects;
@@ -70,10 +72,10 @@ public class ObjectRandomizer {
 			default:
 				break;
 			case 0:
-				if(rand.nextInt(6) == 0) {
+				if(rand.nextInt(2) == 0) {
 					int pom = rand.nextInt(2)+6;
 					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
-					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
+					if((p0.getMovement().getPosition().x < distanceX-marginX || p0.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p0.getMovement().getPosition().y < distanceY-marginY || p0.getMovement().getPosition().y > distanceY+marginY)) {
 						distanceX = p0.getMovement().getPosition().x;
 						distanceY = p0.getMovement().getPosition().y;
 						gameObjects.add(p0);
@@ -85,7 +87,7 @@ public class ObjectRandomizer {
 				else if(rand.nextInt(6) == 0) {
 					int pom = rand.nextInt(1)+2;
 					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
-					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
+					if((p0.getMovement().getPosition().x < distanceX-marginX || p0.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p0.getMovement().getPosition().y < distanceY-marginY || p0.getMovement().getPosition().y > distanceY+marginY)) {
 						distanceX = p0.getMovement().getPosition().x;
 						distanceY = p0.getMovement().getPosition().y;
 						gameObjects.add(p0);
@@ -97,7 +99,7 @@ public class ObjectRandomizer {
 				else {
 					int pom = rand.nextInt(4)+2;
 					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
-					if((p0.getMovement().getPosition().x < distanceX-50 || p0.getMovement().getPosition().x > distanceX+50*pom+50) || (p0.getMovement().getPosition().y < distanceY-50 || p0.getMovement().getPosition().y > distanceY+100)) {
+					if((p0.getMovement().getPosition().x < distanceX-marginX || p0.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p0.getMovement().getPosition().y < distanceY-marginY || p0.getMovement().getPosition().y > distanceY+marginY)) {
 						distanceX = p0.getMovement().getPosition().x;
 						distanceY = p0.getMovement().getPosition().y;
 						gameObjects.add(p0);
@@ -109,7 +111,7 @@ public class ObjectRandomizer {
 			case 1:
 				int pom = rand.nextInt(2)+2;
 				Platform p1 = new Platform(x + rand.nextFloat()*50, 500 + rand.nextFloat()*100, pom, null, 0);
-				if((p1.getMovement().getPosition().x < distanceX-50 || p1.getMovement().getPosition().x > distanceX+50*pom+50) || (p1.getMovement().getPosition().y < distanceY-50 || p1.getMovement().getPosition().y > distanceY+100)) {
+				if((p1.getMovement().getPosition().x < distanceX-marginX || p1.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p1.getMovement().getPosition().y < distanceY-marginY || p1.getMovement().getPosition().y > distanceY+marginY)) {
 					distanceX = p1.getMovement().getPosition().x;
 					distanceY = p1.getMovement().getPosition().y;
 					gameObjects.add(p1);
@@ -121,7 +123,7 @@ public class ObjectRandomizer {
 	
 	private void randomEnemy(float x, float y, int type) {
 		Enemy e;
-		if(type == 0) e = new Enemy(x+120, y+130, 1, null, type, player);
+		if(type == 0) e = new Enemy(x+120, y+230, 1, null, type, player);
 		else e = new Enemy(x, y+rand.nextInt(200), 1, null, type, player);
 		gameObjects.add(e);
 		//todo dodaæ kolizje
