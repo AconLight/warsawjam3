@@ -12,13 +12,13 @@ import com.badlogic.gdx.math.Vector2;
 public class SpriteObject extends TimeObject {
 	
 	public ArrayList<TextureRegion> regionList;
-	private int frameNum;
+	protected int frameNum;
 	private float frameTime;
 	private float frameDt;
 	private boolean isPingPong;
 	private boolean isLeft;
-	private float alfa;
-	private boolean isVisible;
+	protected float alfa;
+	protected boolean isVisible;
 	private boolean isStoped;
 	private int animatoinCounter;
 	
