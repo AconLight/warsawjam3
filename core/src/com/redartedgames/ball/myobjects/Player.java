@@ -41,8 +41,9 @@ public class Player extends TimeObject{
 			if (((BublleBulletSprite)bullet.sprite).konfetti.isDone) {
 				getGameObjects().remove(bullet);
 			}
-			if (bullet.isExploded) {
-				bubbles.add(new Bubble(bullet.getMovement().getPosition().x, bullet.getMovement().getPosition().y, 0, this));
+			if (bullet.isExploded && !bullet.isUsed) {
+				bubbles.add(new Bubble(bullet.sprite.getMovement().getPosition().x, bullet.sprite.getMovement().getPosition().y, 0, this));
+				bullet.isUsed = true;
 			}
 		}
 	}
