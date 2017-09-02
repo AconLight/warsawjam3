@@ -31,9 +31,10 @@ public class ParticleSprite extends SpriteObject{
 	}
 	
 	public void updateLast(float delta, float vx, float vy) {
-		fadeTimer -= delta*100;
+		fadeTimer -= delta;
 		getMovement().setVelocity(new Vector2(getMovement().getVelocity().x*.97f,getMovement().getVelocity().y*.97f));
-		if((Math.pow(getMovement().getPosition().x-x, 2) + Math.abs(getMovement().getPosition().y-y)*(getMovement().getPosition().y-y)) < 10000) fadeTimer = 0;
+		if((Math.pow(getMovement().getPosition().x-x, 2) + Math.abs(getMovement().getPosition().y-y)*(getMovement().getPosition().y-y)) > GameVars.particleRange) fadeTimer = 0;
+		if(Math.abs(getMovement().getPosition().x - x) >= Math.sqrt(GameVars.particleRange)) fadeTimer = 0;
 	}
 	
 	

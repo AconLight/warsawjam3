@@ -9,6 +9,7 @@ public class ParticleObject extends TimeObject {
 	public ArrayList<ParticleSprite> plist;
 	public ArrayList<GameObject> obstacles;
 	public boolean isDone = false;
+	private int arraySize = 0;
 	private int arrayCounter = 0;
 	private float x;
 	private float y;
@@ -31,19 +32,27 @@ public class ParticleObject extends TimeObject {
 		addParticles((int)(Math.sqrt(Math.abs(colissionVelocityX)+Math.abs(colissionVelocityY))*GameVars.particleScale));
 	}
 	
+	public void explode(float colissionVelocityX, float colissionVelocityY) {
+		hitX = colissionVelocityX;
+		hitY = colissionVelocityY;
+		addParticles((int)(Math.sqrt(Math.abs(colissionVelocityX)+Math.abs(colissionVelocityY))*GameVars.particleScale));
+	}
+	
 	private void addParticles(int quantity) {
 		for (int i = 0; i < quantity; i++) {
 			plist.add(random());
 			addSprite(plist.get(i));
 		}
-		
+		arraySize = plist.size();
 	}
 	
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);		
 		for (ParticleSprite o : plist) {
-			if (o.fadeTimer < 0) getGameObjects().remove(o);
-			arrayCounter++;
+			if (o.fadeTimer <= 0) {
+				getGameObjects().remove(o);
+				if (++arrayCounter == arraySize) isDone = true;
+			}
 		}
 	}
 	

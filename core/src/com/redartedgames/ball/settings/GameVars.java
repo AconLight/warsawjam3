@@ -11,6 +11,7 @@ public class GameVars {
 	public static final float playerDrag = 0.95f;
 	public static final float box2dScale = 100;
 	public static final float particleScale = 100;
-	public static final float particleSpeed = 40;
-	public static final Vector2 particleGravity = new Vector2(0,-100);
+	public static final float particleSpeed = 50;
+	public static final float particleRange = 50000; //to jest kwadrat prawdziwego zasiêgu
+	public static final Vector2 particleGravity = new Vector2(0,-1000);
 }
