@@ -28,4 +28,9 @@ public class TimeBar extends SpriteObject{
 	public void updateLast(float delta, float vx, float vy) {
 		if(timeLeft > 0) timeLeft -= delta*10;
 	}
+	
+	public void addTime(float time) {
+		if(x+time>600) x = 600;
+		else x+=time;
+	}
 }
