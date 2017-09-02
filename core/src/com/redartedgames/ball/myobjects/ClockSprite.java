@@ -8,8 +8,11 @@ import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 
 public class ClockSprite extends ColSpriteObject{
 	
-	public ClockSprite(float x, float y, GameObject parent, int id, int type, Player player) {
+	private float addtime;
+	private TimeBar bar;
+	public ClockSprite(float x, float y, GameObject parent, int id, int type, Player player, TimeBar bar) {
 		super(x, y, parent, id);
+		this.bar=bar;
 		collidableObjects.add(player.playerSprite);
 		switch (type) {
 		case 0:
@@ -17,18 +20,21 @@ public class ClockSprite extends ColSpriteObject{
 			regionList.clear();
 			addTexture("data/zegary/zegar_duzy.png");
 			setHitbox(new Hitbox(positionX, positionY, 50, BehaviorMode.kinematic));
+			addtime=500;
 			break;
 		case 1:
 			//sredni
 			regionList.clear();
 			addTexture("data/zegary/zegar_sredni.png");
 			setHitbox(new Hitbox(positionX, positionY, 40, BehaviorMode.kinematic));
+			addtime=25;
 			break;
 		case 2:
 			//maly
 			regionList.clear();
 			addTexture("data/zegary/zegar_maly.png");
 			setHitbox(new Hitbox(positionX, positionY, 30, BehaviorMode.kinematic));
+			addtime=10;
 			break;
 			
 		default:
@@ -45,7 +51,10 @@ public class ClockSprite extends ColSpriteObject{
 		//Gdx.app.log("ColSpriteObject", "collide - col: " + collisionAccY );
 		if (getHitbox().bMode == BehaviorMode.dynamic)
 			movement.addCollisionAcc(new Vector2(c.disX.floatValue(), c.disY.floatValue()));
-		if (c.isTrue) isVisible=false;
+		if (c.isTrue && isVisible) {
+			isVisible=false;
+			bar.timeLeft += addtime;
+		}
 	}
 	
 }
