@@ -6,6 +6,7 @@ import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.Hitbox;
 import com.redartedgames.ball.objects.TimeObject;
 import com.redartedgames.ball.sprites.BublleBulletSprite;
+import com.redartedgames.ball.sprites.EnemyBulletSprite;
 
 public class Bullet extends TimeObject{
 	
@@ -25,7 +26,7 @@ public class Bullet extends TimeObject{
 	
 	public void setAsEnemyBullet() {
 		type =  ObjectType.ENEMY_BULLET;
-		sprite = new BublleBulletSprite(-1000, 0, this, 0);
+		sprite = new EnemyBulletSprite(-1000, 0, this, 0);
 	}
 	
 	public void explode() {
