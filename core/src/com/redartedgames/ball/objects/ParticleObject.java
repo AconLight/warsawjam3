@@ -52,6 +52,7 @@ public class ParticleObject extends TimeObject {
 			if (o.fadeTimer <= 0) {
 				getGameObjects().remove(o);
 				if (++arrayCounter == arraySize) isDone = true;
+				
 			}
 		}
 	}
