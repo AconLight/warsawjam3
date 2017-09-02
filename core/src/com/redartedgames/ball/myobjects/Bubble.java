@@ -10,7 +10,7 @@ public class Bubble extends TimeObject{
 	float radius;
 	boolean isGrowing;
 	float growVel;
-	BubbleSprite bubbleSprite;
+	public BubbleSprite bubbleSprite;
 	
 	
 	public Bubble(float x, float y, int id, GameObject parent) {
