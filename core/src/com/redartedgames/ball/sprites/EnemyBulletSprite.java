@@ -7,6 +7,7 @@ public class EnemyBulletSprite extends ColSpriteObject{
 
 	public EnemyBulletSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
+		addTexture("badlogic.jpg");
 		// TODO Auto-generated constructor stub
 	}
 

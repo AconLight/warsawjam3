@@ -48,6 +48,10 @@ public class InputHandler implements InputProcessor{
 			//world.rect.move();
 			break;
 		}
+		case Keys.Q: {
+			world.enemy.shoot();
+			break;
+		}
 		}
 		return false;
 	}
@@ -71,6 +75,10 @@ public class InputHandler implements InputProcessor{
 		case Keys.SPACE: {
 			//world.setIsForward(true);
 			//world.impsCollection.activate();
+			break;
+		}
+		case Keys.Q: {
+			//
 			break;
 		}
 		} 
