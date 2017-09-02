@@ -35,10 +35,31 @@ public class PlayerSprite extends ColSpriteObject{
 	public void setAnimation (int type) {
 		animType = type;
 		switch (type) {
-		case 0:
-			
+		case -2:
+			frameNum = 0;
+			setFrameTime(0.15f);
 			regionList.clear();
+			addTexture("data/player/idle/idle1l.png");
+			addTexture("data/player/idle/idle2l.png");
+			addTexture("data/player/idle/idle3l.png");
+			addTexture("data/player/idle/idle4l.png");
+			//w prawo
+			break;
 			
+		case -1:
+			frameNum = 0;
+			setFrameTime(0.15f);
+			regionList.clear();
+			addTexture("data/player/idle/idle1p.png");
+			addTexture("data/player/idle/idle2p.png");
+			addTexture("data/player/idle/idle3p.png");
+			addTexture("data/player/idle/idle4p.png");
+			//w prawo
+			break;
+		case 0:
+			frameNum = 0;
+			setFrameTime(0.05f);
+			regionList.clear();
 			addTexture("data/player/bieg/bieg3p.png");
 			addTexture("data/player/bieg/bieg4p.png");
 			addTexture("data/player/bieg/bieg5p.png");
@@ -51,7 +72,8 @@ public class PlayerSprite extends ColSpriteObject{
 			break;
 		case 1:
 			regionList.clear();
-			
+			setFrameTime(0.05f);
+			frameNum = 0;
 			addTexture("data/player/bieg/bieg3l.png");
 			addTexture("data/player/bieg/bieg4l.png");
 			addTexture("data/player/bieg/bieg5l.png");
@@ -72,37 +94,23 @@ public class PlayerSprite extends ColSpriteObject{
 			break;
 		case 4:
 			regionList.clear();
-			addTexture("data/player/opadanie/opadanie1p");
-			addTexture("data/player/opadanie/opadanie2p");
-			addTexture("data/player/opadanie/opadanie3p");
-			addTexture("data/player/opadanie/opadanie4p");
-			addTexture("data/player/opadanie/opadanie5p");
+			frameNum = 0;
+			addTexture("data/player/opadanie/opadanie1p.png");
+			addTexture("data/player/opadanie/opadanie2p.png");
+			addTexture("data/player/opadanie/opadanie3p.png");
+			addTexture("data/player/opadanie/opadanie4p.png");
+			addTexture("data/player/opadanie/opadanie5p.png");
 			//opadanie prawe
 			break;
 		case 5:
 			regionList.clear();
-			addTexture("data/player/opadanie/opadanie1l");
-			addTexture("data/player/opadanie/opadanie2l");
-			addTexture("data/player/opadanie/opadanie3l");
-			addTexture("data/player/opadanie/opadanie4l");
-			addTexture("data/player/opadanie/opadanie5l");
+			frameNum = 0;
+			addTexture("data/player/opadanie/opadanie1l.png");
+			addTexture("data/player/opadanie/opadanie2l.png");
+			addTexture("data/player/opadanie/opadanie3l.png");
+			addTexture("data/player/opadanie/opadanie4l.png");
+			addTexture("data/player/opadanie/opadanie5l.png");
 			//opadanie lewe
-			break;
-		case 6:
-			regionList.clear();
-			addTexture("data/player/idle/idle1p");
-			addTexture("data/player/idle/idle2p");
-			addTexture("data/player/idle/idle3p");
-			addTexture("data/player/idle/idle4p");
-			//idle w prawo
-			break;
-		case 7:
-			regionList.clear();
-			addTexture("data/player/idle/idle12");
-			addTexture("data/player/idle/idle2l");
-			addTexture("data/player/idle/idle3l");
-			addTexture("data/player/idle/idle4l");
-			//idle w lewo
 			break;
 			
 		default:
@@ -124,6 +132,50 @@ public class PlayerSprite extends ColSpriteObject{
 		super.updateLast(delta, vx, vy);
 		getMovement().setVelocity(new Vector2(getMovement().getVelocity().x*GameVars.playerDrag, getMovement().getVelocity().y*GameVars.playerDrag));
 		canJumpTimer -= delta;
+		
+		if (getMovement().getVelocity().y < 60 && getMovement().getVelocity().y > -60) {
+			if (getMovement().getVelocity().x > 10) {
+				if (animType != 0 ) setAnimation(0);
+			}
+			else if (getMovement().getVelocity().x < -10) {
+				if (animType != 1 ) setAnimation(1);
+			}
+			else if (getMovement().getVelocity().x < -1) {
+				if (animType != -2 ) setAnimation(-2);
+			}
+			else if (getMovement().getVelocity().x > -1) {
+				if (animType != -1 ) setAnimation(-1);
+			}
+		}
+		else if (getMovement().getVelocity().y >= 60){
+			if (getMovement().getVelocity().x >= 0) {
+				if (animType != 2 ) setAnimation(2);
+			}
+			else if (getMovement().getVelocity().x < 0) {
+				if (animType != 3 ) setAnimation(3);
+			}
+		}
+		
+		else if (getMovement().getVelocity().y <= -60){
+			if (getMovement().getVelocity().x >= 0) {
+				if (animType != 4 ) setAnimation(4);
+			}
+			else if (getMovement().getVelocity().x < 0) {
+				if (animType != 5 ) setAnimation(5);
+			}
+		}
+		
+		if (animType == 2 || animType == 3) {
+			if (frameNum == 7) setStoped(true);
+		}
+		
+		else if (animType == 4 || animType == 5) {
+			if (frameNum == 4) setStoped(true);
+		}
+		else {
+			setStoped(false);
+		}
+		
 	}
 	
 	public void collide(GameObject obj) {
@@ -136,18 +188,12 @@ public class PlayerSprite extends ColSpriteObject{
 				konfetti.explode(getMovement().getVelocity().x/120, getMovement().getVelocity().y/120);
 			}
 			canJump = true;
-			if (getMovement().getVelocity().x > 13) {
-				if (animType != 0 ) setAnimation(0);
-				setStoped(false);
-			}
-			else if (getMovement().getVelocity().x < -13){
-				if (animType != 1 ) setAnimation(1);
-				setStoped(false);
-			} 
-			else {
-				setStoped(true);
-				frameNum = 0;
-			}
+			
+			
+			
+			
+			
+			
 		}
 	}
 	
