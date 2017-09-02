@@ -5,9 +5,9 @@ import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.Hitbox;
 import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 
-public class EnemySprite extends ColSpriteObject{
+public class EnemyRobakSprite extends ColSpriteObject{
 		
-	public EnemySprite(float x, float y, GameObject parent, int id){
+	public EnemyRobakSprite(float x, float y, GameObject parent, int id){
 		super(x,y,parent,id);
 		setHitbox(new Hitbox(positionX, positionY, 50, BehaviorMode.kinematic));
 		addTexture("data/enemy/robak/robak1.png");

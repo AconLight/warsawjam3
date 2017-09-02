@@ -2,23 +2,40 @@ package com.redartedgames.ball.myobjects;
 
 import java.util.ArrayList;
 
+import com.redartedgames.ball.objects.ColSpriteObject;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.TimeObject;
 
 public class Enemy extends TimeObject{
 
 	public ArrayList<Bullet> bullets;
-	
-	public EnemySprite enemySprite;
+	private int type;
+	public ColSpriteObject enemySprite;
 	private float timer=0;
 	private float shootTime=80;
 	
-	public Enemy(float x, float y, int id, GameObject parent) {
+	public Enemy(float x, float y, int id, GameObject parent, int type) {
 		super(x, y, id, parent);
-		enemySprite = new EnemySprite(x, y, parent, id);
-		addSprite(enemySprite);
+		this.type = type;
+		setEnemyType(type, x, y, id, parent);
+		//enemySprite = new EnemyRobakSprite(x, y, parent, id);
+		//addSprite(enemySprite);
 		bullets = new ArrayList<Bullet>();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void setEnemyType(int type, float x, float y, int id, GameObject parent) {
+		switch (type) {
+		case 0:
+			enemySprite = new EnemyRobakSprite(x, y, parent, id);
+			addSprite(enemySprite);
+			break;
+		case 1:
+			enemySprite = new EnemyMeduzaSprite(x, y, parent, id);
+			addSprite(enemySprite);
+		default:
+			break;
+		}
 	}
 	
 	public void updateLast(float delta, float vx, float vy) {
