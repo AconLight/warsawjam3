@@ -127,7 +127,7 @@ public class ObjectRandomizer {
 		Enemy e;
 		if(type == 0) e = new Enemy(x+120, y+131, 1, null, type, player);
 		else if (type == 1) e = new Enemy(x, y+rand.nextInt(200), 1, null, type, player);
-		else e = new Enemy(x, y+235, 0, null, 2, player);
+		else e = new Enemy(x+100, y+235, 0, null, 2, player);
 		gameObjects.add(e);
 	}
 	
