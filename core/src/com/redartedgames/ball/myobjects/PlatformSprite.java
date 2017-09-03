@@ -15,6 +15,11 @@ public class PlatformSprite extends ColSpriteObject{
 		setPlatform(type);
 		setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.kinematic));
 	}
+	public void updateLast(float delta, float vx, float vy) {
+		if (getMovement().getPosition().x - HelpGod.playerX < -100) {
+			isDone = true;
+		}
+	}
 	
 	public void setPlatform(int platformType) {
 		switch (platformType){

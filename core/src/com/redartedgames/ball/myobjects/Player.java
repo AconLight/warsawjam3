@@ -51,6 +51,7 @@ public class Player extends TimeObject{
 				bullet.isUsed = true;
 			}
 		}
+		HelpGod.playerX = playerSprite.getMovement().getPosition().x;
 	}
 	
 	public void updateBulletCollidable() {

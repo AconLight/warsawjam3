@@ -20,6 +20,12 @@ public class GroundSprite extends ColSpriteObject{
 		else setHitbox(new Hitbox(positionX, positionY, width, height, BehaviorMode.kinematic));
 	}	
 	
+	public void updateLast(float delta, float vx, float vy) {
+		if (getMovement().getPosition().x - HelpGod.playerX < -1000) {
+			isDone = true;
+		}
+	}
+	
 	public void setGround(int groundType) {
 		switch (groundType){
 			default:

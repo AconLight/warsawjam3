@@ -26,6 +26,14 @@ public class Ground extends TimeObject {
 		generate();
 	}
 	
+	public void updateLast(float delta, float vx, float vy) {
+		if(plist.size() > 0) {
+			if (plist.get(0).getMovement().getPosition().x - HelpGod.playerX < -1000) {
+				isDone = true;
+			}
+		}
+	}
+	
 	private void generate() {
 		if(isWater) {
 			x+=82;
