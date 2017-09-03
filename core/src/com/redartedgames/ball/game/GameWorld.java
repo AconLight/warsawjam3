@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.redartedgames.ball.myobjects.Bubble;
 import com.redartedgames.ball.myobjects.Ground;
 import com.redartedgames.ball.myobjects.GroundSprite;
+import com.redartedgames.ball.myobjects.HelpGod;
 import com.redartedgames.ball.myobjects.ObjectRandomizer;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
@@ -73,7 +74,6 @@ public class GameWorld extends MyWorld{
 	
 	@Override
 	public void update(float delta) {
-		celownik.getMovement().setVelocity(player.playerSprite.getMovement().getVelocity());
 		if (player.playerSprite.getMovement().getPosition().x > bckgX1) {
 			bckg1.getMovement().getPosition().x +=8921;
 			bckgX1+=8921;
@@ -105,7 +105,7 @@ public class GameWorld extends MyWorld{
 			or.randomize();
 		}
 		
-		
+		celownik.getMovement().setPosition(new Vector2(cam123.position.x + HelpGod.screenX-360 - 280, cam123.position.y - 280 - HelpGod.screenY+640 + 200));
 		
 		//Gdx.app.log("gameWorld", "" + player.playerSprite.isVoulnerable);	
 		if (player.playerSprite.isVoulnerable) {

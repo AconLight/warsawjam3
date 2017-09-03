@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.consts.PlayerConsts;
+import com.redartedgames.ball.myobjects.HelpGod;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.Hitbox.BehaviorMode;
 import com.redartedgames.ball.objects.Movement;
@@ -114,6 +115,8 @@ public class InputHandler implements InputProcessor{
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 		world.celownik.getMovement().setPosition(new Vector2(world.cam123.position.x + screenX-360 - 280, world.cam123.position.y - 280 - screenY+640));
+		HelpGod.screenX = screenX;
+		HelpGod.screenY = screenY;
 		return false;
 	}
 
