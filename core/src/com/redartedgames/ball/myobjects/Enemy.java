@@ -73,7 +73,7 @@ public class Enemy extends TimeObject{
 			break;
 		case 2:
 			shootTimer += delta;
-			if (shootTimer > shootTimeMax+20) {
+			if (shootTimer > shootTimeMax) {
 				shoot();
 				shootTimer=0;
 			}

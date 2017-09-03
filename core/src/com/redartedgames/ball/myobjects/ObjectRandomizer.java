@@ -55,7 +55,7 @@ public class ObjectRandomizer {
 				gameObjects.add(g2);
 				player.playerSprite.collidableObjects.addAll(g2.plist);
 				player.bulletObstacles.addAll(g2.plist);
-				if(rand.nextInt(4)==0)randomObstacle(x + 20 + rand.nextFloat()*(g2.changeX-x), g2.getMovement().getPosition().y+245);
+				if(rand.nextInt(3)==0)randomObstacle(x + 20 + rand.nextFloat()*(g2.changeX-x), g2.getMovement().getPosition().y+245);
 				x = g2.changeX;
 				break;
 			case 3:
@@ -127,7 +127,7 @@ public class ObjectRandomizer {
 		Enemy e;
 		if(type == 0) e = new Enemy(x+120, y+131, 1, null, type, player);
 		else if (type == 1) e = new Enemy(x, y+rand.nextInt(200), 1, null, type, player);
-		else e = new Enemy(x, y+235, 0, null, 2, player);
+		else e = new Enemy(x+100, y+235, 0, null, 2, player);
 		gameObjects.add(e);
 	}
 	
@@ -159,7 +159,7 @@ public class ObjectRandomizer {
 	private float renderMini=600;
 	private float renderBigDistance=6000;
 	private float renderMediumDistance=3000;
-	private float renderSmallDistance=1000;
+	private float renderSmallDistance=800;
 	
 	private float dst1;
 	private float dst2;
