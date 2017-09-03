@@ -7,11 +7,14 @@ import com.redartedgames.ball.myobjects.GroundSprite;
 import com.redartedgames.ball.myobjects.ObjectRandomizer;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.myobjects.Player;
+import com.redartedgames.ball.myobjects.Score;
 import com.redartedgames.ball.myobjects.TimeBar;
 import com.redartedgames.ball.objects.GameObject;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter.Particle;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.myobjects.Platform;
 import com.redartedgames.ball.objects.ParticleObject;
@@ -28,7 +31,7 @@ public class GameWorld extends MyWorld{
 	Platform platform, p2;
 	ArrayList<Bubble> bubbles;
 	ParticleObject pa = new ParticleObject(600, 600, 1, null);
-	TimeBar tb = new TimeBar(40, 660, null, 1);
+	TimeBar tb;
 	ObjectRandomizer or;
 	private SpriteObject bckg1;
 	private SpriteObject bckg2;
@@ -37,8 +40,19 @@ public class GameWorld extends MyWorld{
 	private int bckgX2 = 0;
 	private int bckgX3 = 0;
 	private int bckgY = 580;
-	public GameWorld(OrthographicCamera cam) {
-		super(cam);
+	private Score score;
+	private SpriteObject gameOver;
+	private boolean isGameOver;
+
+	public void restart() {
+		bckgX1 = 0;
+		bckgX2 = 0;
+		bckgX3 = 0;
+		bckgY = 580;
+		tb = new TimeBar(40, 660, null, 1);
+		gameObjects = new ArrayList<GameObject>();
+		isGameOver = false;
+		score = new Score(1200, 700, null, 1);
 		celownik = new SpriteObject(0, 0, null, 0);
 		celownik.addTexture("data/bubbles/bubble_player.png");
 		gameObjects.add(celownik);	
@@ -58,22 +72,32 @@ public class GameWorld extends MyWorld{
 		bckg3.addTexture("data/background/background3.png");
 		gameObjects.add(0, bckg3);
 		bckgX3+=2921;
+		gameOver = new SpriteObject(0, 0, null, 1);
+		gameOver.addTexture("data/splashscreeny/gameover.png");
 
 		//cam123.translate(new Vector2(0, 300));
 		//cam123.update();
 		bubbles = new ArrayList<Bubble>();
 		platforms = new ArrayList<GameObject>();
-		player = new Player(500, 300, 0, null, platforms, bubbles, tb, celownik);		
+		player = new Player(500, 1300, 0, null, platforms, bubbles, tb, celownik);		
 		
 		or = new ObjectRandomizer(gameObjects, player,tb);
 		//tb = new TimeBar(500, 1000, null, 0);
-		addGameObject(player);	
+		addGameObject(player);		
 		addGameObject(tb);	
+	}
+	public GameWorld(OrthographicCamera cam) {
+		super(cam);
+		restart();
 	}
 	
 	@Override
 	public void update(float delta) {
+		if (isGameOver) {
+			delta = 0;
+		}
 		celownik.getMovement().setVelocity(player.playerSprite.getMovement().getVelocity());
+		
 		if (player.playerSprite.getMovement().getPosition().x > bckgX1) {
 			bckg1.getMovement().getPosition().x +=8921;
 			bckgX1+=8921;
@@ -112,11 +136,24 @@ public class GameWorld extends MyWorld{
 			tb.timeLeft -= delta*30;
 			player.playerSprite.isVoulnerable = false;
 		}
+		score.x = cam123.position.x+450;
+		score.y = cam123.position.y+530;
+		score.wynik = (int)player.playerSprite.getMovement().getPosition().x/100-5;
+		if(score.wynik>score.wynikMax) score.wynikMax = score.wynik;
+				
+		gameOver.getMovement().getPosition().x = cam123.position.x;
+		gameOver.getMovement().getPosition().y = cam123.position.y+200;
 		
 		
-		gameObjects.remove(celownik);
 		
+		gameObjects.remove(celownik);		
 		gameObjects.add(celownik);
+		if(tb.timeLeft<=0) {
+			gameObjects.add(gameOver);
+			isGameOver = true;
+		}
+		gameObjects.remove(score);
+		gameObjects.add(score);
 	}	
 	
 	public void calcTime(TimeObject obj) {

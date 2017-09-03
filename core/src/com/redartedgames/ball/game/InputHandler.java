@@ -39,9 +39,9 @@ public class InputHandler implements InputProcessor{
 			world.player.tryJump();
 			break;
 		}
-		case Keys.SPACE: {
+		case Keys.ENTER: {
 			
-			//world.impsCollection.spawnNextImpPressDown(world.player.getMovement());
+			world.restart();
 			break;
 		}
 		case Keys.F: {
