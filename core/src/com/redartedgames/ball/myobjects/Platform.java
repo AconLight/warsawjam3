@@ -23,6 +23,14 @@ public class Platform extends TimeObject{
 		generate();
 	}
 	
+	public void updateLast(float delta, float vx, float vy) {
+		if(plist.size() > 0) {
+			if (plist.get(0).getMovement().getPosition().x - HelpGod.playerX < -1000) {
+				isDone = true;
+			}
+		}
+	}
+	
 	private void generate() {
 		plist.add(new PlatformSprite(x, y, 1, 1, null));
 		addSprite(plist.get(arrCounter));

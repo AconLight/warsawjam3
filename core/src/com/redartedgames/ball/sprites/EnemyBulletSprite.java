@@ -25,7 +25,7 @@ public class EnemyBulletSprite extends ColSpriteObject{
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);
 		applyPhysicsToAcceleration();
-		Gdx.app.log("EnemyBulletSprite", "collide - col: " );
+		//Gdx.app.log("EnemyBulletSprite", "collide - col: " );
 	}
 	
 	@Override

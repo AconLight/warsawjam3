@@ -49,6 +49,10 @@ public class Enemy extends TimeObject{
 	
 	public void updateLast(float delta, float vx, float vy) {
 		super.updateLast(delta, vx, vy);
+			if (enemySprite.getMovement().getPosition().x - HelpGod.playerX < -1000) {
+				isDone = true;
+			}
+		
 		switch (type) {
 		case 0:
 			shootTimer += delta;

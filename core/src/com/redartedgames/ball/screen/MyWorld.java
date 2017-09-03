@@ -2,6 +2,7 @@ package com.redartedgames.ball.screen;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
+import com.redartedgames.ball.myobjects.HelpGod;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.PhysicSpriteObject;
 import com.redartedgames.ball.settings.GameVars;
@@ -28,9 +30,13 @@ public class MyWorld {
 	}
 	
 	public void update(float delta) {
+		
 		for (int i = 0; i < gameObjects.size(); i++) {
 			if (gameObjects.get(i).isDone) {
-				gameObjects.remove(i);
+				gameObjects.remove(gameObjects.get(i));
+				Gdx.app.log("myWorld", ""+HelpGod.playerX);
+				break;
+				
 			}
 		}
 		for (int i = 0; i < gameObjects.size(); i++) {
