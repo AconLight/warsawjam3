@@ -1,6 +1,7 @@
 package com.redartedgames.ball.myobjects;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.redartedgames.ball.objects.ColSpriteObject;
@@ -56,7 +57,7 @@ public class Enemy extends TimeObject{
 		switch (type) {
 		case 0:
 			shootTimer += delta;
-			if (shootTimer > shootTimeMax) {
+			if (shootTimer > shootTimeMax+35) {
 				shoot();
 				shootTimer=0;
 			}
@@ -72,7 +73,7 @@ public class Enemy extends TimeObject{
 			break;
 		case 2:
 			shootTimer += delta;
-			if (shootTimer > shootTimeMax+70) {
+			if (shootTimer > shootTimeMax+20) {
 				shoot();
 				shootTimer=0;
 			}
@@ -88,7 +89,7 @@ public class Enemy extends TimeObject{
 		float dx, dy, dr;
 		dx = player.playerSprite.getMovement().getPosition().x - enemySprite.getPosition().x;
 		dy = player.playerSprite.getMovement().getPosition().y - enemySprite.getPosition().y;
-		
+		Random rnd = new Random();
 		dr = (float) Math.sqrt(dx*dx + dy*dy);
 		
 		
@@ -102,7 +103,7 @@ public class Enemy extends TimeObject{
 			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)-50), ((enemySprite.getPosition().y)+40), 600*dx/dr, 600*dy/dr);
 			break;
 		case 2:
-			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)), ((enemySprite.getPosition().y)+20), 600*dx/dr, 600*dy/dr);
+			bullets.get(bullets.size()-1).shoot(((enemySprite.getPosition().x)), ((enemySprite.getPosition().y)+20), rnd.nextInt(200)-100, 600);
 			break;
 		default:
 			break;

@@ -28,7 +28,7 @@ public class ObjectRandomizer {
 	}
 	
 	public void randomize() {
-			randomGround(rand.nextInt(3));
+			randomGround(rand.nextInt(4));
 			randomPlatforms(rand.nextInt(2));
 			randomClock(rand.nextInt(2));
 	}
@@ -63,6 +63,8 @@ public class ObjectRandomizer {
 				gameObjects.add(g3);
 				player.playerSprite.collidableObjects.addAll(g3.plist);
 				player.bulletObstacles.addAll(g3.plist);
+				if(rand.nextInt(3)==0)randomEnemy(x+80, y, 2);
+				x = g3.changeX;
 				break;
 		}
 	}
@@ -74,7 +76,7 @@ public class ObjectRandomizer {
 			case 0:
 				if(rand.nextInt(6) == 0) {
 					int pom = rand.nextInt(2)+6;
-					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 200 + rand.nextFloat()*100, pom, null, 0);
 					if((p0.getMovement().getPosition().x < distanceX-marginX || p0.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p0.getMovement().getPosition().y < distanceY-marginY || p0.getMovement().getPosition().y > distanceY+marginY)) {
 						distanceX = p0.getMovement().getPosition().x;
 						distanceY = p0.getMovement().getPosition().y;
@@ -84,9 +86,9 @@ public class ObjectRandomizer {
 						player.bulletObstacles.addAll(p0.plist);
 					}
 				}
-				else if(rand.nextInt(6) == 0) {
+				else if(rand.nextInt(5) == 0) {
 					int pom = rand.nextInt(1)+2;
-					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 350 + rand.nextFloat()*100, pom, null, 0);
 					if((p0.getMovement().getPosition().x < distanceX-marginX || p0.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p0.getMovement().getPosition().y < distanceY-marginY || p0.getMovement().getPosition().y > distanceY+marginY)) {
 						distanceX = p0.getMovement().getPosition().x;
 						distanceY = p0.getMovement().getPosition().y;
@@ -98,7 +100,7 @@ public class ObjectRandomizer {
 				}
 				else {
 					int pom = rand.nextInt(4)+2;
-					Platform p0 = new Platform(x + rand.nextFloat()*50, 300 + rand.nextFloat()*100, pom, null, 0);
+					Platform p0 = new Platform(x + rand.nextFloat()*50, 370 + rand.nextFloat()*100, pom, null, 0);
 					if((p0.getMovement().getPosition().x < distanceX-marginX || p0.getMovement().getPosition().x > distanceX+50*pom+marginX) || (p0.getMovement().getPosition().y < distanceY-marginY || p0.getMovement().getPosition().y > distanceY+marginY)) {
 						distanceX = p0.getMovement().getPosition().x;
 						distanceY = p0.getMovement().getPosition().y;
@@ -124,7 +126,8 @@ public class ObjectRandomizer {
 	private void randomEnemy(float x, float y, int type) {
 		Enemy e;
 		if(type == 0) e = new Enemy(x+120, y+131, 1, null, type, player);
-		else e = new Enemy(x, y+rand.nextInt(200), 1, null, type, player);
+		else if (type == 1) e = new Enemy(x, y+rand.nextInt(200), 1, null, type, player);
+		else e = new Enemy(x, y+235, 0, null, 2, player);
 		gameObjects.add(e);
 	}
 	
@@ -153,10 +156,10 @@ public class ObjectRandomizer {
 	private float nowX=0;
 	private float nowY=0;
 	
-	private float renderMini=500;
+	private float renderMini=600;
 	private float renderBigDistance=6000;
 	private float renderMediumDistance=3000;
-	private float renderSmallDistance=800;
+	private float renderSmallDistance=1000;
 	
 	private float dst1;
 	private float dst2;
@@ -167,7 +170,7 @@ public class ObjectRandomizer {
 		case 0:
 			//duzy
 			nowX=x+rand.nextFloat()*50;
-			nowY=y+200+(rand.nextFloat()*700);
+			nowY=y+300+(rand.nextFloat()*700);
 			dst1=(((lastBigClockX-nowX)*(lastBigClockX-nowX))+((lastBigClockY-nowY)*(lastBigClockY-nowY)));
 			nowBigDistance=(Math.sqrt((double)dst1));
 			dst2=(((lastClockX-nowX)*(lastClockX-nowX))+((lastClockY-nowY)*(lastClockY-nowY)));
@@ -186,7 +189,7 @@ public class ObjectRandomizer {
 		case 1:
 			//sredni
 			nowX=x+rand.nextFloat()*50;
-			nowY=y+100+rand.nextFloat()*700;
+			nowY=y+300+rand.nextFloat()*700;
 			dst1=(((lastMediumClockX-nowX)*(lastMediumClockX-nowX))+((lastMediumClockY-nowY)*(lastMediumClockY-nowY)));
 			nowMediumDistance=(Math.sqrt((double)dst1));
 			dst2=(((lastClockX-nowX)*(lastClockX-nowX))+((lastClockY-nowY)*(lastClockY-nowY)));
@@ -204,7 +207,7 @@ public class ObjectRandomizer {
 		case 2:
 			//maly
 			nowX=x+rand.nextFloat()*50;
-			nowY=y+100+rand.nextFloat()*700;
+			nowY=y+300+rand.nextFloat()*700;
 			dst1=(((lastSmallClockX-nowX)*(lastSmallClockX-nowX))+((lastSmallClockY-nowY)*(lastSmallClockY-nowY)));
 			nowSmallDistance=(Math.sqrt((double)dst1));
 			dst2=(((lastClockX-nowX)*(lastClockX-nowX))+((lastClockY-nowY)*(lastClockY-nowY)));

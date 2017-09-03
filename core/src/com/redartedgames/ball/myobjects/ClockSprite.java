@@ -20,21 +20,21 @@ public class ClockSprite extends ColSpriteObject{
 			regionList.clear();
 			addTexture("data/zegary/zegar_duzy.png");
 			setHitbox(new Hitbox(positionX, positionY, 50, BehaviorMode.kinematic));
-			addtime=400;
+			addtime=250;
 			break;
 		case 1:
 			//sredni
 			regionList.clear();
 			addTexture("data/zegary/zegar_sredni.png");
 			setHitbox(new Hitbox(positionX, positionY, 40, BehaviorMode.kinematic));
-			addtime=200;
+			addtime=100;
 			break;
 		case 2:
 			//maly
 			regionList.clear();
 			addTexture("data/zegary/zegar_maly.png");
 			setHitbox(new Hitbox(positionX, positionY, 30, BehaviorMode.kinematic));
-			addtime=100;
+			addtime=50;
 			break;
 			
 		default:
