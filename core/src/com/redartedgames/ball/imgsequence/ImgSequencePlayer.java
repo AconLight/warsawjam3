@@ -11,7 +11,7 @@ public class ImgSequencePlayer extends GameObject{
 	
 	private SpriteObject seq;
 	//private ImgSequenceLoader loader;
-	private float x, y;
+	private float x, y, delta;
 	int n;
 	
 	ArrayList<Texture> list = new ArrayList<Texture>();
@@ -57,6 +57,8 @@ public class ImgSequencePlayer extends GameObject{
 		
 	}
 	
-	
+	void render(){
+		seq.updateFrames(delta);
+	}
 	
 }
