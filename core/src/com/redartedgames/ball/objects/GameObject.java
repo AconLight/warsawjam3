@@ -25,7 +25,7 @@ public class GameObject {
 		protected Vector2 position, velocity, acceleration, oldAcc, oldVel, collisionAcc;
 		public BigDecimal delta2, positionX, velocityX, accelerationX, collisionAccX, positionY, dragK, dragK2, delta21,
 		velocityY, accelerationY, collisionAccY, oldAccX, oldAccY, gX, gY;
-		private ArrayList<GameObject> gameObjects;
+		protected ArrayList<GameObject> gameObjects;
 		public ArrayList<GameObject> getGameObjects() {
 			return gameObjects;
 		}

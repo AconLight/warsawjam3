@@ -22,11 +22,19 @@ public class CardsManager {
 		cards.add(new Card(300, 300, 6, null));
 		cards.add(new Card(300, 300, 7, null));
 		cards.add(new Card(300, 300, 8, null));
+		cards.add(new Card(300, 300, 1, null));
+		cards.add(new Card(300, 300, 2, null));
+		cards.add(new Card(300, 300, 3, null));
+		cards.add(new Card(300, 300, 4, null));
+		cards.add(new Card(300, 300, 5, null));
+		cards.add(new Card(300, 300, 6, null));
+		cards.add(new Card(300, 300, 7, null));
+		cards.add(new Card(300, 300, 8, null));
 		generateCardsPosition();
 	}
 	
 	private float positionFunction(float f) {
-		return f*14/16+1*(16/14);
+		return (float)Math.abs(Math.sin(f-1/2*(float)Math.PI));
 	}
 	
 	private void generateCardsPosition() {
@@ -34,16 +42,17 @@ public class CardsManager {
 		for(int i = 0; i<cardsQuantity; i++)
 			positions.add(new Vector2());
 		float counter = 0.f;
+		float x = 30.f;
+		float y = 100.f;
 		for(Vector2 v : positions) {
-			v.x = 1200.f*positionFunction(counter/cardsQuantity)+110-1200;
-			v.y = 200*positionFunction(counter/cardsQuantity);
+			v.x = 30+1200.f*positionFunction((((counter)/cardsQuantity)/2*(float)Math.PI))+110;
+			v.y = 200*positionFunction((((counter)/cardsQuantity)/2*(float)Math.PI));
 			counter++;
 		}
 		for(int i = 0; i<cards.size(); i++) {
-			cards.get(i).setX((int)positions.get(i).x);
+			cards.get(i).setPosition((int)positions.get(i).x,(int)positions.get(i).y);
 			//System.out.println(positions.get(i).x);
-			cards.get(i).setY((int)positions.get(i).y);
-			System.out.println(positions.get(i).y);
+			//System.out.println(positions.get(i).y);
 		}
 	}
 	
