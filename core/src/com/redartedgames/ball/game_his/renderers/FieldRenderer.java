@@ -23,13 +23,9 @@ public class FieldRenderer extends RenderManager {
 		//System.out.println("cam2: " + world.fieldManager.cam);
 		batch.begin();
 		for(Field f : world.fieldManager.getFields()) {
-			f.getGameObjects().get(0).getPosition().set(
-					f.getGameObjects().get(0).getPosition().x - world.fieldManager.cam.x, 
-					f.getGameObjects().get(0).getPosition().y - world.fieldManager.cam.y);
-			f.render(batch, 1, 0, 0);
-			f.getGameObjects().get(0).getPosition().set(
-					f.getGameObjects().get(0).getPosition().x + world.fieldManager.cam.x, 
-					f.getGameObjects().get(0).getPosition().y + world.fieldManager.cam.y);
+
+			f.render(batch, 1, world.fieldManager.cam.x, world.fieldManager.cam.y);
+
 		}
 		batch.end();
 	}

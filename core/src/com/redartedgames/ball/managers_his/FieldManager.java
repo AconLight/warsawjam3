@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.redartedgames.ball.myobjects_his.Field;
 import com.redartedgames.ball.myobjects_his.FieldType;
+import com.redartedgames.ball.myobjects_his.LittleField;
 
 
 
@@ -80,6 +81,8 @@ public class FieldManager {
 		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
+			field.updateAfter(0 ,0, delta);
+
 		}
 	}
 	
