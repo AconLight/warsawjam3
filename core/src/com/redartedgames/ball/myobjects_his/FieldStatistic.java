@@ -7,10 +7,27 @@ public class FieldStatistic {
 	private float base_mig_mult;
 	private float base_cult_mult;
 	private float base_mig_speed;
-	private float population;
+	public float population;
 	private float area_size;
-	
-	public FieldStatistic(FieldType fieldType){
+	private Field parent;
+
+	public float getbase_mig_mult(){
+		return base_mig_mult;
+	}
+	public float getbase_cult_mult(){
+		return base_cult_mult;
+	}
+	public float getbase_mig_speed(){
+		return base_mig_speed;
+	}
+	public float getpopulation(){
+		return population;
+	}
+	public float getarea_size(){
+		return area_size;
+	}
+	public FieldStatistic(FieldType fieldType,Field parent){
+		this.parent=parent;
 		switch(fieldType){
 		case city:
 			base_mig_mult = randomfromto(3,9);
@@ -66,6 +83,12 @@ public class FieldStatistic {
 	}
 	public void updateBefore(float delta, float vx, float vy) {
 		
+		//float migration = ((population-population*base_cult_mult)*base_mig_mult)*(delta*base_mig_speed);
+		//for(int i=0; i<parent.fields.size();i++){
+		//parent.fields.get(i).statistic.population += migration/parent.fields.size();
+		//}
 		
 	}
+
 }
+
