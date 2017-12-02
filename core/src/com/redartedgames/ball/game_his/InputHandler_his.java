@@ -54,7 +54,7 @@ public class InputHandler_his implements InputProcessor{
 	}
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
+		//world.fieldManager.
 		return false;
 	}
 	@Override
