@@ -31,34 +31,34 @@ public class CardsManager {
 		return (float)(Math.sin(f-1/2*(float)Math.PI));
 	}
 	
+	private void setRotation() {
+		float counter = 0.f;
+		float x = 30.f+75;
+		int iter = 0;		
+		for(Vector2 v : positions) {			
+			x+=Math.abs(positionFunction((((counter)/cardsQuantity)*(float)Math.PI)))*1950/cardsQuantity;
+			v.x = x;
+			if(iter==cardsQuantity/2) {
+				v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+150;
+				cards.get(cardsQuantity/2).enlarge();
+			}
+			else 
+				v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+50;
+			counter++;
+			iter++;
+		}
+	}
+	
 	private void generateCardsPosition() {	
 		if(!isMoving && isVisible) {
-			float counter = 0.f;
-			float x = 30.f+75;
-			int iter = 0;		
-			for(Vector2 v : positions) {			
-				x+=Math.abs(positionFunction((((counter)/cardsQuantity)*(float)Math.PI)))*1950/cardsQuantity;
-				v.x = x;
-				if(iter==cardsQuantity/2) {
-					v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+150;
-					cards.get(cardsQuantity/2).enlarge();
-				}
-				else 
-					v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+50;
-				counter++;
-				iter++;
-			}
+			setRotation();
 			for(int i = 0; i<cards.size(); i++)
 				cards.get(i).setPosition((int)positions.get(i).x,(int)positions.get(i).y);
 		}
-		//else for(Card c : cards)
-			//c.setPosition(0, -1000);	
-		//for(int i = 0; i<cards.size(); i++)
-			//cards.get(i).setPosition((int)positions.get(i).x,(int)positions.get(i).y);
 	}
 	
 	public void moveLeft() {
-		if(isVisible) {
+		if(isVisible) {			
 			cards.get(cardsQuantity/2).normalSize();
 			cards.get(cardsQuantity/2+1).enlarge();
 			Card pom = cards.get(0);

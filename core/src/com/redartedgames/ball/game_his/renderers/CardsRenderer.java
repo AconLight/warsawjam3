@@ -22,10 +22,6 @@ public class CardsRenderer extends RenderManager {
 	
 	public void update(float delta) {
 		gameworld.cardsManager.update(delta);
-		for(Card c : gameworld.cardsManager.getCards()) {
-			//c.updateBefore(delta,0,0); 
-			//c.updateAfter(delta,0,0);
-		}
 	}
 	
 	public void render() {
