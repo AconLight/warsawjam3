@@ -11,7 +11,7 @@ public class GameScreen_his extends MyScreen{
 		super(width, height);
 		world = new GameWorld_his(camera);
 		screenRenderer = new ScreenRenderer(world, camera);
-		gamerenderer = new GameRenderer_his();
+		gamerenderer = new GameRenderer_his((GameWorld_his) world);
 	}
 	
 	@Override

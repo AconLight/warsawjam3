@@ -22,108 +22,46 @@ public class InputHandler_his implements InputProcessor{
 	public InputHandler_his(GameWorld_his world) {
 		this.world = world;
 	}
-	
 	@Override
 	public boolean keyDown(int keycode) {
-		
-		switch(keycode) {
-		
-		case Keys.A: {
-			world.player.addXAxis(-GameVars.MOVE_X);
-			break;
-		}
-		case Keys.D: {
-			world.player.addXAxis(GameVars.MOVE_X);
-			break;
-		}
-		case Keys.W: {
-			world.player.tryJump();
-			break;
-		}
-		case Keys.ENTER: {
-			
-			world.restart();
-			break;
-		}
-		case Keys.F: {
-			//world.rect.move();
-			break;
-		}
-		case Keys.Q: {
-			//world.enemy.shoot();
-			break;
-		}
-		}
+		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean keyUp(int keycode) {
-
-		switch(keycode) {
-		case Keys.A: {
-			world.player.addXAxis(GameVars.MOVE_X);
-			break;
-		}
-		case Keys.D: {
-			world.player.addXAxis(-GameVars.MOVE_X);
-			break;
-		}
-		case Keys.W: {
-			//world.player.setIsJumping(false);
-			break;
-		}
-		case Keys.SPACE: {
-			//world.setIsForward(true);
-			//world.impsCollection.activate();
-			break;
-		}
-		case Keys.Q: {
-			//
-			break;
-		}
-		} 
+		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean keyTyped(char character) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		world.player.tryShoot();
+		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		
-		world.player.bullets.get(world.player.bullets.size()-1).explode();
-		world.player.bullets.get(world.player.bullets.size()-1).sprite.isVisible = false;
+		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		world.celownik.getMovement().setPosition(new Vector2(world.cam123.position.x + screenX-360 - 280, world.cam123.position.y - 280 - screenY+640));
-		HelpGod.screenX = screenX;
-		HelpGod.screenY = screenY;
+		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean scrolled(int amount) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 
 }
