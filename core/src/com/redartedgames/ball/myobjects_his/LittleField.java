@@ -22,6 +22,9 @@ public class LittleField extends SpriteObject{
 		posY = y;
 		pos2x = 0;
 		pos2y = 0;
+		this.xi = xi;
+		this.yi = yi;
+				
 		////////
 		//grafika Field
 		addTexture("data_his/fieldsprite.png");
@@ -39,19 +42,19 @@ public class LittleField extends SpriteObject{
 	}
 	public void updateAfter2(float delta, float vx, float vy) { 
 		super.updateAfter(delta, vx, vy);
-		System.out.println("asdsafsafsafsafdsa");
+		System.out.println("xi " + xi + ", yi " + yi);
 		this.position.set(parent.getPosition());
 		mainScl = (float) ((Math.PI + Math.atan(statistic.population/100.0 - 10))/Math.PI/4 + 0.5f);
-		velocity.x = 20;//statistic.migration/statistic.population*100*xi;
-		velocity.y = 20;//statistic.migration/statistic.population*100*yi;
+		velocity.x = xi*50;//statistic.migration/statistic.population*100*xi;
+		velocity.y = yi*50;//statistic.migration/statistic.population*100*yi;
 		velocityX = new BigDecimal("20");
 		pos2x += velocity.x*delta;
 		pos2y += velocity.y*delta;
 		float k = 200;
-		if (position.x > posX + k) position.x = posX;
-		if (position.x < posX - k) position.x = posX;
-		if (position.y > posY + k) position.y = posY;
-		if (position.y < posY - k) position.y = posY;
+		if (pos2x > posX + k) pos2x = posX;
+		if (pos2x < posX - k) pos2x = posX;
+		if (pos2y > posY + k) pos2y = posY;
+		if (pos2y < posY - k) pos2y = posY;
 		//scl -= delta;
 		sclX = mainScl/10;
 		sclY = mainScl/10;
