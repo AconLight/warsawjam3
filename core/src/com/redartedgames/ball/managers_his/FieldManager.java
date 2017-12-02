@@ -12,7 +12,7 @@ import com.redartedgames.ball.myobjects_his.FieldType;
 
 public class FieldManager {
 	public Field currentField;
-	public OrthographicCamera cam;
+	public Vector2 cam;
 	private ArrayList<Field> fields;
 	private float fieldR = 150;
 	public float camVelX, camVelY; 
@@ -22,7 +22,7 @@ public class FieldManager {
 	public FieldManager() {
 		i2 += 1;
 		id = i2;
-		cam = new OrthographicCamera(1920, 1080);
+		cam = new Vector2(0, 0);
 		fields = new ArrayList<Field>();
 		generateLand(2, 2);
 	}
@@ -33,9 +33,9 @@ public class FieldManager {
 				
 			}
 		}
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 5; j++) {
-				fields.add(new Field(i*200, j*200, i*5 + j, null));
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				fields.add(new Field(i*200, j*200, i*5 + j, null, FieldType.village));
 				
 			}
 		}
@@ -52,12 +52,12 @@ public class FieldManager {
 	}
 	
 	public void checkMouse(int x, int y) {
-		float posX = x + (cam.position.x - 1920/2);
-		float posY = y - (cam.position.y + 1080/2);
-		System.out.println(posX + ", " + posY);
-		System.out.println(fields.get(0).getPosition());
+
+		float posX = x + cam.x;
+		float posY = -y + cam.y+1080;
+		System.out.println("posX: " + posX + "posY: " + posY);
 		for (Field field : fields) {
-			if (field.checkMouse((int) posX, (int) posY, fieldR)) {
+			if (field.checkMouse((int) posX, (int) posY, 50)) {
 				currentField = field;
 				System.out.println("a");
 				return;
@@ -76,8 +76,8 @@ public class FieldManager {
 	}
 	
 	public void update(float delta) {
-		cam.position.set(new Vector3(cam.position.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.position.y - 0.000003f*camVelY*camVelY*camVelY*delta, cam.position.z));
-		cam.update();
+		
+		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
 		}

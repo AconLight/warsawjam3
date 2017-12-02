@@ -79,13 +79,13 @@ public class FieldStatistic {
 		delta /=100;
 		population += (population*birthrate*delta);
 		migration = ((population-population*base_cult_mult)*base_mig_mult*(population/100))*(delta);
-		System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
+		//System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
 		population = population - migration;
 		for(int i=0; i<parent.fields.size();i++){
 		parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
-		System.out.println("Populacja po migracja " + population + " migracja = " + migration);
-		System.out.println("----------------------------------------------------------------");
+		//System.out.println("Populacja po migracja " + population + " migracja = " + migration);
+	//	System.out.println("----------------------------------------------------------------");
 	}
 
 }
