@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class FieldStatistic {
 	private FieldType fieldType;
-	private float base_mig_mult;
-	private float base_cult_mult;
+	public float base_mig_mult;
+	public float base_cult_mult;
 	public float population;
-	private Field parent;
-	private float migration;
-	private float affiliation;//przynale¿noœæ
-	private float birthrate = 0.05f;
+	public Field parent;
+	public float migration;
+	public float affiliation;//przynale¿noœæ
+	public float birthrate = 0.05f;
 
 	public float getbase_mig_mult(){
 		return base_mig_mult;
