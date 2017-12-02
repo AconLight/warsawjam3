@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.SpriteObject;
 
-public class Field extends SpriteObject{
+public class Field extends GameObject{
 
 	public ArrayList<Field> fields;
 	
 	public Field(float x, float y, int id, GameObject parent) {
-		super(y, y, parent, id);
+		super(y, y, id, parent);
 		
 		//grafika Field
+		addSprite(new FieldSprite(x, y, this, id));
 	}
 	
 	public GameObject addField(Field field) {
