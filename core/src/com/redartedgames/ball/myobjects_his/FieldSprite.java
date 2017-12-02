@@ -9,7 +9,7 @@ public class FieldSprite extends SpriteObject{
 		super(x, y, parent, id);
 		////////
 		//grafika Field
-		
+		addTexture("data_his/fieldsprite.png");
 		
 		
 		
