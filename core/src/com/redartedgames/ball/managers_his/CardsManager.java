@@ -66,6 +66,15 @@ public class CardsManager {
 		generateCardsPosition();
 	}
 	
+	public void moveBack() {
+		for(Vector2 v : positions)
+			v.y = -1000;
+	}
+	
+	public void moveForward() {
+		generateCardsPosition();
+	}
+	
 	public ArrayList<Card> getCards(){
 		return cards;
 	}

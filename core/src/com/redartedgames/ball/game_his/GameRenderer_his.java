@@ -9,8 +9,8 @@ public class GameRenderer_his {
 		everything = new ArrayList<RenderManager>();
 		everything.add(new FieldRenderer(gameworld));
 		everything.add(new StatRenderer(gameworld));
-		everything.add(new GUIRenderer(gameworld)); //Dodajemy w kolejnoœci wyœwietlania na pocz¹tku najdalsze
 		everything.add(new CardsRenderer(gameworld));
+		everything.add(new GUIRenderer(gameworld)); //Dodajemy w kolejnoœci wyœwietlania na pocz¹tku najdalsze
 	}
 	public void render() {
 		for(RenderManager b : everything) {
