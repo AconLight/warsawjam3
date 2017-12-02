@@ -16,6 +16,7 @@ public class StatRenderer extends RenderManager {
 	private String PrzynaleznoscWartosc="0";
 	private String KulturaWartosc="0";
 	private String wartosc5="0";
+	private String NameString="";
 	
 	private Text FieldName;
 	private Text StatName;
@@ -37,9 +38,9 @@ public class StatRenderer extends RenderManager {
 		batch = new SpriteBatch();
 		
 		
-		FieldName = new Text(1535,370,null,0,1,"NawzaPola");
-		StatName = new Text(1480,320,null,1,0,"Statystyka:");
-		StatBase = new Text(1675,320,null,2,0,"Mno�nik:");
+		FieldName = new Text(1580,510,null,0,2,"NawzaPola");
+		StatName = new Text(1440,325,null,1,1,"Statystyka:");
+		StatBase = new Text(1680,325,null,2,1,"Mno�nik:");
 		MigrationText = new Text(1440,280,null,3,0,"Populacja");
 		MigrationValueBase = new Text(1685,280,null,4,0,"wartosc");
 		PrzynaleznoscText = new Text(1440,245,null,5,0,"Migracja");
@@ -100,6 +101,30 @@ public class StatRenderer extends RenderManager {
 			wartosc5 = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_mig_mult());
 			} else wartosc5 = "";
 		stats.get(12).txt = wartosc5;
+		
+		if (gameworld.fieldManager.currentField != null) {
+			 switch(gameworld.fieldManager.currentField.fieldType){
+			 	case city:
+			 		NameString = "Miasto";
+			 		break;
+			 	case village:
+			 		NameString = "Wieś";
+			 		break;
+			 	case hill:
+			 		NameString = "Wzgórek";
+			 		break;
+			 	case mountain:
+			 		NameString = "Góra";
+			 		break;
+			 	case meadow:
+			 		NameString = "Trawnik";
+			 		break;	
+			 	default:
+			 		NameString = "";
+			 		break;
+			 }
+			stats.get(0).txt = NameString;
+		} else stats.get(0).txt = "";
 	}
 
 }
