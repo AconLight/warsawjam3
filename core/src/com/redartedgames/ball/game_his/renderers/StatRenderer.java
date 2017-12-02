@@ -39,10 +39,10 @@ public class StatRenderer extends RenderManager {
 		
 		FieldName = new Text(1535,370,null,0,1,"NawzaPola");
 		StatName = new Text(1480,320,null,1,0,"Statystyka:");
-		StatBase = new Text(1675,320,null,2,0,"MnoÅ¼nik:");
+		StatBase = new Text(1675,320,null,2,0,"Mno¿nik:");
 		MigrationText = new Text(1440,280,null,3,0,"Migracja");
 		MigrationValueBase = new Text(1685,280,null,4,0,"wartosc");
-		PrzynaleznoscText = new Text(1440,245,null,5,0,"PrzynaleÅ¼noÅ›Ä‡");
+		PrzynaleznoscText = new Text(1440,245,null,5,0,"Przynale¿noœæ");
 		PrzynaleznoscBase = new Text(1685,245,null,6,0,"123");
 		CultureText = new Text(1440,210,null,7,0,"Kultura");
 		CultureValueBase = new Text(1685,210,null,8,0,"123");
