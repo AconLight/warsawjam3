@@ -15,6 +15,7 @@ public class CardsManager {
 	private int cardsQuantity;
 	private ArrayList<Vector2> positions;
 	private boolean isVisible = true;
+	private boolean isUp = true;
 	
 	public CardsManager() {
 		cards = new ArrayList<Card>();
@@ -58,7 +59,12 @@ public class CardsManager {
 	}
 	
 	public void moveLeft() {
-		if(isVisible) {			
+		if(isVisible) {	
+			//int iter = 1;
+			//for(Vector2 v : positions)
+				//if(iter==positions.size()) {
+					//cards.get(0).desiredX=(int)v.x;
+			
 			cards.get(cardsQuantity/2).normalSize();
 			cards.get(cardsQuantity/2+1).enlarge();
 			Card pom = cards.get(0);
@@ -80,7 +86,7 @@ public class CardsManager {
 	}
 	
 	public void moveBack() {
-		if(isVisible);
+		if(isUp) {
 		isMoving = true;
 		for(Card c : cards) {
 			moveCounter = 50;
@@ -89,10 +95,12 @@ public class CardsManager {
 			c.desiredX = 0;
 		}
 		isVisible = false;
-		//generateCardsPosition();
+		isUp = false;
+		}
 	}
 	
 	public void moveForward() {
+		if(!isUp) {
 		isMoving = true;
 		for(Card c : cards) {			
 			moveCounter = 50;
@@ -101,7 +109,8 @@ public class CardsManager {
 			c.desiredX = 0;
 		}
 		isVisible = true;
-		//generateCardsPosition();
+		isUp = true;
+		}
 	}
 	
 	public ArrayList<Card> getCards(){
