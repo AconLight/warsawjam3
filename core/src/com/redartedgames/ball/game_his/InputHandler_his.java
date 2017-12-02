@@ -64,7 +64,7 @@ public class InputHandler_his implements InputProcessor{
 	}
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		//world.fieldManager.
+		world.fieldManager.checkMouse(screenX, screenY);
 		return false;
 	}
 	@Override

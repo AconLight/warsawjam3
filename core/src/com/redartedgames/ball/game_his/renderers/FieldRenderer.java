@@ -21,6 +21,7 @@ public class FieldRenderer extends RenderManager {
 	}
 
 	public void render() {
+		batch.setProjectionMatrix(fieldManager.cam.combined);
 		batch.begin();
 		for(Field f : fieldManager.getFields())
 			f.render(batch, 1, 0, 0);
