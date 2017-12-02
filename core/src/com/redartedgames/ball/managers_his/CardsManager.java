@@ -35,7 +35,10 @@ public class CardsManager {
 			x+=Math.abs(positionFunction((((counter)/cardsQuantity)*(float)Math.PI)))*1950/cardsQuantity;
 			System.out.println(positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI)));
 			v.x = x;
-			if(iter==cardsQuantity/2) v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+150;
+			if(iter==cardsQuantity/2) {
+				v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+150;
+				cards.get(cardsQuantity/2).enlarge();
+			}
 			else v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+50;
 			counter++;
 			iter++;
@@ -46,15 +49,30 @@ public class CardsManager {
 	}
 	
 	public void moveLeft() {
+		cards.get(cardsQuantity/2).normalSize();
+		cards.get(cardsQuantity/2+1).enlarge();
 		Card pom = cards.get(0);
 		cards.remove(0);
-		cards.add(pom);
+		cards.add(pom);		
+		generateCardsPosition();
 	}
 	
 	public void moveRight() {
+		cards.get(cardsQuantity/2).normalSize();
+		cards.get(cardsQuantity/2-1).enlarge();
 		Card pom = cards.get(cards.size()-1);
 		cards.remove(cards.size()-1);
-		cards.add(0, pom);
+		cards.add(0, pom);		
+		generateCardsPosition();
+	}
+	
+	public void moveBack() {
+		for(Vector2 v : positions)
+			v.y = -1000;
+	}
+	
+	public void moveForward() {
+		generateCardsPosition();
 	}
 	
 	public ArrayList<Card> getCards(){
