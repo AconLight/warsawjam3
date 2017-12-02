@@ -37,7 +37,7 @@ public class CardsManager {
 		float x = 30.f+75;
 		int iter = 0;		
 		for(Vector2 v : positions) {			
-			x+=Math.abs(positionFunction((((counter)/cardsQuantity)*(float)Math.PI)))*1950/cardsQuantity;
+			x+=Math.abs(positionFunction((((counter)/cardsQuantity)*(float)Math.PI)))*1930/cardsQuantity;
 			v.x = x;
 			if(iter==cardsQuantity/2) {
 				v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+150;
@@ -60,11 +60,24 @@ public class CardsManager {
 	
 	public void moveLeft() {
 		if(isVisible) {	
-			//int iter = 1;
-			//for(Vector2 v : positions)
-				//if(iter==positions.size()) {
-					//cards.get(0).desiredX=(int)v.x;
-			
+			/*for(Vector2 v : positions) {
+				if(iter==positions.size()) {
+					cards.get(0).desiredX=(int)v.x-cards.get(0).getX();
+					cards.get(0).desiredY=(int)v.y-cards.get(0).getY();
+					moveCounter = 10;
+					speed = 10;
+				}
+				else {
+					cards.get(iter).desiredX=(int)v.x-cards.get(iter).getX();
+					System.out.println(cards.get(iter).desiredX+"X"+cards.get(iter).getX());
+					cards.get(iter).desiredY=(int)v.y-cards.get(iter).getY();
+					System.out.println(cards.get(iter).desiredY+"Y"+cards.get(iter).getY());
+					moveCounter = 10;
+					speed = 1;
+				}
+				iter++;
+				
+			}*/
 			cards.get(cardsQuantity/2).normalSize();
 			cards.get(cardsQuantity/2+1).enlarge();
 			Card pom = cards.get(0);
@@ -121,7 +134,6 @@ public class CardsManager {
 		if(isMoving) {
 			for(Card c : cards) {
 				c.setPosition(c.getX()+c.desiredX*(1/speed), c.getY()+(int)(c.desiredY*(1.f/speed)));
-				System.out.println(moveCounter+"oko"+c.desiredY+"oko"+c.getY());
 				moveCounter--;
 				if(moveCounter==1) {
 					moveCounter = 0;
