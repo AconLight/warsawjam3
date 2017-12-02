@@ -56,11 +56,11 @@ public class FieldManager {
 
 		float posX = x + cam.x;
 		float posY = -y + cam.y+1080;
-		System.out.println("posX: " + posX + "posY: " + posY);
+		//System.out.println("posX: " + posX + "posY: " + posY);
 		for (Field field : fields) {
 			if (field.checkMouse((int) posX, (int) posY, 50)) {
 				currentField = field;
-				System.out.println("a");
+				//System.out.println("a");
 				return;
 			}
 		}

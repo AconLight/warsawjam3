@@ -43,6 +43,9 @@ public class FieldSprite extends SpriteObject{
 		//scl -= delta;
 		sclX = mainScl;
 		sclY = mainScl;
+		for (GameObject obj : getGameObjects()) {
+			((LittleField)obj).updateAfter2(delta, 0, 0);
+		}
 	}
 public void render(SpriteBatch batch, int priority, float dx, float dy) {
 		
@@ -59,11 +62,17 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 				position.y + dy - regionList.get(frameNum).getRegionHeight()/2,
 				regionList.get(frameNum).getRegionWidth()/2, regionList.get(frameNum).getRegionHeight()/2,
 				regionList.get(frameNum).getRegionWidth(), regionList.get(frameNum).getRegionHeight(),
-				sclX, sclY, alfa);
+				sclX + 0.1f, sclY + 0.1f, alfa);
 			//Gdx.app.log("rendered", "spriteobject");
 		}
 		for (GameObject obj : getGameObjects()) {
-			obj.render(batch, priority, dx, dy);
+
+			batch.draw(((LittleField)obj).regionList.get(frameNum), ((LittleField)obj).pos2x + position.x + dx - ((LittleField)obj).regionList.get(frameNum).getRegionWidth()/2,
+					
+					((LittleField)obj).pos2y + position.y + dy - ((LittleField)obj).regionList.get(frameNum).getRegionHeight()/2,
+					((LittleField)obj).regionList.get(frameNum).getRegionWidth()/2, ((LittleField)obj).regionList.get(frameNum).getRegionHeight()/2,
+					((LittleField)obj).regionList.get(frameNum).getRegionWidth(), ((LittleField)obj).regionList.get(frameNum).getRegionHeight(),
+					sclX/10, sclY/10, alfa);
 		}
 	}
 }
