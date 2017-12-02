@@ -52,7 +52,9 @@ public class CardsManager {
 	}
 	
 	public void moveRight() {
-		
+		Card pom = cards.get(cards.size()-1);
+		cards.remove(cards.size()-1);
+		cards.add(0, pom);
 	}
 	
 	public ArrayList<Card> getCards(){
