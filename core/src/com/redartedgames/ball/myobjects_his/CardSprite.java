@@ -19,8 +19,14 @@ public class CardSprite extends SpriteObject{
 		switch(cardId){
 			default:
 			case 1:
-				addTexture("data_his/cards/test.png");
-				break;			
+				addTexture("data_his/cards/card1.png");
+				break;
+			case 2:
+				addTexture("data_his/cards/card2.png");
+				break;
+			case 3:
+				addTexture("data_his/cards/card3.png");
+				break;
 		}
 	}
 }
