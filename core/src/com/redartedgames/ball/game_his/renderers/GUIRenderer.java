@@ -11,8 +11,8 @@ public class GUIRenderer extends RenderManager {
 	TextureRegion b;
 	SpriteBatch batch;
 	
-	public GUIRenderer(SpriteBatch batch) {
-		this.batch = batch;
+	public GUIRenderer() {
+		batch = new SpriteBatch();
 		borders = new Texture(Gdx.files.internal("data_his/guiborders.png"));
 		b = new TextureRegion(borders);
 	}
