@@ -10,4 +10,7 @@ public class RenderManager {
 	public void render() {
 		
 	}
+	public void update(float delta) {
+				
+	}
 }

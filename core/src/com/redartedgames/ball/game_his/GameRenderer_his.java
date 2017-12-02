@@ -16,4 +16,9 @@ public class GameRenderer_his {
 			b.render();
 		}
 	}
+	public void update(float delta) {
+		for(RenderManager b : everything) {
+			b.update(delta);
+		}
+	}
 }

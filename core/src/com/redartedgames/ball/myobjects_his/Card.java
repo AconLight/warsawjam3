@@ -22,4 +22,12 @@ public class Card extends GameObject{
 	public int geyY() {
 		return y;
 	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
 }

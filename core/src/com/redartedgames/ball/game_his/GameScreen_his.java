@@ -18,6 +18,7 @@ public class GameScreen_his extends MyScreen{
 	public void update(float delta) {
 		super.update(delta);
 		gamerenderer.render();
+		gamerenderer.update(delta);
 	}
 
 }

@@ -26,4 +26,8 @@ public class FieldRenderer extends RenderManager {
 		batch.end();
 	}
 	
+	public void update(float delta) {
+		for(Field f : fields)
+			f.updateBefore(delta,0,0);
+	}
 }
