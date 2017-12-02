@@ -10,7 +10,7 @@ import com.redartedgames.ball.objects.SpriteObject;
 public class Text extends SpriteObject{
 	
 	private BitmapFont font;
-	private String txt;
+	public String txt;
 	private float x_position;
 	private float y_position;
 	
