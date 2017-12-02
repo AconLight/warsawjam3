@@ -11,11 +11,12 @@ public class StatRenderer extends RenderManager {
 	
 	private ArrayList<Text> stats;
 	private SpriteBatch batch;
-	private String Mwartosc="0";
-	private String Pwartosc="0";
-	private String Cwartosc="0";
-	private String wartosc4="0";
+	private String PopulacjaWartosc="0";
+	private String MigracjaWartosc="0";
+	private String PrzynaleznoscWartosc="0";
+	private String KulturaWartosc="0";
 	private String wartosc5="0";
+	private String NameString="";
 	
 	private Text FieldName;
 	private Text StatName;
@@ -37,16 +38,16 @@ public class StatRenderer extends RenderManager {
 		batch = new SpriteBatch();
 		
 		
-		FieldName = new Text(1535,370,null,0,1,"NawzaPola");
-		StatName = new Text(1480,320,null,1,0,"Statystyka:");
-		StatBase = new Text(1675,320,null,2,0,"Mno¿nik:");
-		MigrationText = new Text(1440,280,null,3,0,"Migracja");
+		FieldName = new Text(1580,510,null,0,2,"NawzaPola");
+		StatName = new Text(1440,325,null,1,1,"Statystyka:");
+		StatBase = new Text(1680,325,null,2,1,"Mnoï¿½nik:");
+		MigrationText = new Text(1440,280,null,3,0,"Populacja");
 		MigrationValueBase = new Text(1685,280,null,4,0,"wartosc");
-		PrzynaleznoscText = new Text(1440,245,null,5,0,"Przynale¿noœæ");
+		PrzynaleznoscText = new Text(1440,245,null,5,0,"Migracja");
 		PrzynaleznoscBase = new Text(1685,245,null,6,0,"123");
-		CultureText = new Text(1440,210,null,7,0,"Kultura");
+		CultureText = new Text(1440,210,null,7,0,"PrzynaleÅ¼noÅ›Ä‡");
 		CultureValueBase = new Text(1685,210,null,8,0,"123");
-		Stat4Text = new Text(1440,175,null,9,0,"Stat4");
+		Stat4Text = new Text(1440,175,null,9,0,"Kultura_multiper");
 		Stat4ValueBase = new Text(1685,175,null,10,0,"123");
 		Stat5Text = new Text(1440,140,null,11,0,"Stat5");
 		Stat5ValueBase = new Text(1685,140,null,12,0,"123");
@@ -77,29 +78,53 @@ public class StatRenderer extends RenderManager {
 		super.update(delta);
 		
 		if (gameworld.fieldManager.currentField != null) {
-			 Mwartosc = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_mig_mult());
-			} else Mwartosc = "";
-		stats.get(4).txt = Mwartosc;
+			PopulacjaWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.population);
+			} else PopulacjaWartosc = "";
+		stats.get(4).txt = PopulacjaWartosc;
 		
 		if (gameworld.fieldManager.currentField != null) {
-			Pwartosc = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_mig_mult());
-			} else Pwartosc = "";
-		stats.get(6).txt = Pwartosc;
+			MigracjaWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.migration);
+			} else MigracjaWartosc = "";
+		stats.get(6).txt = MigracjaWartosc;
 		
 		if (gameworld.fieldManager.currentField != null) {
-			Cwartosc = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_cult_mult());
-			} else Cwartosc = "";
-		stats.get(8).txt = Cwartosc;
+			PrzynaleznoscWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.affiliation);
+			} else PrzynaleznoscWartosc = "";
+		stats.get(8).txt = PrzynaleznoscWartosc;
 		
 		if (gameworld.fieldManager.currentField != null) {
-			wartosc4 = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_mig_mult());
-			} else wartosc4 = "";
-		stats.get(10).txt = wartosc4;
+			KulturaWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_cult_mult());
+			} else KulturaWartosc = "";
+		stats.get(10).txt = KulturaWartosc;
 		
 		if (gameworld.fieldManager.currentField != null) {
 			wartosc5 = Float.toString(gameworld.fieldManager.currentField.statistic.getbase_mig_mult());
 			} else wartosc5 = "";
 		stats.get(12).txt = wartosc5;
+		
+		if (gameworld.fieldManager.currentField != null) {
+			 switch(gameworld.fieldManager.currentField.fieldType){
+			 	case city:
+			 		NameString = "Miasto";
+			 		break;
+			 	case village:
+			 		NameString = "WieÅ›";
+			 		break;
+			 	case hill:
+			 		NameString = "WzgÃ³rek";
+			 		break;
+			 	case mountain:
+			 		NameString = "GÃ³ra";
+			 		break;
+			 	case meadow:
+			 		NameString = "Trawnik";
+			 		break;	
+			 	default:
+			 		NameString = "";
+			 		break;
+			 }
+			stats.get(0).txt = NameString;
+		} else stats.get(0).txt = "";
 	}
 
 }

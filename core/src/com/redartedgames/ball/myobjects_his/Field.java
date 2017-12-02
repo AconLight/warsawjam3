@@ -25,7 +25,7 @@ public class Field extends GameObject{
 		super(y, y, id, parent);
 		fields = new ArrayList<Field>();
 		Random r = new Random();
-		FieldType fieldType = FieldType.city;
+		fieldType = FieldType.city;
 		switch(r.nextInt(5)) {
 		case 0: fieldType = FieldType.city; break;
 		case 1: fieldType = FieldType.meadow; break;
