@@ -11,6 +11,7 @@ public class Card extends GameObject{
 	
 	private int x;
 	private int y;
+	private int id;
 	public int desiredX;
 	public int desiredY;
 	public float desiredScale;
@@ -20,6 +21,7 @@ public class Card extends GameObject{
 		super(x, y, id, parent);
 		this.x = x;
 		this.y = y;
+		this.id = id;
 		this.scale = scale;
 		addSprite(new CardSprite(x, y, this, 0, id%3+1));
 		setScale(scale); 
