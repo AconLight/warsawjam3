@@ -75,7 +75,7 @@ public class FieldStatistic {
 	public void updateBefore(float delta, float vx, float vy) {
 		delta /=100;
 		wealth = (float) (Math.sqrt(population)/100f);
-		birthrate =1+ (1/(1+wealth*5));
+		birthrate =1+ (1/(1+wealth*10));
 		
 		population += (population*birthrate*delta);
 		
