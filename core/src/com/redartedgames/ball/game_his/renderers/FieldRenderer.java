@@ -29,6 +29,7 @@ public class FieldRenderer extends RenderManager {
 	}
 	
 	public void update(float delta) {
+		fieldManager.update(delta);
 		for(Field f : fieldManager.getFields()) {
 			f.updateBefore(delta,0,0);
 			f.updateAfter(delta,0,0);
