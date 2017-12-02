@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.SpriteObject;
 
@@ -12,31 +13,40 @@ public class ImgSequencePlayer extends GameObject{
 	private SpriteObject seq;
 	//private ImgSequenceLoader loader;
 	private float x, y;
+	private SpriteBatch batch;
 	int n;
 	
 	ArrayList<Texture> list = new ArrayList<Texture>();
 	
-	ImgSequencePlayer(	ArrayList<Texture> list, int n, float x, float y){
+	ImgSequencePlayer(int n, float x, float y){
 		super(x,y, 1, null);
-		this.list = list;
+		//this.list = list;
 		this.n = n;
 		this.x = x;
 		this.y = y;
 		
 		seq = new SpriteObject(x, y, null, 0);
+		addSprite(seq);
+		seq.setFrameTime(0.04f);
 	}
 	
 	void play(){
 		
-				
+		seq.isStopped = false;
+		seq.isVisible = true;
+		seq.setFrameTime(0);
+		
 	}
 	
-	void addTexture( ArrayList<Texture> list){
-		int i;
-		for(i = 0; i < n; i++){
-			addSprite(seq);
-			seq.addTexture(list.get(i));
-		}
+	void stop(){
+		seq.isStopped = true;
+		seq.isVisible = false;
+	}
+	
+	void addTexture( String path){
+		System.out.println(path);
+		seq.addTexture(path);
+		
 	}
 	
 	void setPossision(float x, float y){
@@ -58,7 +68,10 @@ public class ImgSequencePlayer extends GameObject{
 	}
 	
 	void render(float delta){
+		batch.begin();
 		seq.updateFrames(delta);
+		seq.render(batch, 1, 0, 0);
+		batch.end();
 	}
 	
 }
