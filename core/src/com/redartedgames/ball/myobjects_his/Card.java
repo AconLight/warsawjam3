@@ -13,7 +13,7 @@ public class Card extends GameObject{
 		super(x, y, id, parent);
 		this.x = x;
 		this.y = y;
-		addSprite(new CardSprite(x, y, this, 0, 1));
+		addSprite(new CardSprite(x, y, this, 0, id%3+1));
 	}
 	
 	public int getX() {
