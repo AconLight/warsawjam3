@@ -10,20 +10,17 @@ public class CardSprite extends SpriteObject{
 
 	public CardSprite(float x, float y, GameObject parent, int id) {
 		super(x, y, parent, id);
-		width = 100;
+		width = 150;
 		height = 200;
+		setCard(id);
 	}
 	
 	public void setCard(int cardId) {
 		switch(cardId){
 			default:
 			case 1:
-				addTexture("data/ground/ziemia_bok_przod.png");
-				break;
-			case 2:
-				addTexture("data/ground/ziemia_bok_przod.png");
-				break;
-			
+				addTexture("data_his/cards/test.png");
+				break;			
 		}
 	}
 }
