@@ -33,10 +33,31 @@ public class FieldManager {
 				
 			}
 		}
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 5; j++) {
+		int k = 5;
+		for (int i = 0; i < k; i++) {
+			for (int j = 0; j < k; j++) {
 				fields.add(new Field(i*200, j*200, i*5 + j, null));
-				
+			}
+		}
+		for (int i = 0; i < k; i++) {
+			for (int j = 0; j < k; j++) {
+				if(i>0)
+				fields.get(i*5 + j).addField(fields.get((i-1)*k + j));
+				if(i < k-1)
+				fields.get(i*5 + j).addField(fields.get((i+1)*k + j));
+				if(i > 0 && j > 0)
+				fields.get(i*5 + j).addField(fields.get((i-1)*k + j-1));
+				if(j > 0)
+				fields.get(i*5 + j).addField(fields.get((i)*k + j-1));
+				if(i < k-1 && j > 0)
+				fields.get(i*5 + j).addField(fields.get((i+1)*k + j-1));
+				if(i > 0 && j < k-1)
+				fields.get(i*5 + j).addField(fields.get((i-1)*k + j+1));
+				if(j < k-1)
+				fields.get(i*5 + j).addField(fields.get((i)*k + j+1));
+				if(i < k-1 && j < k-1)
+				fields.get(i*5 + j).addField(fields.get((i+1)*k + j+1));
+			
 			}
 		}
 		
