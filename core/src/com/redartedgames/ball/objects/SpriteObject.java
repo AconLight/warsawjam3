@@ -21,7 +21,7 @@ public class SpriteObject extends TimeObject {
 	public boolean isVisible;
 	private boolean isStoped;
 	private int animatoinCounter;
-	private float sclX = 1, sclY = 1;
+	protected float sclX = 1, sclY = 1;
 	
 	public void setStoped(boolean isStoped) {
 		this.isStoped = isStoped;
