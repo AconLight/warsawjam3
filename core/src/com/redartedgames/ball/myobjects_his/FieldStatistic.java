@@ -59,7 +59,7 @@ public class FieldStatistic {
 			break;
 		case mountain:
 			base_mig_mult = randomfromto(95,100,true);
-			base_cult_mult = randomfromto(0,0,true);
+			base_cult_mult = randomfromto(0,1,true);
 			base_mig_speed = 0.2f;
 			population = randomfromto(0,1,false);
 			area_size  = randomfromto(40,300,false);
@@ -87,12 +87,12 @@ public class FieldStatistic {
 	}
 	public void updateBefore(float delta, float vx, float vy) {
 		float migration = ((population-population*base_cult_mult)*base_mig_mult)*(delta*base_mig_speed);
-		System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
+		//System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
 		population = population - migration;
 		for(int i=0; i<parent.fields.size();i++){
 		parent.fields.get(1).statistic.population += migration/parent.fields.size();
 		}
-		System.out.println("Populacja po migracja " + population + " migracja = " + migration);
+		//System.out.println("Populacja po migracja " + population + " migracja = " + migration);
 	}
 
 }
