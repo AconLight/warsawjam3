@@ -12,25 +12,24 @@ import com.redartedgames.ball.myobjects_his.Field;
 public class FieldRenderer extends RenderManager {
 	
 	private SpriteBatch batch;
-	private FieldManager fieldManager;
-
+	private GameWorld_his world;
 	public FieldRenderer(GameWorld_his gameworld) {
 		super(gameworld);
-		fieldManager = new FieldManager();
+		this.world = gameworld;
 		batch = new SpriteBatch();
 	}
 
 	public void render() {
-		batch.setProjectionMatrix(fieldManager.cam.combined);
+		batch.setProjectionMatrix(world.fieldManager.cam.combined);
 		batch.begin();
-		for(Field f : fieldManager.getFields())
+		for(Field f : world.fieldManager.getFields())
 			f.render(batch, 1, 0, 0);
 		batch.end();
 	}
 	
 	public void update(float delta) {
-		fieldManager.update(delta);
-		for(Field f : fieldManager.getFields()) {
+		world.fieldManager.update(delta);
+		for(Field f : world.fieldManager.getFields()) {
 			f.updateBefore(delta,0,0);
 			f.updateAfter(delta,0,0);
 		}
