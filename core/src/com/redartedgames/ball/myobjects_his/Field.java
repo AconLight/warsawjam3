@@ -22,6 +22,11 @@ public class Field extends GameObject{
 		return this;
 	}
 	
+	public boolean checkMouse(int x, int y, float r) {
+		return (x > position.x - r && x < position.x + r && 
+				y > position.y - r && y < position.y + r);
+	}
+	
 	public void updateBefore(float delta, float vx, float vy) {
 		super.updateBefore(delta, vx, vy);
 		statistic.updateBefore(delta, vx, vy);

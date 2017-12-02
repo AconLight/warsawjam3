@@ -10,7 +10,7 @@ public class FieldSprite extends SpriteObject{
 	public FieldSprite(float x, float y, GameObject parent, int id, FieldStatistic statistic) {
 		super(x, y, parent, id);
 		this.statistic = statistic;
-		scl = 0.8f;
+		scl = 0.95f;
 		mainScl = 1;
 		sclK = 20;
 		////////

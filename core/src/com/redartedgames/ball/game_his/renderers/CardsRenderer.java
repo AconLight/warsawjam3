@@ -25,4 +25,11 @@ public class CardsRenderer extends RenderManager {
 			c.render(batch, 1, 0, 0);
 		batch.end();
 	}
+	
+	public void update() {
+		batch.begin();
+		for(Card c : cards)
+			c.render(batch, 1, 0, 0);
+		batch.end();
+	}
 }
