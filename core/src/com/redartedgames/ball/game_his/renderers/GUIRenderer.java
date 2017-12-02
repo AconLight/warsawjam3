@@ -33,6 +33,7 @@ public class GUIRenderer extends RenderManager {
 		b44 = new TextureRegion(mountain);
 		b45 = new TextureRegion(meadown);
 		b46 = new TextureRegion(icon);
+		b4 = b46;
 	}
 	
 	public void update(float delta) {
@@ -59,7 +60,7 @@ public class GUIRenderer extends RenderManager {
 		}
 		
 		else {
-			b4=b46;
+			//b4=b46;
 		}
 	}
 	
