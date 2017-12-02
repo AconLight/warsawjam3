@@ -32,7 +32,7 @@ public class LittleField extends SpriteObject{
 		
 		
 		////////
-		renderIsNormal = true;
+		renderIsNormal = false;
 		
 	}
 	
