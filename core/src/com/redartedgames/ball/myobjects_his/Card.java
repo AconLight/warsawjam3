@@ -11,39 +11,35 @@ public class Card extends GameObject{
 	
 	private int x;
 	private int y;
-	public int moveCounter = 0;
 	public int desiredX;
 	public int desiredY;
-	public int speed = 0;
+	public float desiredScale;
+	private float scale;
 	
-	public Card(int x, int y, int id, GameObject parent) {
+	public Card(int x, int y, int id, GameObject parent, float scale) {
 		super(x, y, id, parent);
 		this.x = x;
 		this.y = y;
+		this.scale = scale;
 		addSprite(new CardSprite(x, y, this, 0, id%3+1));
+		setScale(scale); 
 	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
+		
 	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
 		gameObjects.get(0).setPosition(new Vector2(x,y));
 	}
 	
-	public void enlarge() {
-		((SpriteObject)gameObjects.get(0)).sclX = 2f;
-		((SpriteObject)gameObjects.get(0)).sclY = 2f;
+	public void setScale(float scale) { 
+		this.scale = scale;
+		((SpriteObject)gameObjects.get(0)).sclX = scale;
+		((SpriteObject)gameObjects.get(0)).sclY = scale;
 	}
 	
-	public void normalSize() {
-		((SpriteObject)gameObjects.get(0)).sclX = 1.5f;
-		((SpriteObject)gameObjects.get(0)).sclY = 1.5f;
-	}
+	public float getScale() { return scale; }
+	
+	public int getX() { return x; }
+	
+	public int getY() { return y; }
 }
