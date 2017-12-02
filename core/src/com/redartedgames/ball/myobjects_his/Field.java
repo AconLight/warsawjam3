@@ -10,7 +10,7 @@ public class Field extends GameObject{
 	public ArrayList<Field> fields;
 	public FieldStatistic statistic;
 	
-	public Field(float x, float y, int id,FieldStatistic statistic, GameObject parent) {
+	public Field(float x, float y, int id, GameObject parent) {
 		super(y, y, id, parent);
 		statistic = new FieldStatistic();
 		//grafika Field
