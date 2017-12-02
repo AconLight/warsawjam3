@@ -16,13 +16,14 @@ public class CardsRenderer extends RenderManager {
 	public CardsRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		batch = new SpriteBatch();
+		//gameworld.cardsManager.
 		cards = gameworld.cardsManager.getCards();
 	}
 	
 	public void render() {
 		batch.begin();
 		for(Card c : cards)
-			c.render(batch, 1, 200, 200);
+			c.render(batch, 1, 0, 0);
 		batch.end();
 	}
 }
