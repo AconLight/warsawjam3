@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.game_his.RenderManager;
 import com.redartedgames.ball.myobjects_his.Card;
+import com.redartedgames.ball.objects.SpriteObject;
 
 public class CardsRenderer extends RenderManager {
 
@@ -24,8 +25,9 @@ public class CardsRenderer extends RenderManager {
 	
 	public void render() {
 		batch.begin();
-		for(Card c : cards)
+		for(Card c : cards) {
 			c.render(batch, 1, 0, 0);
+		}	
 		batch.end();
 	}
 }
