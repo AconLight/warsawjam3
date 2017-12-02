@@ -1,18 +1,12 @@
 package com.redartedgames.ball.myobjects_his;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.SpriteObject;
 
 public class CardSprite extends SpriteObject{
-	
-	private float width;
-	private float height;
 
 	public CardSprite(float x, float y, GameObject parent, int id, int cardId) {
 		super(x, y, parent, id);
-		width = 300;
-		height = 400;
 		setCard(cardId);  
 	}
 	

@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.game_his.RenderManager;
-import com.redartedgames.ball.managers_his.CardsManager;
 import com.redartedgames.ball.myobjects_his.Card;
-import com.redartedgames.ball.myobjects_his.Field;
 
 public class CardsRenderer extends RenderManager {
 

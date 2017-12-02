@@ -1,6 +1,5 @@
 package com.redartedgames.ball.managers_his;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
@@ -8,22 +7,20 @@ import com.redartedgames.ball.myobjects_his.Card;
 
 public class CardsManager {
 	
-	private int moveCounter = 0;
-	private int speed = 0;
-	private boolean isMoving = false;
+	private int moveCounter = 0, speed = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
 	private ArrayList<Vector2> positions;
+	private boolean isMoving = false;
 	private boolean isVisible = true;
 	private boolean isUp = true;
 	private boolean isCasted = false;
-	private boolean isCasted2 = false;
 	
 	public CardsManager() {
 		cards = new ArrayList<Card>();
 		positions = new ArrayList<Vector2>();
 		for(int i = 0; i<cardsQuantity; i++)
-			cards.add(new Card(0, 0, i, null, 0.75f));
+			cards.add(new Card(0, 0, i+1, null, 0.75f));
 		for(int i = 0; i<cardsQuantity; i++)
 			positions.add(new Vector2());
 		generateCardsPosition();
@@ -59,7 +56,7 @@ public class CardsManager {
 		}
 	}
 	
-	public void moveLeft() {
+	public void moveRight() {
 		if(isVisible) {	
 			cards.get(cardsQuantity/2).setScale(0.75f);
 			cards.get(cardsQuantity/2-1).setScale(0.75f);
@@ -70,7 +67,7 @@ public class CardsManager {
 		}
 	}
 	
-	public void moveRight() {
+	public void moveLeft() {
 		if(isVisible) {
 			cards.get(cardsQuantity/2).setScale(0.75f);
 			cards.get(cardsQuantity/2-1).setScale(1);

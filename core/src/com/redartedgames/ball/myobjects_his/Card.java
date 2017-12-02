@@ -1,6 +1,5 @@
 package com.redartedgames.ball.myobjects_his;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.GameObject;
 
@@ -23,8 +22,32 @@ public class Card extends GameObject{
 		this.y = y;
 		this.id = id;
 		this.scale = scale;
-		addSprite(new CardSprite(x, y, this, 0, id%3+1));
+		addSprite(new CardSprite(x, y, this, 0, id));
 		setScale(scale); 
+	}
+	
+	public void use() {
+		switch(id) {
+			default:
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+		}
 	}
 		
 	public void setPosition(int x, int y) {
