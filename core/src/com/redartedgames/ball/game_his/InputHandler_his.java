@@ -32,6 +32,14 @@ public class InputHandler_his implements InputProcessor{
 		case Keys.D: {
 			world.cardsManager.moveRight();
 			break;
+		}		
+		case Keys.W: {
+			world.cardsManager.moveForward();
+			break;
+		}
+		case Keys.S: {
+			world.cardsManager.moveBack();
+			break;
 		}
 		
 		}

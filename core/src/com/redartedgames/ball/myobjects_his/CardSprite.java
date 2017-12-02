@@ -1,5 +1,6 @@
 package com.redartedgames.ball.myobjects_his;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.SpriteObject;
 
@@ -28,5 +29,5 @@ public class CardSprite extends SpriteObject{
 				addTexture("data_his/cards/card3.png");
 				break;
 		}
-	}
+	}		
 }
