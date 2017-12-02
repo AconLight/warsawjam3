@@ -8,7 +8,9 @@ public class FieldStatistic {
 	private float base_cult_mult;
 	public float population;
 	private Field parent;
+	private float migration;
 	private float affiliation;//przynale¿noœæ
+	private float birthrate = 0.05f;
 
 	public float getbase_mig_mult(){
 		return base_mig_mult;
@@ -18,6 +20,9 @@ public class FieldStatistic {
 	}
 	public float getpopulation(){
 		return population;
+	}
+	public float getmigration(){
+		return migration;
 	}
 	public FieldStatistic(FieldType fieldType,Field parent){
 		this.parent=parent;
@@ -71,13 +76,16 @@ public class FieldStatistic {
 		
 	}
 	public void updateBefore(float delta, float vx, float vy) {
-		float migration = ((population-population*base_cult_mult)*base_mig_mult*(population/100))*(delta);
+		delta /=100;
+		population += (population*birthrate*delta);
+		migration = ((population-population*base_cult_mult)*base_mig_mult*(population/100))*(delta);
 		System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
 		population = population - migration;
 		for(int i=0; i<parent.fields.size();i++){
-		parent.fields.get(1).statistic.population += migration/parent.fields.size();
+		parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
 		System.out.println("Populacja po migracja " + population + " migracja = " + migration);
+		System.out.println("----------------------------------------------------------------");
 	}
 
 }

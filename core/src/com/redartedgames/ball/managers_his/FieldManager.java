@@ -33,10 +33,22 @@ public class FieldManager {
 				
 			}
 		}
-		fields.add(new Field(0, 0, 0, null, FieldType.city));
-		fields.add(new Field(80, 0, 1, null, FieldType.village));
-		fields.add(new Field(80, 80, 2, null, FieldType.village));
-		fields.add(new Field(160, 80, 2, null, FieldType.city));
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				fields.add(new Field(i*200, j*200, i*5 + j, null));
+				
+			}
+		}
+		
+		
+
+		for(int i=0;i<fields.size();i++){
+			for(int j=0;j<fields.size();j++){
+				if(j!=i && j - i < 1 && i - j > -1)
+				fields.get(i).addField(fields.get(j));
+			}
+		}
+
 	}
 	
 	public void checkMouse(int x, int y) {
