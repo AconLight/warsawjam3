@@ -21,6 +21,7 @@ public class SpriteObject extends TimeObject {
 	public boolean isVisible;
 	private boolean isStoped;
 	private int animatoinCounter;
+	protected float sclX = 1, sclY = 1;
 	
 	public void setStoped(boolean isStoped) {
 		this.isStoped = isStoped;
@@ -119,7 +120,7 @@ public class SpriteObject extends TimeObject {
 				position.y + dy - regionList.get(frameNum).getRegionHeight()/2,
 				regionList.get(frameNum).getRegionWidth()/2, regionList.get(frameNum).getRegionHeight()/2,
 				regionList.get(frameNum).getRegionWidth(), regionList.get(frameNum).getRegionHeight(),
-				1, 1, alfa);
+				sclX, sclY, alfa);
 			//Gdx.app.log("rendered", "spriteobject");
 		}
 		for (GameObject obj : getGameObjects()) {
