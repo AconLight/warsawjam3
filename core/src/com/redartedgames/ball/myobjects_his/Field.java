@@ -3,6 +3,8 @@ package com.redartedgames.ball.myobjects_his;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.GameObject;
 import com.redartedgames.ball.objects.SpriteObject;
 
@@ -36,6 +38,7 @@ public class Field extends GameObject{
 		statistic = new FieldStatistic(fieldType,this);
 		//grafika Field
 		addSprite(new FieldSprite(x, y, this, id, statistic));
+
 	}
 	
 	public Field addField(Field field) {
@@ -51,8 +54,13 @@ public class Field extends GameObject{
 	public void updateBefore(float delta, float vx, float vy) {
 		super.updateBefore(delta, vx, vy);
 		statistic.updateBefore(delta, vx, vy);
-		
 		// mechanika
+	}
+	
+	public void render(SpriteBatch batch, int priority, float dx, float dy) {
+		((SpriteObject)gameObjects.get(0)).setRenderIsNormal(false);
+			((FieldSprite)gameObjects.get(0)).render(batch, priority, -dx, -dy);
+			
 	}
 	
 	

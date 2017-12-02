@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.redartedgames.ball.myobjects_his.Field;
 import com.redartedgames.ball.myobjects_his.FieldType;
+import com.redartedgames.ball.myobjects_his.LittleField;
 
 
 
@@ -31,12 +32,33 @@ public class FieldManager {
 		for (int i = 0; i < y; i++) {
 			for (int j = 0; j < x; j++) {
 				
+			} 
+		}
+		int k = 5;
+		for (int i = 0; i < k; i++) {
+			for (int j = 0; j < k; j++) {
+				fields.add(new Field(i*200, j*200, i*5 + j, null));
 			}
 		}
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				fields.add(new Field(i*200, j*200, i*5 + j, null, FieldType.village));
-				
+		for (int i = 0; i < k; i++) {
+			for (int j = 0; j < k; j++) {
+				if(i>0)
+				fields.get(i*5 + j).addField(fields.get((i-1)*k + j));
+				if(i < k-1)
+				fields.get(i*5 + j).addField(fields.get((i+1)*k + j));
+				if(i > 0 && j > 0)
+				fields.get(i*5 + j).addField(fields.get((i-1)*k + j-1));
+				if(j > 0)
+				fields.get(i*5 + j).addField(fields.get((i)*k + j-1));
+				if(i < k-1 && j > 0)
+				fields.get(i*5 + j).addField(fields.get((i+1)*k + j-1));
+				if(i > 0 && j < k-1)
+				fields.get(i*5 + j).addField(fields.get((i-1)*k + j+1));
+				if(j < k-1)
+				fields.get(i*5 + j).addField(fields.get((i)*k + j+1));
+				if(i < k-1 && j < k-1)
+				fields.get(i*5 + j).addField(fields.get((i+1)*k + j+1));
+			
 			}
 		}
 		
@@ -55,11 +77,11 @@ public class FieldManager {
 
 		float posX = x + cam.x;
 		float posY = -y + cam.y+1080;
-		System.out.println("posX: " + posX + "posY: " + posY);
+		//System.out.println("posX: " + posX + "posY: " + posY);
 		for (Field field : fields) {
 			if (field.checkMouse((int) posX, (int) posY, 50)) {
 				currentField = field;
-				System.out.println("a");
+				//System.out.println("a");
 				return;
 			}
 		}
@@ -80,6 +102,8 @@ public class FieldManager {
 		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
+			field.updateAfter(0 ,0, delta);
+
 		}
 	}
 	
