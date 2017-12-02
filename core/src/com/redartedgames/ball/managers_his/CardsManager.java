@@ -49,12 +49,14 @@ public class CardsManager {
 		Card pom = cards.get(0);
 		cards.remove(0);
 		cards.add(pom);
+		generateCardsPosition();
 	}
 	
 	public void moveRight() {
 		Card pom = cards.get(cards.size()-1);
 		cards.remove(cards.size()-1);
 		cards.add(0, pom);
+		generateCardsPosition();
 	}
 	
 	public ArrayList<Card> getCards(){
