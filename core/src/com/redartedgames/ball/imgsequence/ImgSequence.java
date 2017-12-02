@@ -7,10 +7,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class ImgSequence extends ApplicationAdapter{
+public class ImgSequence {
 		
 	private Texture texture;
-	ArrayList<Texture> list = new ArrayList<Texture>();
+	
 	String path, name, type;
 	int n;
 	float x, y;
@@ -21,32 +21,19 @@ public class ImgSequence extends ApplicationAdapter{
 		this.n = n;
 		this.type = type;
 		
-		create();
+		//create();
 	}
 	
-	public ImgSequence(String folder1, String name, int n, String type){
-		this.name = folder1 + "/" + name;
+	public ImgSequence(String folder, String name, int n, String type){
+		this.name = folder + "/" + name;
 		this.n = n;
 		this.type = type;
 		
-		create();
+		//imgList();
+		//create();
 	}
 	
-	public ImgSequence(String folder1, String folder2, String name, int n, String type){
-		this.name = folder1 + "/" + folder2 + "/" + name;
-		this.n = n;
-		this.type = type;
-		
-		create();
-	}
-	
-	public ImgSequence(String folder1, String folder2, String folder3, String name, int n, String type){
-		this.name = folder1 + "/" + folder2 + "/" + folder3 + "/" + name;
-		this.n = n;
-		this.type = type;
-		
-		create();
-	}
+
 	
 	
 	void imgList(){
@@ -54,20 +41,15 @@ public class ImgSequence extends ApplicationAdapter{
 		
 		for(i = 0; i < n; i++){
 			path = name + i + "." + type;
-			list.add( texture = new Texture(path) );
+			System.out.println(path);
+			
 		}
 	}
 	
-	ArrayList<Texture> getSequence(){
-		return list;
-	}
-	
-	Texture getSequenceFrame(int n ){
-		return list.get(n);
-	}
+
 	
 	
-	@Override
+	/*@Override
 	public void create () {
 		imgList();
 		
@@ -79,6 +61,6 @@ public class ImgSequence extends ApplicationAdapter{
 		
 		
 	}
-		
+		*/
 
 }
