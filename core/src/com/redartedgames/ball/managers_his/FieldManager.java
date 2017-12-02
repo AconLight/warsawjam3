@@ -30,9 +30,13 @@ public class FieldManager {
 	private void generateLand(int x, int y) {
 		for (int i = 0; i < y; i++) {
 			for (int j = 0; j < x; j++) {
-				fields.add(new Field(j*80, i*80, 0, null, FieldType.city));
+				
 			}
 		}
+		fields.add(new Field(0, 0, 0, null, FieldType.city));
+		fields.add(new Field(80, 0, 1, null, FieldType.village));
+		fields.add(new Field(80, 80, 2, null, FieldType.village));
+		fields.add(new Field(160, 80, 2, null, FieldType.city));
 	}
 	
 	public void checkMouse(int x, int y) {
