@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class ImgSequence extends ApplicationAdapter{
 		
 	private Texture texture;
+	private ImgSequencePlayer player;
 	ArrayList<Texture> list = new ArrayList<Texture>();
 	String path, name, type;
 	int n;
@@ -20,6 +21,7 @@ public class ImgSequence extends ApplicationAdapter{
 		this.name = name;
 		this.n = n;
 		this.type = type;
+		x = 0; y = 0; 
 		
 		create();
 	}
@@ -28,6 +30,7 @@ public class ImgSequence extends ApplicationAdapter{
 		this.name = folder1 + "/" + name;
 		this.n = n;
 		this.type = type;
+		x = 0; y = 0; 
 		
 		create();
 	}
@@ -36,6 +39,7 @@ public class ImgSequence extends ApplicationAdapter{
 		this.name = folder1 + "/" + folder2 + "/" + name;
 		this.n = n;
 		this.type = type;
+		x = 0; y = 0; 
 		
 		create();
 	}
@@ -44,18 +48,31 @@ public class ImgSequence extends ApplicationAdapter{
 		this.name = folder1 + "/" + folder2 + "/" + folder3 + "/" + name;
 		this.n = n;
 		this.type = type;
+		x = 0; y = 0; 
 		
 		create();
 	}
 	
+	void play(){
+		player.play();
+	}
+	void setPossision(float x, float y){
+		this.x = x;
+		this.y = y;
+		player.setPossision(x, y);
+	}
 	
-	void imgList(){
-		int i = 0;
-		
-		for(i = 0; i < n; i++){
-			path = name + i + "." + type;
-			list.add( texture = new Texture(path) );
-		}
+	void setVisibility(boolean visible){
+		player.setVisible(visible);
+	}
+	
+	void setPong(boolean ispong){
+		player.setPong(ispong); 
+	}
+	
+	
+	void loadTexture(){
+		player.addTexture(list);
 	}
 	
 	ArrayList<Texture> getSequence(){
@@ -66,11 +83,19 @@ public class ImgSequence extends ApplicationAdapter{
 		return list.get(n);
 	}
 	
+	void imgList(){
+		int i = 0;
+		
+		for(i = 0; i < n; i++){
+			path = name + i + "." + type;
+			list.add( texture = new Texture(path) );
+		}
+	}
 	
 	@Override
 	public void create () {
 		imgList();
-		
+		player = new ImgSequencePlayer(list, n, x, y);
 	}
 	
 	
