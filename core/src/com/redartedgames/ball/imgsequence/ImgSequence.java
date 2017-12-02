@@ -7,11 +7,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class ImgSequence {
+public class ImgSequence extends ApplicationAdapter{
 		
 	private Texture texture;
-	private ImgSequencePlayer player;
-	//ArrayList<Texture> list;
+	ArrayList<Texture> list = new ArrayList<Texture>();
 	String path, name, type;
 	int n;
 	float x, y;
@@ -21,50 +20,44 @@ public class ImgSequence {
 		this.name = name;
 		this.n = n;
 		this.type = type;
-		x = 0; y = 0; 
 		
 		create();
 	}
 	
-	public ImgSequence(String folder, String name, int n, String type){
-		this.name = folder + "/" + name;
-		System.out.println(this.name);
+	public ImgSequence(String folder1, String name, int n, String type){
+		this.name = folder1 + "/" + name;
 		this.n = n;
 		this.type = type;
-		x = 0; y = 0; 
+		
+		create();
+	}
+	
+	public ImgSequence(String folder1, String folder2, String name, int n, String type){
+		this.name = folder1 + "/" + folder2 + "/" + name;
+		this.n = n;
+		this.type = type;
+		
+		create();
+	}
+	
+	public ImgSequence(String folder1, String folder2, String folder3, String name, int n, String type){
+		this.name = folder1 + "/" + folder2 + "/" + folder3 + "/" + name;
+		this.n = n;
+		this.type = type;
 		
 		create();
 	}
 	
 	
-	
-	void play(){
-		player.play();
-	}
-	void setPossision(float x, float y){
-		this.x = x;
-		this.y = y;
-		player.setPossision(x, y);
-	}
-	
-	void setVisibility(boolean visible){
-		player.setVisible(visible);
-	}
-	
-	void setPong(boolean ispong){
-		player.setPong(ispong); 
-	}
-	
-	void loadTexture(){
+	void imgList(){
+		int i = 0;
 		
-		//for(int i=0; i<n; i++){
-			//path = name + i + "." + type;
-			player.addTexture("film1/test0.png");
-		//}
-
+		for(i = 0; i < n; i++){
+			path = name + i + "." + type;
+			list.add( texture = new Texture(path) );
+		}
 	}
-	/*
-	 
+	
 	ArrayList<Texture> getSequence(){
 		return list;
 	}
@@ -73,32 +66,17 @@ public class ImgSequence {
 		return list.get(n);
 	}
 	
-	void imgList(){
-		
-		player.
-		
-		int i = 0;
-		
-		//or(i = 0; i < n; i++){
-			path = name + i + "." + type;
-			System.out.println(path);
-			list.add(texture = new Texture(path) );
-		//}
-	}*/
 	
-	
+	@Override
 	public void create () {
-		//list = new ArrayList<Texture>();
-		//imgList();
-		player = new ImgSequencePlayer( n, x, y);
-		loadTexture();
+		imgList();
+		
 	}
 	
 	
-	
+	@Override
 	public void render () {
 		
-		player.render(Gdx.graphics.getDeltaTime());
 		
 	}
 		
