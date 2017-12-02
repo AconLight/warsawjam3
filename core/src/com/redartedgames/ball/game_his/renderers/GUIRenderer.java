@@ -15,12 +15,12 @@ public class GUIRenderer extends RenderManager {
 	public GUIRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		batch = new SpriteBatch();
-		borders = new Texture(Gdx.files.internal("data_his/guiborders.png"));
+		borders = new Texture(Gdx.files.internal("data_his/gui/guiborders.png"));
 		b = new TextureRegion(borders);
 	}
 	public void render() {
 		batch.begin();
-		batch.draw(b, 100, 100);
+		batch.draw(b, 0, 0);
 		batch.end();
 	}
 }
