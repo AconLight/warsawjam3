@@ -74,6 +74,7 @@ public class InputHandler_his implements InputProcessor{
 	public boolean mouseMoved(int screenX, int screenY) {
 		world.fieldManager.checkMouse(screenX, screenY);
 		world.fieldManager.setCamVel(screenX - 1280/2, screenY - 1080/2);
+		//System.out.println("" + screenX + ", " + screenY);
 		return false;
 	}
 	@Override

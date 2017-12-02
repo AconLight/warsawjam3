@@ -12,6 +12,7 @@ public class Field extends GameObject{
 	
 	public Field(float x, float y, int id, GameObject parent,FieldType fieldType) {
 		super(y, y, id, parent);
+		fields = new ArrayList<Field>();
 		statistic = new FieldStatistic(fieldType,this);
 		//grafika Field
 		addSprite(new FieldSprite(x, y, this, id, statistic));
