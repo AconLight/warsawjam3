@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.redartedgames.ball.game_his.GameScreen_his;
 import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.game_his.InputHandler_his;
-
 import com.redartedgames.ball.imgsequence.ImgSequence;
 import com.redartedgames.ball.myobjects_his.Field;
 import com.redartedgames.ball.screen.Consts;

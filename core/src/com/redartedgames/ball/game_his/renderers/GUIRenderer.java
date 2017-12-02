@@ -19,20 +19,21 @@ public class GUIRenderer extends RenderManager {
 		statsback = new Texture(Gdx.files.internal("data_his/gui/statsback.png"));
 		nameback = new Texture(Gdx.files.internal("data_his/gui/nameback.png"));
 		city = new Texture(Gdx.files.internal("data_his/gui/city.png"));
-		village = new Texture(Gdx.files.internal("data_his/gui/nameback.png"));
-		hill = new Texture(Gdx.files.internal("data_his/gui/nameback.png"));
-		mountain = new Texture(Gdx.files.internal("data_his/gui/nameback.png"));
-		meadown = new Texture(Gdx.files.internal("data_his/gui/nameback.png"));
+		village = new Texture(Gdx.files.internal("data_his/gui/village.png"));
+		hill = new Texture(Gdx.files.internal("data_his/gui/hill.png"));
+		mountain = new Texture(Gdx.files.internal("data_his/gui/mountain.png"));
+		meadown = new Texture(Gdx.files.internal("data_his/gui/meadown.png"));
 		icon = new Texture(Gdx.files.internal("data_his/gui/iconback.png"));
 		b1 = new TextureRegion(borders);
 		b2 = new TextureRegion(statsback);
 		b3 = new TextureRegion(nameback);
 		b41 = new TextureRegion(city);
-		b42 = new TextureRegion();
-		b43 = new TextureRegion();
-		b44 = new TextureRegion();
-		b45 = new TextureRegion();
+		b42 = new TextureRegion(village);
+		b43 = new TextureRegion(hill);
+		b44 = new TextureRegion(mountain);
+		b45 = new TextureRegion(meadown);
 		b46 = new TextureRegion(icon);
+		b4 = b46;
 	}
 	
 	public void update(float delta) {
