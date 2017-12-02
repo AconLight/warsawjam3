@@ -8,11 +8,11 @@ public class CardSprite extends SpriteObject{
 	private float width;
 	private float height;
 
-	public CardSprite(float x, float y, GameObject parent, int id) {
+	public CardSprite(float x, float y, GameObject parent, int id, int cardId) {
 		super(x, y, parent, id);
 		width = 150;
 		height = 200;
-		setCard(id);
+		setCard(cardId);
 	}
 	
 	public void setCard(int cardId) {

@@ -9,7 +9,7 @@ public class CardsManager {
 	
 	public CardsManager() {
 		cards = new ArrayList<Card>();
-		cards.add(new Card(300, 300, 0, null));
+		cards.add(new Card(300, 300, 1, null));
 	}
 	
 	public ArrayList<Card> getCards(){

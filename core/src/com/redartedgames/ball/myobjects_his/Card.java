@@ -5,7 +5,6 @@ import com.redartedgames.ball.objects.GameObject;
 
 public class Card extends GameObject{
 	
-	public CardSprite card;
 	private int x;
 	private int y;
 	
@@ -13,7 +12,7 @@ public class Card extends GameObject{
 		super(x, y, id, parent);
 		this.x = x;
 		this.y = y;
-		card = new CardSprite(x, y, this, 1);
+		addSprite(new CardSprite(x, y, this, 0, 1));
 	}
 	
 	public int getX() {
@@ -23,5 +22,4 @@ public class Card extends GameObject{
 	public int geyY() {
 		return y;
 	}
-
 }
