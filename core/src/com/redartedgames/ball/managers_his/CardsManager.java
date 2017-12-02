@@ -9,6 +9,7 @@ import com.redartedgames.ball.myobjects_his.Card;
 public class CardsManager {
 	
 	private int moveCounter = 0;
+	private int speed = 0;
 	private boolean isMoving = false;
 	private ArrayList<Card> cards;
 	private int cardsQuantity;
@@ -52,8 +53,8 @@ public class CardsManager {
 		}
 		//else for(Card c : cards)
 			//c.setPosition(0, -1000);	
-		for(int i = 0; i<cards.size(); i++)
-			cards.get(i).setPosition((int)positions.get(i).x,(int)positions.get(i).y);
+		//for(int i = 0; i<cards.size(); i++)
+			//cards.get(i).setPosition((int)positions.get(i).x,(int)positions.get(i).y);
 	}
 	
 	public void moveLeft() {
@@ -79,11 +80,12 @@ public class CardsManager {
 	}
 	
 	public void moveBack() {
+		if(isVisible);
 		isMoving = true;
 		for(Card c : cards) {
-			c.moveCounter = 100;
-			c.speed = c.moveCounter;
-			c.desiredY = -400;
+			moveCounter = 50;
+			speed = moveCounter;
+			c.desiredY = -4000;
 			c.desiredX = 0;
 		}
 		isVisible = false;
@@ -93,9 +95,9 @@ public class CardsManager {
 	public void moveForward() {
 		isMoving = true;
 		for(Card c : cards) {			
-			c.moveCounter = 100;
-			c.speed = c.moveCounter;
-			c.desiredY = 400;
+			moveCounter = 50;
+			speed = moveCounter;
+			c.desiredY = 4000;
 			c.desiredX = 0;
 		}
 		isVisible = true;
@@ -109,8 +111,9 @@ public class CardsManager {
 	public void update(float delta) {
 		if(isMoving) {
 			for(Card c : cards) {
-				c.setPosition(c.desiredX*(1/c.speed), c.desiredY*(1/c.speed));
-				System.out.println(c.moveCounter);
+				c.setPosition(c.getX()+c.desiredX*(1/speed), c.getY()+(int)(c.desiredY*(1.f/speed)));
+				System.out.println(moveCounter+"oko"+c.desiredY+"oko"+c.getY());
+				moveCounter--;
 				if(moveCounter==1) {
 					moveCounter = 0;
 					isMoving = false;
