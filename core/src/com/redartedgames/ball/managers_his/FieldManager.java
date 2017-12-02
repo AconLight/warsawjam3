@@ -32,7 +32,7 @@ public class FieldManager {
 		for (int i = 0; i < y; i++) {
 			for (int j = 0; j < x; j++) {
 				
-			}
+			} 
 		}
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
