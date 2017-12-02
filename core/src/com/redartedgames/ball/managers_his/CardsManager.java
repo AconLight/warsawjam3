@@ -8,6 +8,7 @@ import com.redartedgames.ball.myobjects_his.Card;
 public class CardsManager {
 	
 	private int moveCounter = 0, speed = 0;
+	private int iter = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
 	private ArrayList<Vector2> positions;
@@ -82,9 +83,9 @@ public class CardsManager {
 		if(isUp) {
 		isMoving = true;
 		for(Card c : cards) {
-			moveCounter = 50;
+			moveCounter = 20;
 			speed = moveCounter;
-			c.desiredY = -4000;
+			c.desiredY = -400;
 			c.desiredX = 0;
 		}
 		isVisible = false;
@@ -95,10 +96,10 @@ public class CardsManager {
 	public void moveForward() {
 		if(!isUp) {
 		isMoving = true;
-		moveCounter = 50;
+		moveCounter = 10;
 		speed = moveCounter;
 		for(Card c : cards) {			
-			c.desiredY = 4000;
+			c.desiredY = 400;
 			c.desiredX = 0;
 		}
 		isVisible = true;
@@ -110,12 +111,12 @@ public class CardsManager {
 		if(isUp) {
 			isMoving = true;
 			isCasted = true;
-			moveCounter = 50;
+			moveCounter = 40;
 			speed = moveCounter;
 			for(Card c : cards) {			
-				c.desiredY = 4000;
+				c.desiredY = 1200;
 				c.desiredX = 0;
-				c.desiredScale = 2;
+				c.desiredScale = 1.5f;
 			}			
 		}
 	}
@@ -126,23 +127,30 @@ public class CardsManager {
 	
 	public void update(float delta) {
 		if(isMoving) {
-			int iter = 0;
+			iter = 0;
 			for(Card c : cards) {
-				c.setPosition(c.getX()+c.desiredX*(1/speed), c.getY()+(int)(c.desiredY*(1.f/speed)));
-				moveCounter--;
-				if(isCasted) {
+				if(!isCasted)c.setPosition(c.getX()+c.desiredX*(1/speed), c.getY()+(int)(c.desiredY*(1.f/speed)));
+				if(isCasted && iter==cardsQuantity/2) {
+					c.setPosition(c.getX()+c.desiredX*(1/speed), c.getY()+(int)(c.desiredY*(1.f/speed)));
 					c.setScale(c.getScale()+(c.desiredScale-1.f)/speed);
 				}
 				if(moveCounter==1) {
 					if(isCasted) {
-						isCasted = false;
-						c.setPosition((int)positions.get(iter).x, (int)positions.get(iter).y);
+						if(iter==(cardsQuantity/2)) {
+							setRotation();
+							c.setPosition((int)positions.get(iter).x, (int)positions.get(iter).y);
+							c.setScale(1f);
+						}
+						if(iter==(cardsQuantity-1)) isCasted = false;
 					}
-					moveCounter = 0;
+					else {
+					}
 					isMoving = false;
+					if(iter==cardsQuantity-1) moveCounter = 1;
 				}
 				iter++;
 			}
+			moveCounter--;
 		}
 	}
 }

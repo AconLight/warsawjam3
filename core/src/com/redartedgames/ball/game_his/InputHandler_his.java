@@ -41,6 +41,9 @@ public class InputHandler_his implements InputProcessor{
 			world.cardsManager.moveBack();
 			break;
 		}
+		case Keys.SPACE:
+			world.cardsManager.cast();
+			break;
 		
 		}
 		return false;
