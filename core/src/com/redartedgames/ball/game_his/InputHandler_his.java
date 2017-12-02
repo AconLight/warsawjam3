@@ -24,7 +24,17 @@ public class InputHandler_his implements InputProcessor{
 	}
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
+		switch(keycode) {
+		case Keys.A: {
+			world.cardsManager.moveLeft();
+			break;
+		}
+		case Keys.D: {
+			world.cardsManager.moveRight();
+			break;
+		}
+		
+		}
 		return false;
 	}
 	@Override
