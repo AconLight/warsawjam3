@@ -5,8 +5,11 @@ import com.redartedgames.ball.objects.SpriteObject;
 
 public class FieldSprite extends SpriteObject{
 
-	public FieldSprite(float x, float y, GameObject parent, int id,FieldStatistic statistic) {
+	FieldStatistic statistic;
+	
+	public FieldSprite(float x, float y, GameObject parent, int id, FieldStatistic statistic) {
 		super(x, y, parent, id);
+		this.statistic = statistic;
 		////////
 		//grafika Field
 		addTexture("data_his/fieldsprite.png");
