@@ -60,7 +60,7 @@ public class GUIRenderer extends RenderManager {
 		}
 		
 		else {
-			//b4=b46;
+			b4=b46;
 		}
 	}
 	
