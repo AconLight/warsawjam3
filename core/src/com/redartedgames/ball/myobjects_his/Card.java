@@ -11,6 +11,10 @@ public class Card extends GameObject{
 	
 	private int x;
 	private int y;
+	public int moveCounter = 0;
+	public int desiredX;
+	public int desiredY;
+	public int speed = 0;
 	
 	public Card(int x, int y, int id, GameObject parent) {
 		super(x, y, id, parent);
@@ -23,7 +27,7 @@ public class Card extends GameObject{
 		return x;
 	}
 	
-	public int geyY() {
+	public int getY() {
 		return y;
 	}
 	
@@ -34,12 +38,12 @@ public class Card extends GameObject{
 	}
 	
 	public void enlarge() {
-		((SpriteObject)gameObjects.get(0)).sclX = 1.5f;
-		((SpriteObject)gameObjects.get(0)).sclY = 1.5f;
+		((SpriteObject)gameObjects.get(0)).sclX = 2f;
+		((SpriteObject)gameObjects.get(0)).sclY = 2f;
 	}
 	
 	public void normalSize() {
-		((SpriteObject)gameObjects.get(0)).sclX = 1;
-		((SpriteObject)gameObjects.get(0)).sclY = 1;
+		((SpriteObject)gameObjects.get(0)).sclX = 1.5f;
+		((SpriteObject)gameObjects.get(0)).sclY = 1.5f;
 	}
 }

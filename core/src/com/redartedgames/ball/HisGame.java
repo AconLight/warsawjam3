@@ -16,7 +16,7 @@ public class HisGame extends Game{
 	public void create () {
 		gameScreen = new GameScreen_his(Consts.screenWidth, Consts.screenHeight);
 		Gdx.input.setInputProcessor(new InputHandler_his((GameWorld_his)gameScreen.getWorld()));
-		Gdx.gl.glClearColor(24f/256, 24f/256, 24f/256, 1);
+		Gdx.gl.glClearColor(24f/256, 24f/256, 24f/256, 1); 
 		
 	}
 

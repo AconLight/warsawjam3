@@ -7,6 +7,7 @@ import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.game_his.RenderManager;
 import com.redartedgames.ball.managers_his.CardsManager;
 import com.redartedgames.ball.myobjects_his.Card;
+import com.redartedgames.ball.myobjects_his.Field;
 
 public class CardsRenderer extends RenderManager {
 
@@ -19,14 +20,11 @@ public class CardsRenderer extends RenderManager {
 		cards = gameworld.cardsManager.getCards();
 	}
 	
-	public void render() {
-		batch.begin();
-		for(Card c : cards)
-			c.render(batch, 1, 0, 0);
-		batch.end();
+	public void update(float delta) {
+		gameworld.cardsManager.update(delta);
 	}
 	
-	public void update() {
+	public void render() {
 		batch.begin();
 		for(Card c : cards)
 			c.render(batch, 1, 0, 0);
