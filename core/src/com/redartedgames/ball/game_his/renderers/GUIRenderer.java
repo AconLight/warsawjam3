@@ -68,8 +68,8 @@ public class GUIRenderer extends RenderManager {
 		batch.begin();
 		batch.draw(b2, 1420,30);
 		batch.draw(b3, 1420,430);
-		//batch.draw(b4, 1420, 580);
-		//batch.draw(b1, 0, 0);
+		batch.draw(b4, 1420, 580);
+		batch.draw(b1, 0, 0);
 		batch.end();
 	}
 }
