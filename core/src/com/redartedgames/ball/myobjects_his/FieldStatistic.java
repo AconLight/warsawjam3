@@ -11,6 +11,7 @@ public class FieldStatistic {
 	public float migration;
 	public float affiliation;//przynale¿noœæ
 	public float birthrate = 0.05f;
+	public float wealth;
 
 	public float getbase_mig_mult(){
 		return base_mig_mult;
@@ -49,7 +50,7 @@ public class FieldStatistic {
 			break;
 		case mountain:
 			base_mig_mult = randomfromto(95,100,true);
-			base_cult_mult = randomfromto(0,1,true);
+			base_cult_mult = randomfromto(0,5,true);
 			population = randomfromto(0,1,false);
 			break;
 		default://to nigdy nie powinno wyst¹piæ
@@ -71,21 +72,21 @@ public class FieldStatistic {
 			return wyniczek;
 			
 	}
-	public void mod_base_mig()
-	{
-		
-	}
 	public void updateBefore(float delta, float vx, float vy) {
 		delta /=100;
+		wealth = (float) (Math.sqrt(population)/100f);
+		birthrate =1+ (1/(1+wealth*10));
+		
 		population += (population*birthrate*delta);
+		
 		migration = ((population-population*base_cult_mult)*base_mig_mult*(population/100))*(delta);
-		System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
+		//System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
 		population = population - migration;
 		for(int i=0; i<parent.fields.size();i++){
 		parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
-		System.out.println("Populacja po migracja " + population + " migracja = " + migration);
-		System.out.println("----------------------------------------------------------------");
+		//System.out.println("Populacja po migracja " + population + " migracja = " + migration);
+	//	System.out.println("----------------------------------------------------------------");
 	}
 
 }
