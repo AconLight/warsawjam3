@@ -51,6 +51,10 @@ public class CardsManager {
 		cards.add(pom);
 	}
 	
+	public void moveRight() {
+		
+	}
+	
 	public ArrayList<Card> getCards(){
 		return cards;
 	}
