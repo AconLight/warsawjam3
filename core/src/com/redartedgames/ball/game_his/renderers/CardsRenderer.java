@@ -16,7 +16,6 @@ public class CardsRenderer extends RenderManager {
 	public CardsRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		batch = new SpriteBatch();
-		//gameworld.cardsManager.
 		cards = gameworld.cardsManager.getCards();
 	}
 	
