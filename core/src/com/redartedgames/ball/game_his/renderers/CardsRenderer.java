@@ -16,12 +16,12 @@ public class CardsRenderer extends RenderManager {
 	public CardsRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		batch = new SpriteBatch();
-		cards = gameworld.cards.getCards();
+		cards = gameworld.cardsManager.getCards();
 	}
 	
 	public void render() {
 		batch.begin();
-		for(Card c : gameworld.cards.getCards())
+		for(Card c : cards)
 			c.render(batch, 1, 200, 200);
 		batch.end();
 	}

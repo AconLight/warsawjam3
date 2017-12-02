@@ -29,5 +29,9 @@ public class FieldManager {
 			field.updateBefore(0 ,0, delta);
 		}
 	}
+	
+	public ArrayList<Field> getFields(){
+		return land;
+	}
 
 }
