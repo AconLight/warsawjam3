@@ -29,7 +29,7 @@ public class HisGame extends Game{
 		gameScreen.update(Gdx.graphics.getDeltaTime());
 		gameScreen.render();
 		seq.update(Gdx.graphics.getDeltaTime());
-		seq.render();
+		//seq.render();
 	}
 	
 	@Override

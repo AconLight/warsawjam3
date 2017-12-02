@@ -44,8 +44,8 @@ public class Field extends GameObject{
 	}
 	
 	public boolean checkMouse(int x, int y, float r) {
-		return (x > position.x - r && x < position.x + r && 
-				y > position.y - r && y < position.y + r);
+		return (x > getGameObjects().get(0).getPosition().x - r && x < getGameObjects().get(0).getPosition().x + r && 
+				y > getGameObjects().get(0).getPosition().y - r && y < getGameObjects().get(0).getPosition().y + r);
 	}
 	
 	public void updateBefore(float delta, float vx, float vy) {
