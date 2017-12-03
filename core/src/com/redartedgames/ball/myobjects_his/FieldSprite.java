@@ -27,7 +27,7 @@ public class FieldSprite extends SpriteObject{
 	
 	public void updateBefore(float delta, float vx, float vy) { 
 		this.position.set(parent.getPosition());
-		mainScl = (float) ((Math.PI + Math.atan(statistic.population/10000-3))/Math.PI*2 + 0.1f);
+		mainScl = (float) ((Math.PI + Math.atan(statistic.population/2000-2))/Math.PI*2 + 0.1f);
 		//mainScl = (float) (Math.sqrt(statistic.population/100)+ 0.1f);
 		sclAcc = ((mainScl) - scl)*sclK;
 		sclVel += sclAcc*delta;
@@ -54,7 +54,7 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 		
 		
 		//batch.draw(regionList.get(frameNum), position.x - regionList.get(frameNum).getRegionWidth()/2,
-	batch.setColor(1, 1, 1, 0.3f);
+
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				if (!(i==1 && j==1))
@@ -66,7 +66,7 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 					sclX/10, sclY/10, alfa);
 			}
 		}
-		batch.setColor(1, 1, 1, 1f);
+		batch.setColor(1, 1, 1, ((Field)parent).statistic.affiliation/100.0f);
 		//position.y - regionList.get(frameNum).getRegionHeight()/2);
 		if (isVisible && regionList.size() != 0) {
 			if (renderIsNormal) {
@@ -82,5 +82,6 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 			//Gdx.app.log("rendered", "spriteobject");
 			
 		}
+		batch.setColor(1, 1, 1, 1);
 	}
 }

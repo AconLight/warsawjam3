@@ -34,10 +34,10 @@ public class FieldManager {
 				
 			} 
 		}
-		int k = 5;
+		int k = 15;
 		for (int i = 0; i < k; i++) {
 			for (int j = 0; j < k; j++) {
-				fields.add(new Field(i*200, j*200, i*5 + j, null));
+				fields.add(new Field((i-k/2)*200, (j-k/2)*200, i*5 + j, null));
 			}
 		}
 		for (int i = 0; i < k; i++) {
@@ -62,6 +62,7 @@ public class FieldManager {
 			}
 		}
 		
+		fields.get(k*k/2).statistic.affiliation = 100;
 		
 
 		for(int i=0;i<fields.size();i++){
@@ -98,7 +99,7 @@ public class FieldManager {
 	}
 	
 	public void update(float delta) {
-		
+		fields.get(15*15/2).statistic.affiliation = 100;
 		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);

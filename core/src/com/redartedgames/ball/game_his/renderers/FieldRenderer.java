@@ -2,7 +2,10 @@ package com.redartedgames.ball.game_his.renderers;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.game_his.RenderManager;
 import com.redartedgames.ball.managers_his.FieldManager;
@@ -13,8 +16,12 @@ public class FieldRenderer extends RenderManager {
 	private float i = 0;
 	private SpriteBatch batch;
 	private GameWorld_his world;
+	Texture bg;
+	TextureRegion bgr;
 	public FieldRenderer(GameWorld_his gameworld) {
 		super(gameworld);
+		bg = new Texture(Gdx.files.internal("data_his/backgroud_map.png"));
+		bgr = new TextureRegion(bg);
 		this.world = gameworld;
 		batch = new SpriteBatch();
 	}
@@ -22,6 +29,7 @@ public class FieldRenderer extends RenderManager {
 	public void render() {
 		//System.out.println("cam2: " + world.fieldManager.cam);
 		batch.begin();
+		batch.draw(bgr, -world.fieldManager.cam.x - 3000, -world.fieldManager.cam.y-3000);
 		for(Field f : world.fieldManager.getFields()) {
 
 			f.render(batch, 1, world.fieldManager.cam.x, world.fieldManager.cam.y);
