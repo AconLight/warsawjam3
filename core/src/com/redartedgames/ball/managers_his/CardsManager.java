@@ -115,6 +115,7 @@ public class CardsManager {
 	
 	public void cast() {
 		if(isUp && !isMoving && money>=cards.get(cardsQuantity/2).cost) {
+			cards.get(cardsQuantity/2).use();
 			money -= cards.get(cardsQuantity/2).cost;
 			isMoving = true;
 			isCasted = true;
