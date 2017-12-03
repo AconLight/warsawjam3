@@ -27,8 +27,8 @@ public class FieldSprite extends SpriteObject{
 	
 	public void updateBefore(float delta, float vx, float vy) { 
 		this.position.set(parent.getPosition());
-		//mainScl = (float) ((Math.PI + Math.atan(statistic.population/100.0 - 10))/Math.PI/4 + 0.5f);
-		mainScl = (float) (Math.sqrt(statistic.population/100)+ 0.1f);
+		mainScl = (float) ((Math.PI + Math.atan(statistic.population/10000-3))/Math.PI*2 + 0.1f);
+		//mainScl = (float) (Math.sqrt(statistic.population/100)+ 0.1f);
 		sclAcc = ((mainScl) - scl)*sclK;
 		sclVel += sclAcc*delta;
 		scl += sclVel*delta;
