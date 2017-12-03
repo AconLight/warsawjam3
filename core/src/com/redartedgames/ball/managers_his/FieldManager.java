@@ -98,8 +98,6 @@ public class FieldManager {
 	}
 	
 	public void update(float delta) {
-		
-		//if(!((x>410 && x<1010)&&(x>340 && x<740)));
 		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
