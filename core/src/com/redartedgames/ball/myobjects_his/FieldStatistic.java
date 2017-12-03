@@ -83,6 +83,7 @@ public class FieldStatistic {
 		birthrate += 100/(population/10+1)*delta;
 		if (birthrate < -10) birthrate = -10;
 		migration = (population-(population*base_cult_mult))*base_mig_mult*delta;
+		System.out.println(parent.fields.size());
 		for(int i=0; i<parent.fields.size();i++){
 			
 			parent.fields.get(i).statistic.wealth = (parent.fields.get(i).statistic.population*parent.fields.get(i).statistic.wealth + 
@@ -91,7 +92,7 @@ public class FieldStatistic {
 			parent.fields.get(i).statistic.birthrate = (parent.fields.get(i).statistic.population*parent.fields.get(i).statistic.birthrate + 
 					migration*birthrate)/(parent.fields.get(i).statistic.population+migration+1);
 			parent.fields.get(i).statistic.affiliation = ((parent.fields.get(i).statistic.population + 0.1f)*parent.fields.get(i).statistic.affiliation + 
-					migration*affiliation)/(parent.fields.get(i).statistic.population+migration + 0.1f);
+					migration*1000*affiliation)/(parent.fields.get(i).statistic.population+migration*1000 + 0.1f);
 			
 			
 			

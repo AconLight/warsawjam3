@@ -27,48 +27,48 @@ public class FieldManager {
 		fields = new ArrayList<Field>();
 		generateLand(2, 2);
 	}
-	
+	int k;
 	private void generateLand(int x, int y) {
 		for (int i = 0; i < y; i++) {
 			for (int j = 0; j < x; j++) {
 				
 			} 
 		}
-		int k = 15;
+		k = 15;
 		for (int i = 0; i < k; i++) {
 			for (int j = 0; j < k; j++) {
-				fields.add(new Field((i-k/2)*200, (j-k/2)*200, i*5 + j, null));
+				fields.add(new Field((i-k/2)*200, (j-k/2)*200, i*k + j, null));
 			}
 		}
 		for (int i = 0; i < k; i++) {
 			for (int j = 0; j < k; j++) {
 				if(i>0)
-				fields.get(i*5 + j).addField(fields.get((i-1)*k + j));
+				fields.get(i*k + j).addField(fields.get((i-1)*k + j));
 				if(i < k-1)
-				fields.get(i*5 + j).addField(fields.get((i+1)*k + j));
+				fields.get(i*k + j).addField(fields.get((i+1)*k + j));
 				if(i > 0 && j > 0)
-				fields.get(i*5 + j).addField(fields.get((i-1)*k + j-1));
+				fields.get(i*k + j).addField(fields.get((i-1)*k + j-1));
 				if(j > 0)
-				fields.get(i*5 + j).addField(fields.get((i)*k + j-1));
+				fields.get(i*k + j).addField(fields.get((i)*k + j-1));
 				if(i < k-1 && j > 0)
-				fields.get(i*5 + j).addField(fields.get((i+1)*k + j-1));
+				fields.get(i*k + j).addField(fields.get((i+1)*k + j-1));
 				if(i > 0 && j < k-1)
-				fields.get(i*5 + j).addField(fields.get((i-1)*k + j+1));
+				fields.get(i*k + j).addField(fields.get((i-1)*k + j+1));
 				if(j < k-1)
-				fields.get(i*5 + j).addField(fields.get((i)*k + j+1));
+				fields.get(i*k + j).addField(fields.get((i)*k + j+1));
 				if(i < k-1 && j < k-1)
-				fields.get(i*5 + j).addField(fields.get((i+1)*k + j+1));
+				fields.get(i*k + j).addField(fields.get((i+1)*k + j+1));
 			
 			}
 		}
 		
-		fields.get(k*k/2).statistic.affiliation = 100;
+		fields.get(k*k/2+k).statistic.affiliation = 100;
 		
 
 		for(int i=0;i<fields.size();i++){
 			for(int j=0;j<fields.size();j++){
-				if(j!=i && j - i < 1 && i - j > -1)
-				fields.get(i).addField(fields.get(j));
+				if(j!=i && j - i < 1 && i - j > -1);
+				//fields.get(i).addField(fields.get(j));
 			}
 		}
 
@@ -99,7 +99,7 @@ public class FieldManager {
 	}
 	
 	public void update(float delta) {
-		fields.get(15*15/2).statistic.affiliation = 100;
+		fields.get(k*k/2).statistic.affiliation = 100;
 		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
