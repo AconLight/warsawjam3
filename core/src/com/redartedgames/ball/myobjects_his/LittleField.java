@@ -41,7 +41,7 @@ public class LittleField extends SpriteObject{
 		super.updateBefore(delta, vx, vy);
 	}
 	public void updateAfter2(float delta, float vx, float vy) { 
-		super.updateAfter(delta, vx, vy);
+		//super.updateAfter(delta, vx, vy);
 		System.out.println("xi " + xi + ", yi " + yi);
 		this.position.set(parent.getPosition());
 		mainScl = (float) ((Math.PI + Math.atan(statistic.population/100.0 - 10))/Math.PI/4 + 0.5f);
