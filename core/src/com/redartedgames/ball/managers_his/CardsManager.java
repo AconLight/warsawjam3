@@ -1,6 +1,7 @@
 package com.redartedgames.ball.managers_his;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.game_his.GameWorld_his;
@@ -9,7 +10,8 @@ import com.redartedgames.ball.myobjects_his.Card;
 public class CardsManager {
 	
 	private int moveCounter = 0, speed = 0;
-	public int money = 30;
+	private int allCards = 13;
+	public int money = 3000;
 	private int iter = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
@@ -18,12 +20,14 @@ public class CardsManager {
 	private boolean isVisible = true;
 	private boolean isUp = true;
 	private boolean isCasted = false;
+	private Random rand;
 	
 	public CardsManager() {
+		rand = new Random();
 		cards = new ArrayList<Card>();
 		positions = new ArrayList<Vector2>();
 		for(int i = 0; i<cardsQuantity; i++)
-			cards.add(new Card(0, 0, i+1, null, 0.75f));
+			cards.add(new Card(0, 0, rand.nextInt(allCards)+1, null, 0.75f));
 		for(int i = 0; i<cardsQuantity; i++)
 			positions.add(new Vector2());
 		generateCardsPosition();
@@ -110,7 +114,7 @@ public class CardsManager {
 	}
 	
 	public void cast() {
-		if(isUp && !isMoving) {
+		if(isUp && !isMoving && money>=cards.get(cardsQuantity/2).cost) {
 			money -= cards.get(cardsQuantity/2).cost;
 			isMoving = true;
 			isCasted = true;
@@ -142,6 +146,7 @@ public class CardsManager {
 						if(iter==(cardsQuantity/2)) {
 							setRotation();
 							c.setPosition((int)positions.get(iter).x, (int)positions.get(iter).y);
+							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 0.75f));
 							c.setScale(1f);
 						}
 						if(iter==(cardsQuantity-1)) isCasted = false;

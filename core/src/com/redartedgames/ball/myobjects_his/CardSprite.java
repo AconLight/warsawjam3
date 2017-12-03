@@ -40,6 +40,18 @@ public class CardSprite extends SpriteObject{
 			case 9:
 				addTexture("data_his/cards/card3.png");
 				break;
+			case 10:
+				addTexture("data_his/cards/card3.png");
+				break;
+			case 11:
+				addTexture("data_his/cards/card1.png");
+				break;
+			case 12:
+				addTexture("data_his/cards/card2.png");
+				break;
+			case 13:
+				addTexture("data_his/cards/card3.png");
+				break;
 		}
 	}		
 }
