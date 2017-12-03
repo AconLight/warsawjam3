@@ -10,7 +10,7 @@ import com.redartedgames.ball.myobjects_his.Card;
 public class CardsManager {
 	
 	private int moveCounter = 0, speed = 0;
-	private int allCards = 13;
+	private int allCards = 16;
 	public int money = 3000;
 	private int iter = 0;
 	private ArrayList<Card> cards;
@@ -115,6 +115,7 @@ public class CardsManager {
 	
 	public void cast() {
 		if(isUp && !isMoving && money>=cards.get(cardsQuantity/2).cost) {
+			cards.get(cardsQuantity/2).use();
 			money -= cards.get(cardsQuantity/2).cost;
 			isMoving = true;
 			isCasted = true;
@@ -146,7 +147,7 @@ public class CardsManager {
 						if(iter==(cardsQuantity/2)) {
 							setRotation();
 							c.setPosition((int)positions.get(iter).x, (int)positions.get(iter).y);
-							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 0.75f));
+							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 1.f));
 							c.setScale(1f);
 						}
 						if(iter==(cardsQuantity-1)) isCasted = false;
