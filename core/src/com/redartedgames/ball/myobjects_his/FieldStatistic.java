@@ -76,10 +76,10 @@ public class FieldStatistic {
 		delta /=100;
 		population += (birthrate)*population*delta ;
 		if (population < 10) population = 10;
-		wealth += ((population-1000)*population/50 - 1)*delta;
+		wealth += ((population-1000)*population/60 - 1)*delta;
 		wealth += base_cult_mult*200*delta;
 		if (wealth > 1000) wealth = 1000;
-		birthrate += (-wealth + 100)*delta;
+		birthrate += (-wealth*2.5f + 100)*delta;
 		population += 10/(population/10+1)*delta;
 		birthrate += 100/(population/10+1)*delta;
 		if (birthrate < -10) birthrate = -10;

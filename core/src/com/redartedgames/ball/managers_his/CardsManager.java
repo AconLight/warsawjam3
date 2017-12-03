@@ -13,7 +13,7 @@ public class CardsManager {
 	private int moveCounter = 0, speed = 0;
 	private int allCards = 16;
 	public int money = 100;
-	public float money2 = 100f;
+	public float money2 = 200f;
 	private int iter = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
@@ -144,7 +144,7 @@ public class CardsManager {
 			money2 += f.statistic.population * f.statistic.affiliation*(f.statistic.wealth-80)/8000000.0f*delta;
 		}
 		money = (int) money2;
-		if(money<-100) gameworld.isgameover = true;
+		if(money<0) gameworld.isgameover = true;
 		if(isMoving) {
 			iter = 0;
 			for(Card c : cards) {
