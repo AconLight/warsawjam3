@@ -6,12 +6,14 @@ import java.util.Random;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.myobjects_his.Card;
+import com.redartedgames.ball.myobjects_his.Field;
 
 public class CardsManager {
 	
 	private int moveCounter = 0, speed = 0;
 	private int allCards = 16;
-	public int money = 3000;
+	public int money = 100;
+	float money2 = 100f;
 	private int iter = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
@@ -116,7 +118,7 @@ public class CardsManager {
 	}
 	
 	public void cast() {
-		if(isUp && !isMoving && money>=cards.get(cardsQuantity/2).cost) {
+		if(isUp && !isMoving && money>=cards.get(cardsQuantity/2).cost && gameworld.fieldManager.currentField != null) {
 			cards.get(cardsQuantity/2).use();
 			money -= cards.get(cardsQuantity/2).cost;
 			isMoving = true;
@@ -136,6 +138,11 @@ public class CardsManager {
 	}
 	
 	public void update(float delta) {
+		for (Field f: gameworld.fieldManager.getFields()) {
+			if (f.statistic.affiliation > 10)
+			money2 += f.statistic.population * f.statistic.affiliation*(f.statistic.wealth-20)/10000000.0f*delta;
+		}
+		money = (int) money2;
 		if(isMoving) {
 			iter = 0;
 			for(Card c : cards) {
