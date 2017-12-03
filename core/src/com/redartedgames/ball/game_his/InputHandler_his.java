@@ -44,8 +44,13 @@ public class InputHandler_his implements InputProcessor{
 		case Keys.SPACE:
 			world.cardsManager.cast();
 			break;
-		
+		case Keys.ENTER:
+			//world.isRestart = true;
+			break;
+	
 		}
+		
+		
 		return false;
 	}
 	@Override
