@@ -9,7 +9,7 @@ public class FieldStatistic {
 	public float population;
 	public Field parent;
 	public float migration;
-	public float affiliation;//przynale¿noœæ
+	public float affiliation;//przynaleï¿½noï¿½ï¿½
 	public float birthrate = 0.05f;
 	public float wealth;
 
@@ -53,7 +53,7 @@ public class FieldStatistic {
 			base_cult_mult = randomfromto(0,5,true);
 			population = randomfromto(0,1,false);
 			break;
-		default://to nigdy nie powinno wyst¹piæ
+		default://to nigdy nie powinno wystï¿½piï¿½
 			base_mig_mult = randomfromto(100,101,true);
 			base_cult_mult = randomfromto(0,1,true);
 			population = randomfromto(0,1,false);
@@ -74,19 +74,20 @@ public class FieldStatistic {
 	}
 	public void updateBefore(float delta, float vx, float vy) {
 		delta /=100;
-		wealth = (float) (Math.sqrt(population)/100f);
-		birthrate =1+ (1/(1+wealth*10));
-		
-		population += (population*birthrate*delta);
-		
-		migration = ((population-population*base_cult_mult)*base_mig_mult*(population/100))*(delta);
-		//System.out.println("Populacja przed migracja " + population + " migracja = " + migration);
-		population = population - migration;
+		population += birthrate*population*delta;
+		if (population < 10) population = 10;
+		wealth += ((population-1000)*population/10 - 1)*delta;
+		if (wealth > 1000) wealth = 1000;
+		birthrate += (-wealth + 100)*delta;
+		population += 10/(population/10+1)*delta;
+		birthrate += 100/(population/10+1)*delta;
+		if (birthrate < -10) birthrate = -10;
+		migration = (population-(population*base_cult_mult))*base_mig_mult*delta;
 		for(int i=0; i<parent.fields.size();i++){
-		parent.fields.get(i).statistic.population += migration/parent.fields.size();
+			parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
-		//System.out.println("Populacja po migracja " + population + " migracja = " + migration);
-	//	System.out.println("----------------------------------------------------------------");
+		
+		
 	}
 
 }
