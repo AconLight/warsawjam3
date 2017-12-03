@@ -16,7 +16,7 @@ public class Card extends GameObject{
 	public int desiredY;
 	public float desiredScale;
 	private float scale;
-	private int cost;
+	public int cost;
 	
 	public Card(int x, int y, int id, GameObject parent, float scale) {
 		super(x, y, id, parent);
@@ -25,30 +25,39 @@ public class Card extends GameObject{
 		this.id = id;
 		this.scale = scale;
 		addSprite(new CardSprite(x, y, this, 0, id));
+		setCost();
 		setScale(scale); 
 	}
 	
-	public void use() {
+	public void setCost() {
 		switch(id) {
 			default:
 			case 1:
 				cost = 10;
 				break;
 			case 2:
+				cost = 8;
 				break;
 			case 3:
+				cost = 6;
 				break;
 			case 4:
+				cost = 8;
 				break;
 			case 5:
+				cost = 4;
 				break;
 			case 6:
+				cost = 8;
 				break;
 			case 7:
+				cost = 12;
 				break;
 			case 8:
+				cost = 6;
 				break;
 			case 9:
+				cost = 8;
 				break;
 		}
 	}

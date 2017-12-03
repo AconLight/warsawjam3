@@ -27,6 +27,11 @@ public class CardsRenderer extends RenderManager {
 		batch.begin();
 		for(Card c : cards) {
 			c.render(batch, 1, 0, 0);
+			if(c.cost>gameworld.cardsManager.money) {
+				batch.setColor(1, 0, 0, 0.6f);
+				c.render(batch, 1, 0, 0);
+				batch.setColor(1, 1, 1, 1);
+			}
 		}	
 		batch.end();
 	}

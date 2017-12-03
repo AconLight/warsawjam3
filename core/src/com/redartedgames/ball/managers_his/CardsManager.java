@@ -3,11 +3,13 @@ package com.redartedgames.ball.managers_his;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
+import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.myobjects_his.Card;
 
 public class CardsManager {
 	
 	private int moveCounter = 0, speed = 0;
+	public int money = 30;
 	private int iter = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
@@ -99,7 +101,7 @@ public class CardsManager {
 		moveCounter = 10;
 		speed = moveCounter;
 		for(Card c : cards) {			
-			c.desiredY = 400;
+			c.desiredY = 388;
 			c.desiredX = 0;
 		}
 		isVisible = true;
@@ -109,6 +111,7 @@ public class CardsManager {
 	
 	public void cast() {
 		if(isUp && !isMoving) {
+			money -= cards.get(cardsQuantity/2).cost;
 			isMoving = true;
 			isCasted = true;
 			moveCounter = 40;
