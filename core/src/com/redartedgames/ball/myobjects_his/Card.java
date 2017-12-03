@@ -2,6 +2,7 @@ package com.redartedgames.ball.myobjects_his;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.math.Vector2;
+import com.redartedgames.ball.game_his.GameWorld_his;
 import com.redartedgames.ball.objects.GameObject;
 
 import com.redartedgames.ball.objects.SpriteObject;
@@ -17,13 +18,15 @@ public class Card extends GameObject{
 	public float desiredScale;
 	private float scale;
 	public int cost;
+	private GameWorld_his gameworld;
 	
-	public Card(int x, int y, int id, GameObject parent, float scale) {
+	public Card(int x, int y, int id, GameObject parent, float scale, GameWorld_his gameworld) {
 		super(x, y, id, parent);
 		this.x = x;
 		this.y = y;
 		this.id = id;
 		this.scale = scale;
+		this.gameworld = gameworld;
 		addSprite(new CardSprite(x, y, this, 0, id));
 		setCost();
 		setScale(scale); 
