@@ -21,13 +21,15 @@ public class CardsManager {
 	private boolean isUp = true;
 	private boolean isCasted = false;
 	private Random rand;
+	private GameWorld_his gameworld;
 	
-	public CardsManager() {
+	public CardsManager(GameWorld_his gameworld) {
 		rand = new Random();
 		cards = new ArrayList<Card>();
 		positions = new ArrayList<Vector2>();
+		this.gameworld = gameworld;
 		for(int i = 0; i<cardsQuantity; i++)
-			cards.add(new Card(0, 0, rand.nextInt(allCards)+1, null, 0.75f));
+			cards.add(new Card(0, 0, rand.nextInt(allCards)+1, null, 0.75f, gameworld));
 		for(int i = 0; i<cardsQuantity; i++)
 			positions.add(new Vector2());
 		generateCardsPosition();
@@ -147,7 +149,7 @@ public class CardsManager {
 						if(iter==(cardsQuantity/2)) {
 							setRotation();
 							c.setPosition((int)positions.get(iter).x, (int)positions.get(iter).y);
-							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 1.f));
+							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 1.f, gameworld));
 							c.setScale(1f);
 						}
 						if(iter==(cardsQuantity-1)) isCasted = false;

@@ -12,7 +12,7 @@ public class GameWorld_his extends MyWorld{
 	
 	public GameWorld_his(OrthographicCamera cam) {
 		super(cam);
-	    cardsManager = new CardsManager(); 
+	    cardsManager = new CardsManager(this); 
 	    fieldManager = new FieldManager(); 
 	}
 	
