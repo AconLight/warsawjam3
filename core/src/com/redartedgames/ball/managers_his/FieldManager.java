@@ -23,7 +23,7 @@ public class FieldManager {
 	public FieldManager() {
 		i2 += 1;
 		id = i2;
-		cam = new Vector2(0, 0);
+		cam = new Vector2(-600, -600);
 		fields = new ArrayList<Field>();
 		generateLand(2, 2);
 	}
@@ -102,9 +102,9 @@ public class FieldManager {
 		fields.get(k*k/2).statistic.affiliation = 100;
 		if(!(((camVelX>1)&&(camVelX<-1))&&(camVelY>1)&&(camVelY<-1)))cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		if(cam.x<-1480)cam.x = -1480;
-		if(cam.x>300)cam.x = 300;
+		if(cam.x>-130)cam.x = -130;
 		if(cam.y<-1480)cam.y = -1480;
-		if(cam.y>160)cam.y = 160;
+		if(cam.y>-270)cam.y = -270;
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
 			field.updateAfter(0 ,0, delta);
