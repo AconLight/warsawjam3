@@ -90,7 +90,8 @@ public class Card extends GameObject{
 		switch(id) {
 			default:
 			case 1:
-				cost = 11;
+				//gameworld.fieldManager.currentField;
+				
 				break;
 			case 2:
 				cost = 14;
