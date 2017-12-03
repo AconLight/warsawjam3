@@ -18,6 +18,7 @@ public class StatRenderer extends RenderManager {
 	private String wartosc5="0";
 	private String NameString="";
 	
+	private Text Money;
 	private Text FieldName;
 	private Text StatName;
 	private Text StatBase;
@@ -31,26 +32,28 @@ public class StatRenderer extends RenderManager {
 	private Text Stat4ValueBase;
 	private Text Stat5Text;
 	private Text Stat5ValueBase;
+	int i = -1;
 		
 	public StatRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		stats = new ArrayList<Text>();
 		batch = new SpriteBatch();
 		
-		
-		FieldName = new Text(1580,510,null,0,2,"NawzaPola");
-		StatName = new Text(1440,325,null,1,1,"Statystyka:");
-		StatBase = new Text(1680,325,null,2,1,"Mnoï¿½nik:");
-		MigrationText = new Text(1440,280,null,3,0,"Populacja");
-		MigrationValueBase = new Text(1685,280,null,4,0,"wartosc");
-		PrzynaleznoscText = new Text(1440,245,null,5,0,"Migracja");
-		PrzynaleznoscBase = new Text(1685,245,null,6,0,"123");
-		CultureText = new Text(1440,210,null,7,0,"PrzynaleÅ¼noÅ›Ä‡");
-		CultureValueBase = new Text(1685,210,null,8,0,"123");
-		Stat4Text = new Text(1440,175,null,9,0,"Kultura_multiper");
-		Stat4ValueBase = new Text(1685,175,null,10,0,"123");
-		Stat5Text = new Text(1440,140,null,11,0,"Stat5");
-		Stat5ValueBase = new Text(1685,140,null,12,0,"123");
+		Money = new Text(1580,580,null,0,2,"Pieni¹dze");
+		FieldName = new Text(1580,510,null,1,2,"NawzaPola");
+		StatName = new Text(1440,325,null,2,1,"Statystyka:");
+		StatBase = new Text(1680,325,null,3,1,"Mnoï¿½nik:");
+		MigrationText = new Text(1440,280,null,4,0,"Populacja");
+		MigrationValueBase = new Text(1685,280,null,5,0,"wartosc");
+		PrzynaleznoscText = new Text(1440,245,null,6,0,"Migracja");
+		PrzynaleznoscBase = new Text(1685,245,null,7,0,"123");
+		CultureText = new Text(1440,210,null,8,0,"PrzynaleÅ¼noÅ›Ä‡");
+		CultureValueBase = new Text(1685,210,null,9,0,"123");
+		Stat4Text = new Text(1440,175,null,10,0,"Kultura_multiper");
+		Stat4ValueBase = new Text(1685,175,null,11,0,"123");
+		Stat5Text = new Text(1440,140,null,12,0,"Stat5");
+		Stat5ValueBase = new Text(1685,140,null,13,0,"123");
+		stats.add(Money);
 		stats.add(FieldName);
 		stats.add(StatName);
 		stats.add(StatBase);
@@ -108,13 +111,13 @@ public class StatRenderer extends RenderManager {
 			 		NameString = "Miasto";
 			 		break;
 			 	case village:
-			 		NameString = "WieÅ›";
+			 		NameString = "Wieœ›";
 			 		break;
 			 	case hill:
-			 		NameString = "WzgÃ³rek";
+			 		NameString = "Wzgórek";
 			 		break;
 			 	case mountain:
-			 		NameString = "GÃ³ra";
+			 		NameString = "Góra";
 			 		break;
 			 	case meadow:
 			 		NameString = "Trawnik";
