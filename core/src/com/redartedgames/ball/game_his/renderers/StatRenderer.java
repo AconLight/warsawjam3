@@ -12,10 +12,15 @@ public class StatRenderer extends RenderManager {
 	private ArrayList<Text> stats;
 	private SpriteBatch batch;
 	private String PopulacjaWartosc="";
+	private String PopulacjaWartosc2="";
 	private String PrzyrostWartosc="";
+	private String PrzyrostWartosc2="";
 	private String ZamoznoscWartosc="";
+	private String ZamoznoscWartosc2="";
 	private String PrzynaleznoscWartosc="";
+	private String PrzynaleznoscWartosc2="";
 	private String Migracjawartosc="";
+	private String Migracjawartosc2="";
 	private String NameString="";
 	
 	private Text Money;
@@ -39,17 +44,17 @@ public class StatRenderer extends RenderManager {
 		stats = new ArrayList<Text>();
 		batch = new SpriteBatch();
 		
-		Money = new Text(1450,510,null,0,2,"Pieni¹dze:");
+		Money = new Text(1450,510,null,0,2,"Pieniï¿½dze:");
 		FieldName = new Text(1575,365,null,1,1,"NawzaPola");
 		StatName = new Text(1460,310,null,2,1,"Statystyka:");
-		StatBase = new Text(1705,310,null,3,1,"Wartoœæ:");
+		StatBase = new Text(1705,310,null,3,1,"Wartoï¿½ï¿½:");
 		PopulationText = new Text(1460,250,null,4,0,"Populacja");
 		PopulationValue = new Text(1705,250,null,5,0,"123");
 		BirthrateText = new Text(1460,210,null,6,0,"Przyrost");
 		BirthrateValue = new Text(1705,210,null,7,0,"123");
-		WealthText = new Text(1460,170,null,8,0,"Zamo¿noœæ");
+		WealthText = new Text(1460,170,null,8,0,"Zamoï¿½noï¿½ï¿½");
 		WealthValue = new Text(1705,170,null,9,0,"123");
-		AffiliationText = new Text(1460,130,null,10,0,"Przynale¿noœæ");
+		AffiliationText = new Text(1460,130,null,10,0,"Przynaleï¿½noï¿½ï¿½");
 		AffiliationValue = new Text(1705,130,null,11,0,"123");
 		AmountMoney = new Text(1740,510,null,12,2,"123");
 		MigrationText = new Text(1460,90,null,13,0,"Migracja");
@@ -80,31 +85,41 @@ public class StatRenderer extends RenderManager {
 	
 	public void update(float delta) {
 		super.update(delta);
+		PopulacjaWartosc2="";
+		PrzyrostWartosc2="";
+		ZamoznoscWartosc2="";
+		PrzynaleznoscWartosc2="";
+		Migracjawartosc2="";
 		stats.get(12).txt = Integer.toString((int) gameworld.cardsManager.money2);
 		if (gameworld.fieldManager.currentField != null) {
 			PopulacjaWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.population);
-			} else PopulacjaWartosc = "";
-		stats.get(5).txt = PopulacjaWartosc;
+			for (int dupa=0;dupa<6 && dupa<PopulacjaWartosc.length();dupa++) PopulacjaWartosc2+=PopulacjaWartosc.charAt(dupa);
+			} else PopulacjaWartosc2 = "";
+		stats.get(5).txt = PopulacjaWartosc2;
 		
 		if (gameworld.fieldManager.currentField != null) {
 			PrzyrostWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.birthrate);
-			} else PrzyrostWartosc = "";
-		stats.get(7).txt = PrzyrostWartosc;
+			for (int i=0;i<5 && i<PrzyrostWartosc.length();i++) PrzyrostWartosc2+=PrzyrostWartosc.charAt(i);
+			} else PrzyrostWartosc2 = "";
+		stats.get(7).txt = PrzyrostWartosc2;
 		
 		if (gameworld.fieldManager.currentField != null) {
 			ZamoznoscWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.wealth);
-			} else ZamoznoscWartosc = "";
-		stats.get(9).txt = ZamoznoscWartosc;
+			for (int i=0;i<5 && i<ZamoznoscWartosc.length();i++) ZamoznoscWartosc2+=ZamoznoscWartosc.charAt(i);
+			} else ZamoznoscWartosc2 = "";
+		stats.get(9).txt = ZamoznoscWartosc2;
 		
 		if (gameworld.fieldManager.currentField != null) {
 			PrzynaleznoscWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.affiliation);
-			} else PrzynaleznoscWartosc = "";
-		stats.get(11).txt = PrzynaleznoscWartosc;
+			for (int i=0;i<3 && i<PrzynaleznoscWartosc.length();i++) PrzynaleznoscWartosc2+=PrzynaleznoscWartosc.charAt(i);
+			} else PrzynaleznoscWartosc2 = "";
+		stats.get(11).txt = PrzynaleznoscWartosc2;
 		
 		if (gameworld.fieldManager.currentField != null) {
 			Migracjawartosc = Float.toString(gameworld.fieldManager.currentField.statistic.migration);
-			} else Migracjawartosc = "";
-		stats.get(14).txt = Migracjawartosc;
+			for (int i=0;i<5 && i<Migracjawartosc.length();i++) Migracjawartosc2+=Migracjawartosc.charAt(i);
+			} else Migracjawartosc2 = "";
+		stats.get(14).txt = Migracjawartosc2;
 		
 		if (gameworld.fieldManager.currentField != null) {
 			 switch(gameworld.fieldManager.currentField.fieldType){
@@ -112,16 +127,16 @@ public class StatRenderer extends RenderManager {
 			 		NameString = "Miasto";
 			 		break;
 			 	case village:
-			 		NameString = "Wieœ";
+			 		NameString = "Wieï¿½";
 			 		break;
 			 	case hill:
-			 		NameString = "Wzgórze";
+			 		NameString = "Wzgï¿½rze";
 			 		break;
 			 	case mountain:
-			 		NameString = "Góra";
+			 		NameString = "Gï¿½ra";
 			 		break;
 			 	case meadow:
-			 		NameString = "£¹ka";
+			 		NameString = "ï¿½ï¿½ka";
 			 		break;	
 			 	default:
 			 		NameString = "";
