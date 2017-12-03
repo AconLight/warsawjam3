@@ -11,6 +11,8 @@ public class GameWorld_his extends MyWorld{
 	
 	public CardsManager cardsManager; 
 	public FieldManager fieldManager;
+	public boolean  isgameover;
+	public boolean isRestart;
 	Music m = Gdx.audio.newMusic(Gdx.files.internal("data_his/audio/game1.mp3"));
 	Music m2 = Gdx.audio.newMusic(Gdx.files.internal("data_his/audio/game2.mp3"));
 	Music m3 = Gdx.audio.newMusic(Gdx.files.internal("data_his/audio/game2.mp3"));
@@ -18,7 +20,8 @@ public class GameWorld_his extends MyWorld{
 		super(cam);
 		m.setVolume(0.1f);
 		m.play();
-		
+		isRestart = false;
+		isgameover = false;
 	    cardsManager = new CardsManager(this); 
 	    fieldManager = new FieldManager(); 
 	}

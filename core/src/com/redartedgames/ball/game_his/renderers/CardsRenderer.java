@@ -20,6 +20,7 @@ public class CardsRenderer extends RenderManager {
 	}
 	
 	public void update(float delta) {
+		super.update(delta);
 		gameworld.cardsManager.update(delta);
 	}
 	

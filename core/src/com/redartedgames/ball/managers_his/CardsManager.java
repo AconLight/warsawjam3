@@ -138,11 +138,13 @@ public class CardsManager {
 	}
 	
 	public void update(float delta) {
+		if (gameworld.isgameover) delta = 0;
 		for (Field f: gameworld.fieldManager.getFields()) {
-			if (f.statistic.affiliation > 10)
+			if (f.statistic.affiliation > 20)
 			money2 += f.statistic.population * f.statistic.affiliation*(f.statistic.wealth-80)/8000000.0f*delta;
 		}
 		money = (int) money2;
+		if(money<-100) gameworld.isgameover = true;
 		if(isMoving) {
 			iter = 0;
 			for(Card c : cards) {

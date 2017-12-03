@@ -11,6 +11,6 @@ public class RenderManager {
 		
 	}
 	public void update(float delta) {
-				
+				if (gameworld.isgameover) delta = 0;
 	}
 }

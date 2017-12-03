@@ -19,6 +19,11 @@ public class GameScreen_his extends MyScreen{
 		super.update(delta);
 		gamerenderer.render();
 		gamerenderer.update(delta);
+		if (((GameWorld_his) world).isRestart == true) {
+			world = new GameWorld_his(camera);
+			screenRenderer = new ScreenRenderer(world, camera);
+			gamerenderer = new GameRenderer_his((GameWorld_his) world);
+		}
 	}
 
 }
