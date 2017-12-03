@@ -80,7 +80,7 @@ public class StatRenderer extends RenderManager {
 	
 	public void update(float delta) {
 		super.update(delta);
-		stats.get(12).txt = Integer.toString(gameworld.cardsManager.money);
+		stats.get(12).txt = Integer.toString((int) gameworld.cardsManager.money2);
 		if (gameworld.fieldManager.currentField != null) {
 			PopulacjaWartosc = Float.toString(gameworld.fieldManager.currentField.statistic.population);
 			} else PopulacjaWartosc = "";

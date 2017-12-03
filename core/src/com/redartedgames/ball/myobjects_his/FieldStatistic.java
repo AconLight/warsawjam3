@@ -77,6 +77,7 @@ public class FieldStatistic {
 		population += birthrate*population*delta;
 		if (population < 10) population = 10;
 		wealth += ((population-1000)*population/10 - 1)*delta;
+		wealth += base_cult_mult*200*delta;
 		if (wealth > 1000) wealth = 1000;
 		birthrate += (-wealth + 100)*delta;
 		population += 10/(population/10+1)*delta;
@@ -103,6 +104,7 @@ public class FieldStatistic {
 		else affiliation -= 5*delta;
 		
 		if (affiliation > 100) affiliation = 100;
+		if (affiliation < 0) affiliation = 0;
 		
 	}
 
