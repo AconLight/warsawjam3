@@ -9,7 +9,7 @@ public class FieldStatistic {
 	public float population;
 	public Field parent;
 	public float migration;
-	public float affiliation;//przynale�no��
+	public float affiliation = 10;//przynale�no��
 	public float birthrate = 0.05f;
 	public float wealth;
 
@@ -84,9 +84,21 @@ public class FieldStatistic {
 		if (birthrate < -10) birthrate = -10;
 		migration = (population-(population*base_cult_mult))*base_mig_mult*delta;
 		for(int i=0; i<parent.fields.size();i++){
+			
+			parent.fields.get(i).statistic.wealth = (parent.fields.get(i).statistic.population*parent.fields.get(i).statistic.wealth + 
+					migration*wealth)/(parent.fields.get(i).statistic.population+migration+1);
+			
+			parent.fields.get(i).statistic.birthrate = (parent.fields.get(i).statistic.population*parent.fields.get(i).statistic.birthrate + 
+					migration*birthrate)/(parent.fields.get(i).statistic.population+migration+1);
+			parent.fields.get(i).statistic.affiliation = ((parent.fields.get(i).statistic.population + 0.1f)*parent.fields.get(i).statistic.affiliation + 
+					migration*affiliation)/(parent.fields.get(i).statistic.population+migration + 0.1f);
+			
+			
+			
 			parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
 		
+		//if (affiliation > 100) affiliation = 100;
 		
 	}
 
