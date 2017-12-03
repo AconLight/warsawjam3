@@ -146,7 +146,7 @@ public class CardsManager {
 						if(iter==(cardsQuantity/2)) {
 							setRotation();
 							c.setPosition((int)positions.get(iter).x, (int)positions.get(iter).y);
-							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 0.75f));
+							cards.set(cardsQuantity/2, new Card((int)positions.get(iter).x, (int)positions.get(iter).y, rand.nextInt(allCards)+1, null, 1.f));
 							c.setScale(1f);
 						}
 						if(iter==(cardsQuantity-1)) isCasted = false;
