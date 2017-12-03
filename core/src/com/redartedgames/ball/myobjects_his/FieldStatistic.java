@@ -92,14 +92,17 @@ public class FieldStatistic {
 			parent.fields.get(i).statistic.birthrate = (parent.fields.get(i).statistic.population*parent.fields.get(i).statistic.birthrate + 
 					migration*birthrate)/(parent.fields.get(i).statistic.population+migration+1);
 			parent.fields.get(i).statistic.affiliation = ((parent.fields.get(i).statistic.population + 0.1f)*parent.fields.get(i).statistic.affiliation + 
-					migration*1000*affiliation)/(parent.fields.get(i).statistic.population+migration*1000 + 0.1f);
+					migration*affiliation)/(parent.fields.get(i).statistic.population+migration + 0.1f);
 			
 			
 			
 			parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
 		
-		//if (affiliation > 100) affiliation = 100;
+		if (affiliation > 80) affiliation += 50*delta;
+		else affiliation -= 5*delta;
+		
+		if (affiliation > 100) affiliation = 100;
 		
 	}
 
