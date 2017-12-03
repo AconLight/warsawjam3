@@ -133,7 +133,7 @@ public class Card extends GameObject{
 				migration = 3;
 				affliction = 9;
 				kurwtura = 4;
-				sound = Gdx.audio.newSound(Gdx.files.internal("data_his/audio/voice/rande.mp3"));
+				sound = Gdx.audio.newSound(Gdx.files.internal("data_his/audio/voice/rand.mp3"));
 				break;
 			case 13:
 				cost = 10;
