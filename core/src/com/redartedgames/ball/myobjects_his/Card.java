@@ -1,5 +1,6 @@
 package com.redartedgames.ball.myobjects_his;
 
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.math.Vector2;
 import com.redartedgames.ball.objects.GameObject;
 
@@ -15,6 +16,7 @@ public class Card extends GameObject{
 	public int desiredY;
 	public float desiredScale;
 	private float scale;
+	private int cost;
 	
 	public Card(int x, int y, int id, GameObject parent, float scale) {
 		super(x, y, id, parent);
@@ -30,6 +32,7 @@ public class Card extends GameObject{
 		switch(id) {
 			default:
 			case 1:
+				cost = 10;
 				break;
 			case 2:
 				break;
@@ -61,7 +64,7 @@ public class Card extends GameObject{
 		((SpriteObject)gameObjects.get(0)).sclX = scale;
 		((SpriteObject)gameObjects.get(0)).sclY = scale;
 	}
-	
+		
 	public float getScale() { return scale; }
 	
 	public int getX() { return x; }
