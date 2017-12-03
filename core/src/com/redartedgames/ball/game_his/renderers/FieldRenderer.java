@@ -18,10 +18,14 @@ public class FieldRenderer extends RenderManager {
 	private GameWorld_his world;
 	Texture bg;
 	TextureRegion bgr;
+	Texture bg2;
+	TextureRegion bgr2;
 	public FieldRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		bg = new Texture(Gdx.files.internal("data_his/backgroud_map.png"));
 		bgr = new TextureRegion(bg); 
+		bg2 = new Texture(Gdx.files.internal("data_his/gejover.png"));
+		bgr2 = new TextureRegion(bg2); 
 		this.world = gameworld;
 		batch = new SpriteBatch();
 	}
@@ -35,10 +39,12 @@ public class FieldRenderer extends RenderManager {
 			f.render(batch, 1, world.fieldManager.cam.x, world.fieldManager.cam.y);
 
 		}
+		if (gameworld.isgameover) batch.draw(bgr2, 0, 0);
 		batch.end();
 	}
 	
 	public void update(float delta) {
+		super.update(delta);
 		world.fieldManager.update(delta);
 		for(Field f : world.fieldManager.getFields()) {
 			f.updateBefore(delta,0,0);

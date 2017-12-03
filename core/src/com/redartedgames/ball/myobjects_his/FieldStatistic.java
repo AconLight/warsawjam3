@@ -74,10 +74,10 @@ public class FieldStatistic {
 	}
 	public void updateBefore(float delta, float vx, float vy) {
 		delta /=100;
-		population += (birthrate+base_cult_mult)*population*delta ;
+		population += (birthrate)*population*delta ;
 		if (population < 10) population = 10;
-		wealth += ((population-1000)*population/10 - 1)*delta;
-		wealth += base_cult_mult*2*delta;
+		wealth += ((population-1000)*population/50 - 1)*delta;
+		wealth += base_cult_mult*200*delta;
 		if (wealth > 1000) wealth = 1000;
 		birthrate += (-wealth + 100)*delta;
 		population += 10/(population/10+1)*delta;
