@@ -74,9 +74,10 @@ public class FieldStatistic {
 	}
 	public void updateBefore(float delta, float vx, float vy) {
 		delta /=100;
-		population += birthrate*population*delta;
+		population += (birthrate+base_cult_mult)*population*delta ;
 		if (population < 10) population = 10;
 		wealth += ((population-1000)*population/10 - 1)*delta;
+		wealth += base_cult_mult*2*delta;
 		if (wealth > 1000) wealth = 1000;
 		birthrate += (-wealth + 100)*delta;
 		population += 10/(population/10+1)*delta;
@@ -99,10 +100,11 @@ public class FieldStatistic {
 			parent.fields.get(i).statistic.population += migration/parent.fields.size();
 		}
 		
-		if (affiliation > 80) affiliation += 50*delta;
-		else affiliation -= 5*delta;
+		if (affiliation > 70) affiliation += 100*delta;
+		else affiliation -= 0.1f*delta;
 		
 		if (affiliation > 100) affiliation = 100;
+		if (affiliation < 10) affiliation = 10;
 		
 	}
 

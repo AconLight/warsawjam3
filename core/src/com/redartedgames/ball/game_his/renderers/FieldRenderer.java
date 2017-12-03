@@ -21,7 +21,7 @@ public class FieldRenderer extends RenderManager {
 	public FieldRenderer(GameWorld_his gameworld) {
 		super(gameworld);
 		bg = new Texture(Gdx.files.internal("data_his/backgroud_map.png"));
-		bgr = new TextureRegion(bg);
+		bgr = new TextureRegion(bg); 
 		this.world = gameworld;
 		batch = new SpriteBatch();
 	}
@@ -29,7 +29,7 @@ public class FieldRenderer extends RenderManager {
 	public void render() {
 		//System.out.println("cam2: " + world.fieldManager.cam);
 		batch.begin();
-		batch.draw(bgr, -world.fieldManager.cam.x - 2000, -world.fieldManager.cam.y-2000);
+		batch.draw(bgr, -world.fieldManager.cam.x - 1450, -world.fieldManager.cam.y-1450);
 		for(Field f : world.fieldManager.getFields()) {
 
 			f.render(batch, 1, world.fieldManager.cam.x, world.fieldManager.cam.y);

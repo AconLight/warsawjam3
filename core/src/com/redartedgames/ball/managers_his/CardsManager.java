@@ -13,7 +13,7 @@ public class CardsManager {
 	private int moveCounter = 0, speed = 0;
 	private int allCards = 16;
 	public int money = 100;
-	float money2 = 100f;
+	public float money2 = 100f;
 	private int iter = 0;
 	private ArrayList<Card> cards;
 	private int cardsQuantity = 9;
@@ -118,9 +118,9 @@ public class CardsManager {
 	}
 	
 	public void cast() {
-		if(isUp && !isMoving && money>=cards.get(cardsQuantity/2).cost && gameworld.fieldManager.currentField != null) {
+		if(isUp && !isMoving && money2>=cards.get(cardsQuantity/2).cost && gameworld.fieldManager.currentField != null) {
 			cards.get(cardsQuantity/2).use();
-			money -= cards.get(cardsQuantity/2).cost;
+			money2 -= cards.get(cardsQuantity/2).cost;
 			isMoving = true;
 			isCasted = true;
 			moveCounter = 40;
@@ -140,7 +140,7 @@ public class CardsManager {
 	public void update(float delta) {
 		for (Field f: gameworld.fieldManager.getFields()) {
 			if (f.statistic.affiliation > 10)
-			money2 += f.statistic.population * f.statistic.affiliation*(f.statistic.wealth-20)/10000000.0f*delta;
+			money2 += f.statistic.population * f.statistic.affiliation*(f.statistic.wealth-80)/8000000.0f*delta;
 		}
 		money = (int) money2;
 		if(isMoving) {
