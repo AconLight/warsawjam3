@@ -39,7 +39,7 @@ public class CardsManager {
 			x+=Math.abs(positionFunction((((counter)/cardsQuantity)*(float)Math.PI)))*1930/cardsQuantity;
 			v.x = x;
 			if(iter==cardsQuantity/2) {
-				v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+150;
+				v.y = positionFunction((((counter)/cardsQuantity)*(float)Math.PI-1/2*(float)Math.PI))*50+200;
 				cards.get(cardsQuantity/2).setScale(1);
 			}
 			else 
@@ -58,7 +58,7 @@ public class CardsManager {
 	}
 	
 	public void moveRight() {
-		if(isVisible) {	
+		if(isVisible && !isMoving) {	
 			cards.get(cardsQuantity/2).setScale(0.75f);
 			cards.get(cardsQuantity/2-1).setScale(0.75f);
 			Card pom = cards.get(0);
@@ -69,7 +69,7 @@ public class CardsManager {
 	}
 	
 	public void moveLeft() {
-		if(isVisible) {
+		if(isVisible && !isMoving) {
 			cards.get(cardsQuantity/2).setScale(0.75f);
 			cards.get(cardsQuantity/2-1).setScale(1);
 			Card pom = cards.get(cards.size()-1);
@@ -80,7 +80,7 @@ public class CardsManager {
 	}
 	
 	public void moveBack() {
-		if(isUp) {
+		if(isUp && !isMoving) {
 		isMoving = true;
 		for(Card c : cards) {
 			moveCounter = 20;
@@ -94,7 +94,7 @@ public class CardsManager {
 	}
 	
 	public void moveForward() {
-		if(!isUp) {
+		if(!isUp && !isMoving) {
 		isMoving = true;
 		moveCounter = 10;
 		speed = moveCounter;
@@ -108,7 +108,7 @@ public class CardsManager {
 	}
 	
 	public void cast() {
-		if(isUp) {
+		if(isUp && !isMoving) {
 			isMoving = true;
 			isCasted = true;
 			moveCounter = 40;
@@ -142,12 +142,11 @@ public class CardsManager {
 							c.setScale(1f);
 						}
 						if(iter==(cardsQuantity-1)) isCasted = false;
+						isMoving = false;
 					}
-					else {
-					}
-					isMoving = false;
 					if(iter==cardsQuantity-1) moveCounter = 1;
 				}
+				if(moveCounter==0)isMoving = false;
 				iter++;
 			}
 			moveCounter--;

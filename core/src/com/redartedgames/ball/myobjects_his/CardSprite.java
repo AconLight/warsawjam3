@@ -17,13 +17,13 @@ public class CardSprite extends SpriteObject{
 				addTexture("data_his/cards/dupy.png");
 				break;
 			case 2:
-				addTexture("data_his/cards/card2.png");
+				addTexture("data_his/cards/opera.png");
 				break;
 			case 3:
-				addTexture("data_his/cards/card3.png");
+				addTexture("data_his/cards/apoteoza.png");
 				break;
 			case 4:
-				addTexture("data_his/cards/card1.png");
+				addTexture("data_his/cards/teatr.png");
 				break;
 			case 5:
 				addTexture("data_his/cards/card2.png");
