@@ -26,31 +26,31 @@ public class CardSprite extends SpriteObject{
 				addTexture("data_his/cards/teatr.png");
 				break;
 			case 5:
-				addTexture("data_his/cards/card2.png");
+				addTexture("data_his/cards/dzieci.png");
 				break;
 			case 6:
-				addTexture("data_his/cards/card3.png");
+				addTexture("data_his/cards/handel.png");
 				break;
 			case 7:
-				addTexture("data_his/cards/card1.png");
+				addTexture("data_his/cards/higiena.png");
 				break;
 			case 8:
-				addTexture("data_his/cards/card2.png");
+				addTexture("data_his/cards/medycyna.png");
 				break;
 			case 9:
-				addTexture("data_his/cards/card3.png");
+				addTexture("data_his/cards/przygoda.png");
 				break;
 			case 10:
-				addTexture("data_his/cards/card3.png");
+				addTexture("data_his/cards/radosc.png");
 				break;
 			case 11:
-				addTexture("data_his/cards/card1.png");
+				addTexture("data_his/cards/rande.png");
 				break;
 			case 12:
-				addTexture("data_his/cards/card2.png");
+				addTexture("data_his/cards/przygoda2.png");
 				break;
 			case 13:
-				addTexture("data_his/cards/card3.png");
+				addTexture("data_his/cards/przemysl.png");
 				break;
 		}
 	}		
