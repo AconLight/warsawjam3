@@ -44,17 +44,17 @@ public class StatRenderer extends RenderManager {
 		stats = new ArrayList<Text>();
 		batch = new SpriteBatch();
 		
-		Money = new Text(1450,510,null,0,2,"Pieniï¿½dze:");
+		Money = new Text(1450,510,null,0,2,"Pieni¹dze:");
 		FieldName = new Text(1575,365,null,1,1,"NawzaPola");
 		StatName = new Text(1460,310,null,2,1,"Statystyka:");
-		StatBase = new Text(1705,310,null,3,1,"Wartoï¿½ï¿½:");
+		StatBase = new Text(1705,310,null,3,1,"Wartoœæ:");
 		PopulationText = new Text(1460,250,null,4,0,"Populacja");
 		PopulationValue = new Text(1705,250,null,5,0,"123");
 		BirthrateText = new Text(1460,210,null,6,0,"Przyrost");
 		BirthrateValue = new Text(1705,210,null,7,0,"123");
-		WealthText = new Text(1460,170,null,8,0,"Zamoï¿½noï¿½ï¿½");
+		WealthText = new Text(1460,170,null,8,0,"Zamo¿noœæ");
 		WealthValue = new Text(1705,170,null,9,0,"123");
-		AffiliationText = new Text(1460,130,null,10,0,"Przynaleï¿½noï¿½ï¿½");
+		AffiliationText = new Text(1460,130,null,10,0,"Przynale¿noœæ");
 		AffiliationValue = new Text(1705,130,null,11,0,"123");
 		AmountMoney = new Text(1740,510,null,12,2,"123");
 		MigrationText = new Text(1460,90,null,13,0,"Migracja");
@@ -127,16 +127,16 @@ public class StatRenderer extends RenderManager {
 			 		NameString = "Miasto";
 			 		break;
 			 	case village:
-			 		NameString = "Wieï¿½";
+			 		NameString = "Wieœ";
 			 		break;
 			 	case hill:
-			 		NameString = "Wzgï¿½rze";
+			 		NameString = "Wzgórze";
 			 		break;
 			 	case mountain:
-			 		NameString = "Gï¿½ra";
+			 		NameString = "Góra";
 			 		break;
 			 	case meadow:
-			 		NameString = "ï¿½ï¿½ka";
+			 		NameString = "£¹ka";
 			 		break;	
 			 	default:
 			 		NameString = "";
