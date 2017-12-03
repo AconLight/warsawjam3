@@ -187,7 +187,7 @@ public class Card extends GameObject{
 					gameworld.fieldManager.currentField.statistic.affiliation/100.0f;
 			gameworld.fieldManager.currentField.statistic.base_cult_mult += (gameworld.fieldManager.currentField.statistic.base_cult_mult*kurwtura/10)*
 					gameworld.fieldManager.currentField.statistic.affiliation/100.0f;
-			sound.play(1.0f);
+			//sound.play(1.0f);
 			
 		}
 		switch(id) {
