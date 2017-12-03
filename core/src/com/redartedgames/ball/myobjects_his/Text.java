@@ -36,7 +36,7 @@ public class Text extends SpriteObject{
 	}
 
 public void render(SpriteBatch batch, int priority, float dx, float yy) {	
-	//font.setColor(Color.RED);
+	font.setColor(Color.BLACK);
 	font.draw(batch, txt, x_position, y_position);
 	
 	}

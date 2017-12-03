@@ -11,7 +11,7 @@ public class Card extends GameObject{
 	
 	private int x;
 	private int y;
-	private int id;
+	public int id;
 	public int desiredX;
 	public int desiredY;
 	public float desiredScale;
@@ -30,6 +30,60 @@ public class Card extends GameObject{
 	}
 	
 	public void setCost() {
+		switch(id) {
+			default:
+			case 1:
+				cost = 14;
+				break;
+			case 2:
+				cost = 7;
+				break;
+			case 3:
+				cost = 15;
+				break;
+			case 4:
+				cost = 8;
+				break;
+			case 5:
+				cost = 13;
+				break;
+			case 6:
+				cost = 11;
+				break;
+			case 7:
+				cost = 12;
+				break;
+			case 8:
+				cost = 6;
+				break;
+			case 9:
+				cost = 8;
+				break;
+			case 10:
+				cost = 4;
+				break;
+			case 11:
+				cost = 11;
+				break;
+			case 12:
+				cost = 9;
+				break;
+			case 13:
+				cost = 8;
+				break;
+			case 14:
+				cost = 17;
+				break;
+			case 15:
+				cost = 7;
+				break;
+			case 16:
+				cost = 10;
+				break;
+		}
+	}
+	
+	public void use() {
 		switch(id) {
 			default:
 			case 1:
@@ -57,6 +111,27 @@ public class Card extends GameObject{
 				cost = 6;
 				break;
 			case 9:
+				cost = 8;
+				break;
+			case 10:
+				cost = 4;
+				break;
+			case 11:
+				cost = 8;
+				break;
+			case 12:
+				cost = 12;
+				break;
+			case 13:
+				cost = 6;
+				break;
+			case 14:
+				cost = 8;
+				break;
+			case 15:
+				cost = 4;
+				break;
+			case 16:
 				cost = 8;
 				break;
 		}

@@ -20,7 +20,7 @@ public class FieldManager {
 	static int i2 = 0;
 	int id;
 	
-	public FieldManager() {
+	public FieldManager() { 
 		i2 += 1;
 		id = i2;
 		cam = new Vector2(0, 0);
@@ -88,8 +88,8 @@ public class FieldManager {
 		currentField = null;
 	}
 	public void setCamVel(float x, float y) {
-		camVelX = x;
-		camVelY = y;
+		camVelX = x-100;
+		camVelY = y-100;
 		int k = 430;
 		if (camVelX > k) camVelX = k;
 		if (camVelX < -k) camVelX = -k;
@@ -98,7 +98,6 @@ public class FieldManager {
 	}
 	
 	public void update(float delta) {
-		
 		cam.set(cam.x + 0.000003f*camVelX*camVelX*camVelX*delta, cam.y - 0.000003f*camVelY*camVelY*camVelY*delta);
 		for (Field field : fields) {
 			field.updateBefore(0 ,0, delta);
