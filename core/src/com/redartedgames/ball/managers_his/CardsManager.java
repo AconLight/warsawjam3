@@ -10,7 +10,7 @@ import com.redartedgames.ball.myobjects_his.Card;
 public class CardsManager {
 	
 	private int moveCounter = 0, speed = 0;
-	private int allCards = 13;
+	private int allCards = 16;
 	public int money = 3000;
 	private int iter = 0;
 	private ArrayList<Card> cards;

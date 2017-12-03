@@ -52,6 +52,15 @@ public class CardSprite extends SpriteObject{
 			case 13:
 				addTexture("data_his/cards/przemysl.png");
 				break;
+			case 14:
+				addTexture("data_his/cards/knajpa.png");
+				break;
+			case 15:
+				addTexture("data_his/cards/widowisko.png");
+				break;
+			case 16:
+				addTexture("data_his/cards/religia.png");
+				break;
 		}
 	}		
 }
