@@ -85,7 +85,7 @@ public class Card extends GameObject{
 				migration = 8;
 				affliction = 0;
 				kurwtura = -2;
-				sound = Gdx.audio.newSound(Gdx.files.internal("data_his/audio/voice/medycyna.mp3"));
+				sound = Gdx.audio.newSound(Gdx.files.internal("data_his/audio/voice/medycya.mp3"));
 				break;
 			case 7:
 				cost = 9;
@@ -150,6 +150,7 @@ public class Card extends GameObject{
 				affliction = 0;
 				kurwtura = 0;
 				sound = Gdx.audio.newSound(Gdx.files.internal("data_his/audio/voice/romans.mp3"));
+				break;
 			case 15:
 				cost = 6;
 				population = 0;
@@ -187,7 +188,7 @@ public class Card extends GameObject{
 					gameworld.fieldManager.currentField.statistic.affiliation/100.0f;
 			gameworld.fieldManager.currentField.statistic.base_cult_mult += (gameworld.fieldManager.currentField.statistic.base_cult_mult*kurwtura/10)*
 					gameworld.fieldManager.currentField.statistic.affiliation/100.0f;
-			//sound.play(1.0f);
+			sound.play(3.0f);
 			
 		}
 		switch(id) {

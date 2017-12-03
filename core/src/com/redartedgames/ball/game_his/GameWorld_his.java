@@ -16,6 +16,7 @@ public class GameWorld_his extends MyWorld{
 	Music m3 = Gdx.audio.newMusic(Gdx.files.internal("data_his/audio/game2.mp3"));
 	public GameWorld_his(OrthographicCamera cam) {
 		super(cam);
+		m.setVolume(0.1f);
 		m.play();
 		
 	    cardsManager = new CardsManager(this); 
@@ -23,8 +24,16 @@ public class GameWorld_his extends MyWorld{
 	}
 	
 	public void update(float delta) {
-		if (!m3.isPlaying()) m2.play();
-		if (!m2.isPlaying()) m3.play();
+		if (!m3.isPlaying()) {
+			m2.setVolume(0.5f);
+			m2.play();
+
+		}
+		if (!m2.isPlaying()) {
+			m3.setVolume(0.5f);
+			m3.play();
+
+		}
 	}
 }
 
