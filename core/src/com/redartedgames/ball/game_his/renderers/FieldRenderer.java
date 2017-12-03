@@ -29,7 +29,7 @@ public class FieldRenderer extends RenderManager {
 	public void render() {
 		//System.out.println("cam2: " + world.fieldManager.cam);
 		batch.begin();
-		batch.draw(bgr, -world.fieldManager.cam.x - 3000, -world.fieldManager.cam.y-3000);
+		batch.draw(bgr, -world.fieldManager.cam.x - 2000, -world.fieldManager.cam.y-2000);
 		for(Field f : world.fieldManager.getFields()) {
 
 			f.render(batch, 1, world.fieldManager.cam.x, world.fieldManager.cam.y);
