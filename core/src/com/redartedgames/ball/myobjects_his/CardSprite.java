@@ -17,7 +17,7 @@ public class CardSprite extends SpriteObject{
 				addTexture("data_his/cards/apoteoza.png");
 				break;
 			case 2:
-				addTexture("data_his/cards/dziec.png");
+				addTexture("data_his/cards/dzieci.png");
 				break;
 			case 3:
 				addTexture("data_his/cards/handel.png");
