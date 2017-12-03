@@ -17,7 +17,7 @@ public class FieldSprite extends SpriteObject{
 		sclK = 20;
 		////////
 		//grafika Field
-		addTexture("data_his/fieldsprite.png");
+		addTexture("data_his/polandball.png");
 		
 		
 		////////
@@ -54,7 +54,7 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 		
 		
 		//batch.draw(regionList.get(frameNum), position.x - regionList.get(frameNum).getRegionWidth()/2,
-		
+	batch.setColor(1, 1, 1, 0.3f);
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				if (!(i==1 && j==1))
@@ -66,7 +66,7 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 					sclX/10, sclY/10, alfa);
 			}
 		}
-		
+		batch.setColor(1, 1, 1, 1f);
 		//position.y - regionList.get(frameNum).getRegionHeight()/2);
 		if (isVisible && regionList.size() != 0) {
 			if (renderIsNormal) {
@@ -80,6 +80,7 @@ public void render(SpriteBatch batch, int priority, float dx, float dy) {
 				regionList.get(frameNum).getRegionWidth(), regionList.get(frameNum).getRegionHeight(),
 				sclX + 0.1f, sclY + 0.1f, alfa);
 			//Gdx.app.log("rendered", "spriteobject");
+			
 		}
 	}
 }
